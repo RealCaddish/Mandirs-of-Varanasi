@@ -8,14 +8,14 @@ Scholarship associated with the function and study of sacred space in Hinduism h
 
 
 
-![Kashi Temple](../images/kashiTemple.jpg)
+![Kashi Temple](images/kashiTemple.jpg)
 *Kashi Vishwanath Temple in Varanasi. These are often the temples associated with Hindu veneration practices although they are far less numerous than their smaller counterparts - Image taken by Nathaniel Deaton, 2012.*
 
 
 The diversity of thought, ritual, cosmological systems, and theology shouldn't surprise anyone that *temple building* and *sacred space* are also characteristically varied in Hinduism as well. Regardless, a primary function of the temple or *mandir*, is to house the deity. Within Hinduism, a wide corpus of major and minor traditions exist such as principal deities like [Ganesha](https://en.wikipedia.org/wiki/Ganesha) or [Shiva](https://en.wikipedia.org/wiki/Shiva). Minor traditions within Hinduism typically refer to small mandirs associated with street corners, trees, or holy places of interest for a local community. Additionally, even more minor traditions are considered *house churches* or those gods or goddesses venerated within a family or household. 
 
 
-![Small Mandir](../images/temple1.png)
+![Small Mandir](images/temple1.png)
 *A temple complex between Varanasi and Sarnath - categorized as a tree, a tiny temple, and a medium temple - Image taken by Nathaniel Deaton, 2012.*
 
 
