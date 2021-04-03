@@ -1,6 +1,6 @@
 # Mandirs of Varanasi 
 
-## Results from a Geographic Survey of India's 'Tiny Temples' in the city of Varanasi, India 
+## Results from a Geographic Survey of India's 'Tiny Temples' in the City of Varanasi, India 
 
 ### By Nathaniel Deaton 
 
