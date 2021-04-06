@@ -133,7 +133,8 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
   <script>
-    jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
+   
+   jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
     jQuery("h2").html("What Numerous 'Tiny Temples' Inform Us about Hindu Shared Sacred Space")
     var options = {
       center: [25.3145, 83.0041],
@@ -157,7 +158,7 @@
       position: 'topright'
     }));
 
-    mandirData = 'geoJSON/inventory_Points_selected2.geojson' // Path to mandir geoJSON data\
+    mandirData = 'geoJSON/ganges_mandirs.geojson' // Path to mandir geoJSON data\
 
     console.log(mandirData.features)
 
@@ -174,7 +175,7 @@
           layer.on('mouseover', function () {
             var props = feature.properties
             var content = `<strong>Mandir Deity:  <br>
-                            <strong> Temple Size </strong> <br>
+                            <strong> Temple Size: </strong> <br>
                             <strong> # of Deities: </strong> <br>
                             <strong> Other information..... <br>
                             
@@ -192,6 +193,7 @@
 
     //   div.innerHTML = `<h3>Average Rent in the United<br> States by County</h3>`;
     // }
+  
   </script>
 
 </body>
