@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Mandirs of Uttar Pradesh</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+
+  <style>
+    body {
+      margin: 7;
+      padding: 0;
+      background: #FFFFFF;
+      font-family: "Lato", sans-serif;
+      font-size: 100%;
+      font-weight: 300;
+      color: rgb(180, 164, 17);
+    }
+
+    header,
+    footer,
+    section {
+      padding: 6px 10%;
+      margin: 0 auto;
+      width: 80%
+    }
+
+    h1 {
+      display: inline-block;
+      margin-right: 20px;
+      color: #FF9933;
+      font-size: 3.5em;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    h2 {
+      display: inline-block;
+      color: #138808;
+      letter-spacing: 0.05em;
+      margin-top: 0px;
+      font-weight: 300;
+      text-transform: uppercase;
+      border-bottom: 1px dotted rgba(255, 200, 0, 0.5);
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    #map {
+      width: 90%;
+      height: 640px;
+      margin: 10px auto;
+      border: 4px solid #050708;
+      border-radius: 10px
+    }
+
+    p {
+      font-size: 1em;
+      color: rgb(0, 0, 0);
+      ;
+      font-weight: 300;
+      font-size: 1.2em;
+    }
+
+    .legend {
+      padding: 6px 8px;
+      font-size: 1em;
+      border: 2px solid rgb(1, 2, 1);
+      background: rgba(100, 100, 100, 0.9);
+      color: rgba(244, 244, 244, 0.8);
+      border-radius: 5px;
+    }
+
+    .legend h3 {
+      font-size: 1.4em;
+      font-weight: normal;
+      color: rgb(241, 215, 215);
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+
+    .legend span {
+      width: 15px;
+      height: 10px;
+      float: left;
+      margin: 0 10px 4px 0;
+    }
+
+    .legend label {
+      font-size: 1.1em;
+      color: rgba(211, 145, 145, 0.9);
+    }
+
+    .legend label:after {
+      content: '';
+      display: block;
+    }
+
+    .leaflet-bar a {
+      /* Override the default style for Leaflet's zoom  */
+      background: rgba(221, 176, 176, 0.9);
+      color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1></h1>
+    <h2></h2>
+  </header>
+  <p> Scholarship associated with the function and study of sacred space in Hinduism has fallen short of providing a
+    comprehensive view of the Hindu religious landscape. Traditionally, scholarship in the field has put heavy emphasis
+    on grand, monolithic temple spaces as the predominant form of veneration among orthodox Hindus. Oftentimes, grand
+    temples such as the Kashi Vishwanath Temple or the Mrityunjay Mahadev Mandir served as examples of Hinduism's
+    primary veneration hotspots. However, the most recurrent and numerous temples are typically no larger than a 1x1x1
+    meter shelter, often built into walls, trees, or as standalone structures that are found throughout the city.
+    Traditional and academic circles have placed an inflated emphasis on monolithic temple spaces as the primary
+    districts of veneration, while also neglecting temple spaces that are highly local, discreet, and much more
+    frequent. Although many of these large temples do play an important role for many Hindus, smaller, 'tiny temples'
+    also play an integral if not central role to many Hindus today. </p>
+  <div id='map'></div>
+
+  <footer>
+    <p>Map authored by Nathaniel Deaton</p>
+    <p>Additional information about the data and map goes here.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script>
+    jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
+    jQuery("h2").html("What Numerous 'Tiny Temples' Inform Us about Hindu Shared Sacred Space")
+    var options = {
+      center: [25.3145, 83.0041],
+      zoom: 13,
+      zoomSnap: 1,
+      zoomControl: false
+    }
+
+    var map = L.map('map', options); // map variable storing object and options
+
+    var mandirImage = "mandirs-of-Uttar-Pradesh/images/mandir1.jpg"
+
+    var Thunderforest_Outdoors = L.tileLayer(
+      'https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
+        attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        apikey: '21ef519d083c43a0b670676d01dbe02f',
+        maxZoom: 22
+      }).addTo(map);
+
+    map.addControl(L.control.zoom({
+      position: 'topright'
+    }));
+
+    mandirData = 'geoJSON/gods/sivaAndFamily.geojson' // Path to mandir geoJSON data\
+
+    console.log(mandirData.features)
+
+    mandirs = $.getJSON(mandirData, function (data) {
+      var dataLayer = L.geoJson(data, {
+        style: function (feature) {
+          return {
+            color: '#444',
+            weight: 1,
+            fillOpacity: 1
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          layer.on('mouseover', function () {
+            var props = feature.properties
+            var content = `<strong>Mandir Deity:  <br>
+                            <strong> Temple Size </strong> <br>
+                            <strong> # of Deities: </strong> <br>
+                            <strong> Other information..... <br>
+                            
+                            Image Here`
+            layer.bindPopup(content)
+          })
+        }
+
+      }).addTo(map);
+    })
+
+    // legend.onAdd = function () {
+
+    //   var div = L.DomUtil.create('div', 'legend');
+
+    //   div.innerHTML = `<h3>Average Rent in the United<br> States by County</h3>`;
+    // }
+  </script>
+
+</body>
+
+</html>
