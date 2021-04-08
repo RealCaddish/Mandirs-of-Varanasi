@@ -6,14 +6,19 @@
   <title>Mandirs of Uttar Pradesh</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Lusitana:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Cardo&family=Lusitana:wght@700&display=swap" rel="stylesheet">
 
   <style>
+    
     body {
       margin: 7;
       padding: 0;
-      background: #FFFFFF;
-      font-family: "Lato", sans-serif;
+      background: rgb(122, 44, 44);
+      font-family: "Samarkan", sans-serif;
       font-size: 100%;
       font-weight: 300;
       color: rgb(180, 164, 17);
@@ -29,14 +34,31 @@
 
     h1 {
       display: inline-block;
-      margin-right: 20px;
+
       color: #FF9933;
+      font-family: "Lusitana", serif; 
       font-size: 3.5em;
       font-weight: 700;
       text-decoration: underline;
+      text-align: center;
+      text-shadow: 1.5px 1.5px #000000;
     }
 
     h2 {
+      display: inline-block;
+      color: #18a70b;
+      font-family: "Lusitana", serif; 
+      letter-spacing: 0.05em;
+      margin-top: 0px;
+      font-weight: 300;
+      text-transform: uppercase;
+      border-bottom: 1px dotted rgba(255, 200, 0, 0.5);
+      text-align: center;
+      text-decoration: underline;
+      text-shadow: 1px 1px #050708;
+    }
+
+    h3 {
       display: inline-block;
       color: #138808;
       letter-spacing: 0.05em;
@@ -46,6 +68,44 @@
       border-bottom: 1px dotted rgba(255, 200, 0, 0.5);
       text-align: center;
       text-decoration: underline;
+      text-shadow: 1px 1px #050708;
+
+    }
+
+    .first-column {
+      float: left;
+      width: 48%;
+      padding: 20px;
+      background-color: #FF9933;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 2%;
+      margin: 10px;
+
+    }
+
+    .column {
+      float: left;
+      width: 45%;
+      background-color: #138808;
+      border: 2px solid #050708;
+      border-radius: 2%;
+      padding: 20px;
+      margin: 10px
+    }
+
+    /* Clear floats after the columns */
+
+    .row:after {
+      display: table;
+      clear: both;
+    }
+
+    a {
+      font-size: medium;
+      color: rgb(126, 7, 7);
+      text-decoration: underline;
+      font-weight: bold;
+      text-shadow: .3px .3px #001323;
     }
 
     #map {
@@ -57,28 +117,49 @@
     }
 
     p {
+      font-family: 'Cardo', serif;
       font-size: 1em;
       color: rgb(0, 0, 0);
       ;
       font-weight: 300;
       font-size: 1.2em;
+      text-indent: 5%;
+    }
+
+    p_quote {
+      font-size: 1em;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      font-weight: 300;
+      font-size: 1.2em;
+      text-indent: 5%;
+    }
+
+    img_text {
+      font-size: .8em;
+      color: #050708;
+      text-align: center;
+      font-weight: 300;
+      font-size: .8em;
+      text-indent: 5%;
     }
 
     .legend {
       padding: 6px 8px;
       font-size: 1em;
-      border: 2px solid rgb(1, 2, 1);
-      background: rgba(100, 100, 100, 0.9);
-      color: rgba(244, 244, 244, 0.8);
+      background: #138808;
       border-radius: 5px;
+      opacity: .9;
+      border: 4px solid #001323;
     }
 
     .legend h3 {
-      font-size: 1.4em;
+      font-size: 1.3em;
       font-weight: normal;
-      color: rgb(241, 215, 215);
+      color: #001323;
       margin: 0 0 10px 0;
-      text-align: center;
+      font-weight: bold;
+      text-decoration: underline;
     }
 
     .legend span {
@@ -90,18 +171,21 @@
 
     .legend label {
       font-size: 1.1em;
-      color: rgba(211, 145, 145, 0.9);
+      color: #001323;
+      font-weight: bold;
     }
 
     .legend label:after {
       content: '';
       display: block;
+      clear: both;
     }
 
-    .leaflet-bar a {
-      /* Override the default style for Leaflet's zoom  */
-      background: rgba(221, 176, 176, 0.9);
-      color: rgba(0, 0, 0, 0.8);
+    img {
+      border-radius: 5%;
+      margin: 3;
+      text-align: center;
+      padding: 2%;
     }
   </style>
 </head>
@@ -111,90 +195,255 @@
     <h1></h1>
     <h2></h2>
   </header>
-  <p> Scholarship associated with the function and study of sacred space in Hinduism has fallen short of providing a
-    comprehensive view of the Hindu religious landscape. Traditionally, scholarship in the field has put heavy emphasis
-    on grand, monolithic temple spaces as the predominant form of veneration among orthodox Hindus. Oftentimes, grand
-    temples such as the Kashi Vishwanath Temple or the Mrityunjay Mahadev Mandir served as examples of Hinduism's
-    primary veneration hotspots. However, the most recurrent and numerous temples are typically no larger than a 1x1x1
-    meter shelter, often built into walls, trees, or as standalone structures that are found throughout the city.
-    Traditional and academic circles have placed an inflated emphasis on monolithic temple spaces as the primary
-    districts of veneration, while also neglecting temple spaces that are highly local, discreet, and much more
-    frequent. Although many of these large temples do play an important role for many Hindus, smaller, 'tiny temples'
-    also play an integral if not central role to many Hindus today. </p>
-  <div id='map'></div>
+  <div class="row">
+    <div class="first-column">
+      <p> In a small alleyway off the Nai Sarak - Luxa intersection, a radiant peach-colored box has attracted two
+        adherents, offering <a href="https://en.wikipedia.org/wiki/Puja_(Hinduism)">puja</a> at the seat of Vishnu's
+        mount. It's a brisk morning here in the City of Light and the sound of motorcycles and automobile horns are
+        beginning to fill the air
+        again. There will be two more adherents who will pass by, receiving their morning blessing before they're off to
+        work as well. Down the street, three gentlemen are closely seated around another one of these drink machine
+        - sized enclosures. At first sight, it seems that they're performing a ritual for Shiva, but on second glance,
+        they're performing a wholly unexpected one, passing a lit <a
+          href="https://en.wikipedia.org/wiki/Chillum_(pipe)">chillum</a> around in equal intervals. When asked, they
+        don't hesitate to tell us that <i>"We smoke ganja here so that we can get Shiva high too."</i> It's an offering
+        that is perhaps a bit unorthodox but also welcomed nonetheless.</p>
+      <p>These enclosures are known as 'mandirs' in India - little temples that house various deities from the
+        Hindu pantheon, often found next to trees, built into the sides of buildings, or close to water wells.
+        Scholarship associated with the function and study of sacred space in Hinduism has fallen short of providing a
+        comprehensive view of the Hindu religious landscape as it relates to these little temples. Traditionally,
+        the field has put heavy
+        emphasis
+        on grand, monolithic temple spaces as the predominant form of veneration among Hindu adherents. Oftentimes,
+        grand
+        temples such as the Kashi Vishwanath Temple or the Mrityunjay Mahadev Mandir served as examples of Hinduism's
+        primary venerative hotspots. However, the most recurrent and numerous temples are typically no larger than these
+        1x1x1
+        meter shelters found throughout the city.
+        Traditional and academic circles have placed an inflated emphasis on monolithic temple spaces as the primary
+        districts of veneration, while also neglecting temple spaces that are highly local, discreet, and much more
+        frequent. Although many of these large temples do play an important role for many Hindus, smaller, 'tiny
+        temples'
+        also play an integral if not central role to many Hindus today. </p>
 
-  <footer>
-    <p>Map authored by Nathaniel Deaton</p>
-    <p>Additional information about the data and map goes here.</p>
-  </footer>
+        <center><img src="images/kashiTemple.jpg" width="60%" height="60%" padding="10%" alt="Image of Garuda"></center>
+        <img_text>
+          <center> <i>Above is an image of the <a href= "https://en.wikipedia.org/wiki/Shri_Vishwanath_Mandir"> Shri Vishwanath Mandir</a> on the campus of Benaras Hindu University in Varanasi. Photograph by Nathaniel Deaton </i></center>
+        </img_text>
+      <p>
+        The diversity of thought, ritual, cosmological systems, and theology shouldn't surprise anyone that temple
+        building and sacred space are also characteristically varied in Hinduism as well. Regardless, a primary function
+        of the temple or mandir, is to house the deity. Within Hinduism, a wide corpus of major and minor traditions
+        exist such as principal deities like Ganesha or Shiva. There are a wide variety of other, lesser known deities too, where 
+        many are considered <i>house churches</i> or those gods or goddesses venerated within a family or
+        household.
+      </p>
 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <p>Over 3,347 individual mandirs were collected and recorded within the metropolitan area of Varanasi. Interviews
+        and photographs were collected in conjunction with a recorded GPS point for the mandir's location. Additionally, we collected information pertaining to the mandir's association with buildings, wells, trees, or anything that would suggest it's location as sacred space. We also recorded how many deities were present at a mandir as well as recording any associative information we thought would be important to tell their story.</p>
+        <center><img src=images\mandir1.jpg></center>
+        <img_text>
+          <center> <i>Above is an image of a small mandir abutting a building to the right with chairs as a frame of
+              reference. Notice the images of deities above the main housing structure; this particular mandir venerates
+              several deities including Ganesh, Shiva, and others. Photograph by Nathaniel Deaton </i></center>
+        </img_text>
 
-  <script>
+      <p>By mapping out characteristics of mandirs we identified, our hope is that a more readily comprehensive
+        geography of the city's public temples will emerge. Additionally, more analytical questions can be asked
+        regarding frequency of temple localities that our GIS can play a role in answering.</p>
+    </div>
+  </div>
+  <div class="column">
+    <center> <img src="images/shiva.jpg" width="60%" height="60%" padding="10%" alt="Image of Garuda"> </center>
+    <img_text>
+      <center> <i>Above is an image of <a href='https://en.wikipedia.org/wiki/Garuda'> Garuda</a>, the vehicle (vahana)
+          of Vishnu. Small mandirs can range from having large deital sculptures to containing no image whatsoever.
+          Photograph by Nathaniel Deaton </i></center>
+    </img_text>
+    <p>
+      A large majority of the mandirs that we identified were located close to the <a href= "https://en.wikipedia.org/wiki/Ghat">ghats</a> along the western bank of the <a href = "https://en.wikipedia.org/wiki/Ganges">Ganges River</a> in Varanasi. It's not surprising that this is where many of them reside because of the central role that the holy Ganges plays in the <a href="https://en.wikipedia.org/wiki/Vedas">Sanskrit Vedas.</a> 
+      The ghats along the bank are filled with activity. You'll often find people bathing, collecting water, offering oblations to the sacred fires from Vedic traditions such as Yajna, and an entire host of other events such as marriages, funerals at <a href="https://en.wikipedia.org/wiki/Manikarnika_Ghat">Manikarnika Ghat.</a> 
+      Haskett's publication on these temples was published
+      in the <i>South Asia Multidisciplinary Academic Journal</i> in 2018 and you can read more about his work <a href= "https://journals.openedition.org/samaj/4524"> here.</a></p>
+      <center><img src="images/gangesDog.JPG" width="90%" height="90%" padding="10%" alt="Image of Garuda"></center>
+        <img_text>
+          <center> <i>A happy dog after cooling off in the holy Ganges River. Photograph by Nathaniel Deaton </i></center>
+        </img_text>
+
+    <p>The goal of this project is to build upon the database of temples that were collected in 2012 and 2015 by
+      creating an interactive map that allows viewers to learn more details about the location, deities, and sacred
+      space these mandirs impart on the local community. Below you'll find a map of the mandirs where spatial analysis was performed to find where the density of the mandirs are around the the city. Unsurprisingly, the largest clusters were found by the banks of the Ganges and the number begins to wane the further inland you travel. </p>
+      <p>As the Ganges provides shared space for its visitors, mandirs around its western bank do so as well. Dr. Haskett states,
+    <center><i>"By observing where temples occur and the other features of landscape with which they frequently
+        coincide, we can learn how temples instantiate the presence of deities at important junctures of shared
+        space... our data also suggests a number of insights about the roles that tiny temples play in making Hinduism
+        for the residents of Varanasi."</i></center>
+    </p>
    
-   jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
-    jQuery("h2").html("What Numerous 'Tiny Temples' Inform Us about Hindu Shared Sacred Space")
-    var options = {
-      center: [25.3145, 83.0041],
-      zoom: 13,
-      zoomSnap: 1,
-      zoomControl: false
-    }
+    <center><img src="images\sacredCow.jpg" width="90%" height="90%" padding="10%" alt="Image of a sacred cow"></center>
+    <img_text>
+      <center> <i>Cows out for a stroll through an alleyway in Varanasi. Photograph by Nathaniel Deaton </i></center>
+    </img_text>
+    <p> We're hoping to continue this research and build a more robust GIS that can also identify affiliated deities as well as provide photographs and other pertinent information. Additionally, many of these mandirs were often found in Muslim neighborhoods so more attention to their role in that religious context is of great interest.  Without question, the 'tiny temples' of Varanasi play a major role in the shared sacred experience of the community and deserve more attention in the academy. By examining their role in society, we hope that we can provide a more stable ground to understanding Hinduism in light of their frequent and multifaceted nature.  </p>
+</div>
 
-    var map = L.map('map', options); // map variable storing object and options
 
-    var mandirImage = "mandirs-of-Uttar-Pradesh/images/mandir1.jpg"
+    <div id='map'></div>
 
-    var Thunderforest_Outdoors = L.tileLayer(
-      'https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
-        attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        apikey: '21ef519d083c43a0b670676d01dbe02f',
-        maxZoom: 22
-      }).addTo(map);
+    <div><p><strong>Above is a map of mandirs clustered by 65 meter radii. Click on a hexagon to see how many deities are venerated in that particular area.</p></strong></div>
+    <footer>
+      <p>Map authored by Nathaniel Deaton</p>
+      <p>Additional information about the data and map goes here.</p>
+    </footer>
 
-    map.addControl(L.control.zoom({
-      position: 'topright'
-    }));
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src='https://unpkg.com/simple-statistics@7.6.0/dist/simple-statistics.min.js'>
+    </script>
 
-    mandirData = 'geoJSON/ganges_mandirs.geojson' // Path to mandir geoJSON data\
+    <script>
+      //console.log('this works')
+      //console.log(mandirs)
+      jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
+      jQuery("h2").html("What Numerous 'Tiny Temples' Inform Us about Hindu Shared Sacred Space")
 
-    console.log(mandirData.features)
+      var options = {
+        center: [25.288792, 83.005975],
+        zoom: 12.5,
+        zoomSnap: 1,
+        zoomControl: false
+      }
 
-    mandirs = $.getJSON(mandirData, function (data) {
-      var dataLayer = L.geoJson(data, {
-        style: function (feature) {
-          return {
-            color: '#444',
-            weight: 1,
-            fillOpacity: 1
-          };
-        },
-        onEachFeature: function (feature, layer) {
-          layer.on('mouseover', function () {
-            var props = feature.properties
-            var content = `<strong>Mandir Deity:  <br>
-                            <strong> Temple Size: </strong> <br>
-                            <strong> # of Deities: </strong> <br>
-                            <strong> Other information..... <br>
-                            
-                            Image Here`
-            layer.bindPopup(content)
+      var map = L.map('map', options); // map variable storing object and options
+
+      var mandirImage = "mandirs-of-Uttar-Pradesh/images/mandir1.jpg"
+
+      var Thunderforest_Outdoors = L.tileLayer(
+        'https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          apikey: '21ef519d083c43a0b670676d01dbe02f',
+          maxZoom: 22
+        }).addTo(map);
+
+      map.addControl(L.control.zoom({
+        position: 'topright'
+      }));
+
+      // mandirData = 'geoJSON/ganges_mandirs.geojson' // Path to mandir geoJSON data
+
+
+      const deityData = 'geoJSON/hex_final.geojson'
+      const count = "deity_count"
+      var values = [];
+
+
+      $.getJSON(deityData, function (data) {
+        var dataLayer = L.geoJson(data, {
+          style: function (feature) {
+            return {
+              color: 'black',
+              weight: .5,
+              fillOpacity: .8,
+              fillColor: '#1f78b4',
+              // stroke: true
+            };
+          },
+          onEachFeature: function (feature, layer) {
+            layer.on('mouseover', function () {
+              var props = feature.properties,
+                content = `<strong>Number of Deities: ${props[count]}`
+              layer.bindPopup(content)
+            })
+          }
+
+        }).addTo(map);
+        drawMap(dataLayer)
+
+      });
+
+      function drawMap(dataLayer) {
+        var breaks = getClassBreaks(dataLayer);
+        dataLayer.eachLayer(function (layer) {
+          var props = layer.feature.properties;
+          layer.setStyle({
+            fillColor: getColor(props[count], breaks)
           })
+        })
+        let legend = drawLegend(breaks)
+      }
+
+      // Create class breaks based on rent value 
+      function getClassBreaks(dataLayer) {
+
+        dataLayer.eachLayer(function (layer) {
+          var props = layer.feature.properties;
+          var value = props[count];
+          values.push(value);
+        });
+
+
+        var clusters = ss.ckmeans(values, 7);
+
+        var breaks = clusters.map(function (cluster) {
+          return [cluster[0], cluster.pop()];
+        });
+        console.log(breaks)
+        return breaks;
+      }
+
+
+      // Return the color based on the class break function
+      function getColor(d, breaks) {
+
+        if (d <= breaks[0][1]) {
+          return '#ffffb2'
+        } else if (d <= breaks[1][1]) {
+          return '#fcbba1'
+        } else if (d <= breaks[2][1]) {
+          return '#fc9272'
+        } else if (d <= breaks[3][1]) {
+          return '#fb6a4a'
+        } else if (d <= breaks[4][1]) {
+          return '#ef3b2c'
+        } else if (d <= breaks[5][1]) {
+          return '#cb181d'
+        } else if (d <= breaks[6][1]) {
+          return '#99000d'
         }
+      }
 
-      }).addTo(map);
-    })
 
-    // legend.onAdd = function () {
+      function drawLegend(breaks) {
+        console.log(breaks)
 
-    //   var div = L.DomUtil.create('div', 'legend');
+        var legend = L.control({
+          position: 'bottomright' // place legend element at top left of map
+        });
 
-    //   div.innerHTML = `<h3>Average Rent in the United<br> States by County</h3>`;
-    // }
-  
-  </script>
+        legend.onAdd = function () {
+
+          var div = L.DomUtil.create('div', 'legend');
+
+          div.innerHTML = `<h3><center> # of Mandirs by 65<br>
+            Meter Clusters</center></h3>`;
+
+          for (var i = 0; i < breaks.length; i++) {
+
+            var color = getColor(breaks[i][0], breaks);
+
+            div.innerHTML +=
+              `<span style="background:${color}"></span> 
+                  <label>${(breaks[i][0])} &mdash;
+                  ${(breaks[i][1])}</label>`;
+          }
+
+          return div;
+        };
+
+        legend.addTo(map)
+      };
+    </script>
 
 </body>
 

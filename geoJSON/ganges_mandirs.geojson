@@ -1,4 +1,4 @@
- {
+var mandirs = {
   "type": "FeatureCollection",
   "name": "ganges_mandirs",
   "crs": {
