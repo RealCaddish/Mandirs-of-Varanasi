@@ -5,6 +5,7 @@
   <meta charset=utf-8 />
   <title>Mandirs of Uttar Pradesh</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -41,7 +42,7 @@
       font-size: 3.5em;
       font-weight: 700;
       text-decoration: underline;
-      text-align: center;
+      text-align:center;
       text-shadow: 1.5px 1.5px #000000;
     }
 
@@ -59,28 +60,15 @@
       text-shadow: 1px 1px #050708;
     }
 
-    h3 {
-      display: inline-block;
-      color: #138808;
-      letter-spacing: 0.05em;
-      margin-top: 0px;
-      font-weight: 300;
-      text-transform: uppercase;
-      border-bottom: 1px dotted rgba(255, 200, 0, 0.5);
-      text-align: center;
-      text-decoration: underline;
-      text-shadow: 1px 1px #050708;
-
-    }
 
     .first-column {
       float: left;
       width: 48%;
-      padding: 20px;
+      padding: 10px;
       background-color: #FF9933;
       border: 2px solid rgb(0, 0, 0);
       border-radius: 2%;
-      margin: 10px;
+      margin: 5px;
 
     }
 
@@ -90,8 +78,8 @@
       background-color: #138808;
       border: 2px solid #050708;
       border-radius: 2%;
-      padding: 20px;
-      margin: 10px
+      padding: 10px;
+      margin: 5px
     }
 
     /* Clear floats after the columns */
@@ -145,22 +133,22 @@
       text-indent: 5%;
     }
 
+   
     .legend {
       padding: 6px 8px;
       font-size: 1em;
-      background: #138808;
+      border: 2px solid rgb(1, 2, 1);
+      background: rgba(100, 100, 100, 0.9);
+      color: rgba(244, 244, 244, 0.8);
       border-radius: 5px;
-      opacity: .9;
-      border: 4px solid #001323;
     }
 
     .legend h3 {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: normal;
-      color: #001323;
+      color: rgb(241, 215, 215);
       margin: 0 0 10px 0;
-      font-weight: bold;
-      text-decoration: underline;
+      text-align: center;
     }
 
     .legend span {
@@ -172,21 +160,18 @@
 
     .legend label {
       font-size: 1.1em;
-      color: #001323;
-      font-weight: bold;
+      color: rgba(240, 222, 222, 0.9);
     }
 
     .legend label:after {
       content: '';
       display: block;
-      clear: both;
     }
 
-    img {
-      border-radius: 5%;
-      margin: 3;
-      text-align: center;
-      padding: 2%;
+    .leaflet-bar a {
+      /* Override the default style for Leaflet's zoom  */
+      background: rgba(221, 176, 176, 0.9);
+      color: rgba(0, 0, 0, 0.8);
     }
   </style>
 </head>
@@ -300,7 +285,7 @@
 
     <center><img src="images\sacredCow.jpg" width="90%" height="90%" padding="10%" alt="Image of a sacred cow"></center>
     <img_text>
-      <center> <i>Cows out for a stroll through an alleyway in Varanasi. Photograph by Nathaniel Deaton </i></center>
+      <center> <i>Cattle out for a stroll through an alleyway in Varanasi. Photograph by Nathaniel Deaton </i></center>
     </img_text>
     <p> We're hoping to continue this research and build a more robust GIS that can also identify affiliated deities as
       well as provide photographs and other pertinent information. Additionally, many of these mandirs were often found
@@ -332,7 +317,7 @@
     //console.log('this works')
     //console.log(mandirs)
     jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
-    jQuery("h2").html("What Numerous 'Tiny Temples' Inform Us about Hindu Shared Sacred Space")
+    jQuery("h2").html("How the 'Tiny Temples' of the City of Light Inform Us About Hindu Shared Experience")
 
     var options = {
       center: [25.288792, 83.005975],
@@ -445,7 +430,7 @@
 
           var div = L.DomUtil.create('div', 'legend');
 
-          div.innerHTML = `<h3>Mandirs</h3>`;
+          div.innerHTML = `<h3><strong># of Mandirs Per 65 <br> Meter Radial</strong></h3>`;
 
           for (var i = 0; i < breaks.length; i++) {
 
