@@ -349,7 +349,7 @@
     var values = [];
 
 
-    $.getJSON(deityData, function (data) {
+    $.getJSON(deityData, function (data) { // fetch geoJSON data from file - jQUERY added
       var dataLayer = L.geoJson(data, {
         style: function (feature) {
           return {
@@ -360,7 +360,7 @@
             // stroke: true
           };
         },
-        onEachFeature: function (feature, layer) {
+        onEachFeature: function (feature, layer) { // popup build 
           layer.on('mouseover', function () {
             var props = feature.properties,
               content = `<strong>Number of Deities: ${props[count]}`
@@ -372,7 +372,7 @@
 
     });
 
-    function drawMap(dataLayer) {
+    function drawMap(dataLayer) { // draw map with class breaks 
       var breaks = getClassBreaks(dataLayer);
       dataLayer.eachLayer(function (layer) {
         var props = layer.feature.properties;
@@ -387,15 +387,15 @@
     function getClassBreaks(dataLayer) {
 
       dataLayer.eachLayer(function (layer) {
-        var props = layer.feature.properties;
-        var value = props[count];
+        var props = layer.feature.properties; // shorthand for drilling into geoJSON
+        var value = props[count]; // reference property in hash table for geoJSON data 
         values.push(value);
       });
 
 
       var clusters = ss.ckmeans(values, 5);
 
-      var breaks = clusters.map(function (cluster) {
+      var breaks = clusters.map(function (cluster) { // build breaks for clusters
         return [cluster[0], cluster.pop()];
       });
       console.log(breaks)
@@ -426,7 +426,7 @@
           position: 'bottomright' // place legend element at bottom right  of map
         });
 
-        legend.onAdd = function () {
+        legend.onAdd = function () { // legend build
 
           var div = L.DomUtil.create('div', 'legend');
 
