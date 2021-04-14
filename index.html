@@ -42,7 +42,7 @@
       font-size: 3.5em;
       font-weight: 700;
       text-decoration: underline;
-      text-align:center;
+      text-align: center;
       text-shadow: 1.5px 1.5px #000000;
     }
 
@@ -133,7 +133,7 @@
       text-indent: 5%;
     }
 
-   
+
     .legend {
       padding: 6px 8px;
       font-size: 1em;
@@ -172,6 +172,46 @@
       /* Override the default style for Leaflet's zoom  */
       background: rgba(221, 176, 176, 0.9);
       color: rgba(0, 0, 0, 0.8);
+    }
+
+    @media only screen and (max-width: 600px) {
+      body {
+        background-color: lightblue;
+      }
+
+      .first-column {
+        float: left;
+        width: 95%;
+        background-color: #e2b486;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 1%;
+        margin: 0px;
+
+      }
+
+      .column {
+        float: left;
+        width: 95%;
+        background-color: #e2b486;
+        border: 2px solid #050708;
+        border-radius: 1%;
+        margin: 1px
+      }
+      #map {
+      width: 100%;
+      height: 640px;
+      margin: 10px auto;
+      border: 2px solid #050708;
+      border-radius: 10px
+    }
+    header,
+    footer,
+    section {
+      padding: 6px ;
+      margin: 0 auto;
+      width: 80%;
+      text-align: center;
+    }
     }
   </style>
 </head>
@@ -235,10 +275,10 @@
         would suggest it's location as sacred space. We also recorded how many deities were present at a mandir as well
         as recording any associative information we thought would be important to tell their story.</p>
       <center><img src=images\mandir1.jpg width="60%" height="60%" padding="10%" alt="Image of Tiny Temple" </center>
-        <img_text>
-          <center> <i>Above is an image of a small mandir abutting a building to the right with chairs as a frame of
-              reference. Notice the images of deities above the main housing structure; this particular mandir venerates
-              several deities including Ganesh, Shiva, and others. Photograph by Nathaniel Deaton </i></center>
+          <img_text>
+        <center> <i>Above is an image of a small mandir abutting a building to the right with chairs as a frame of
+            reference. Notice the images of deities above the main housing structure; this particular mandir venerates
+            several deities including Ganesh, Shiva, and others. Photograph by Nathaniel Deaton </i></center>
         </img_text>
 
         <p>By mapping out characteristics of mandirs we identified, our hope is that a more readily comprehensive
@@ -277,10 +317,13 @@
       clusters were found by the banks of the Ganges and the number begins to wane the further inland you travel. </p>
     <p>As the Ganges provides shared space for its visitors, mandirs around its western bank do so as well. Dr. Haskett
       states,
-      <center><i>"By observing where temples occur and the other features of landscape with which they frequently
-          coincide, we can learn how temples instantiate the presence of deities at important junctures of shared
-          space... our data also suggests a number of insights about the roles that tiny temples play in making Hinduism
-          for the residents of Varanasi."</i></center>
+      <div class= p_quote>
+        <center><i>"By observing where temples occur and the other features of landscape with which they frequently
+            coincide, we can learn how temples instantiate the presence of deities at important junctures of shared
+            space... our data also suggests a number of insights about the roles that tiny temples play in making
+            Hinduism
+            for the residents of Varanasi."</i></center>
+      </div>
     </p>
 
     <center><img src="images\sacredCow.jpg" width="90%" height="90%" padding="10%" alt="Image of a sacred cow"></center>
@@ -332,10 +375,10 @@
 
     var Thunderforest_Outdoors = L.tileLayer(
       'https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
-      attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      apikey: '21ef519d083c43a0b670676d01dbe02f',
-      maxZoom: 22
-    }).addTo(map);
+        attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        apikey: '21ef519d083c43a0b670676d01dbe02f',
+        maxZoom: 22
+      }).addTo(map);
 
     map.addControl(L.control.zoom({
       position: 'topright'
@@ -419,34 +462,34 @@
       }
     }
 
-      function drawLegend(breaks) {
-        console.log(breaks)
+    function drawLegend(breaks) {
+      console.log(breaks)
 
-        var legend = L.control({
-          position: 'bottomright' // place legend element at bottom right  of map
-        });
+      var legend = L.control({
+        position: 'bottomright' // place legend element at bottom right  of map
+      });
 
-        legend.onAdd = function () { // legend build
+      legend.onAdd = function () { // legend build
 
-          var div = L.DomUtil.create('div', 'legend');
+        var div = L.DomUtil.create('div', 'legend');
 
-          div.innerHTML = `<h3><strong># of Mandirs Per<br> Hexagon</strong></h3>`;
+        div.innerHTML = `<h3><strong># of Mandirs Per<br> Hexagon</strong></h3>`;
 
-          for (var i = 0; i < breaks.length; i++) {
+        for (var i = 0; i < breaks.length; i++) {
 
-            var color = getColor(breaks[i][0], breaks);
+          var color = getColor(breaks[i][0], breaks);
 
-            div.innerHTML +=
-              `<span style="background:${color}"></span> 
+          div.innerHTML +=
+            `<span style="background:${color}"></span> 
                   <label>${(breaks[i][0])} &mdash;
                   ${(breaks[i][1])}</label>`;
-          }
+        }
 
-          return div;
-        };
-
-        legend.addTo(map)
+        return div;
       };
+
+      legend.addTo(map)
+    };
   </script>
 
 </body>
