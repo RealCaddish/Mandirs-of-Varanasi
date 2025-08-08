@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandirs of Varanasi - Data Dashboard</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&family=Cardo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cardo', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-family: 'Lusitana', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .map-section {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .charts-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            font-family: 'Lusitana', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        #map {
+            height: 500px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .legend {
+            padding: 10px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .legend h4 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .control-btn.active {
+            background: #4a5568;
+        }
+
+        .info-panel {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .dashboard-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mandirs of Varanasi</h1>
+        <p>Interactive Data Dashboard - Exploring the Sacred Geography of India's City of Light</p>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-mandirs">-</div>
+                <div class="stat-label">Total Mandirs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="max-density">-</div>
+                <div class="stat-label">Highest Density Area</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avg-density">-</div>
+                <div class="stat-label">Average Density</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="coverage-area">-</div>
+                <div class="stat-label">Coverage Area (km²)</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map Section -->
+            <div class="map-section">
+                <h2 class="chart-title">Sacred Geography of Varanasi</h2>
+                <div class="controls">
+                    <button class="control-btn active" onclick="switchLayer('density')">Density View</button>
+                    <button class="control-btn" onclick="switchLayer('individual')">Individual Mandirs</button>
+                    <button class="control-btn" onclick="resetView()">Reset View</button>
+                </div>
+                <div id="map"></div>
+                <div class="info-panel">
+                    <strong>Map Legend:</strong> Hexagons represent 65-meter radius clusters. Color intensity indicates the number of mandirs in each area. 
+                    Click on hexagons to see detailed information about the sacred spaces in that location.
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <!-- Density Distribution Chart -->
+                <div class="chart-container">
+                    <h3 class="chart-title">Mandir Density Distribution</h3>
+                    <canvas id="densityChart"></canvas>
+                </div>
+
+                <!-- Spatial Analysis Chart -->
+                <div class="chart-container">
+                    <h3 class="chart-title">Distance from Ganges River</h3>
+                    <canvas id="distanceChart"></canvas>
+                </div>
+
+                <!-- Deity Distribution (Placeholder) -->
+                <div class="chart-container">
+                    <h3 class="chart-title">Deity Types (Sample Data)</h3>
+                    <canvas id="deityChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/simple-statistics@7.6.0/dist/simple-statistics.min.js"></script>
+
+    <script>
+        // Global variables
+        let map;
+        let hexLayer;
+        let mandirLayer;
+        let currentLayer = 'density';
+        let hexData = [];
+        let mandirData = [];
+
+        // Initialize the dashboard
+        $(document).ready(function() {
+            initializeMap();
+            loadData();
+            initializeCharts();
+        });
+
+        function initializeMap() {
+            // Initialize map centered on Varanasi
+            map = L.map('map', {
+                center: [25.288792, 83.005975],
+                zoom: 12.5,
+                zoomControl: false
+            });
+
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=21ef519d083c43a0b670676d01dbe02f', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 22
+            }).addTo(map);
+
+            // Add zoom control
+            L.control.zoom({ position: 'topright' }).addTo(map);
+        }
+
+        function loadData() {
+            // Load hex data
+            $.getJSON('geoJSON/data/hex_final.geojson', function(data) {
+                hexData = data.features;
+                displayHexData();
+                updateStatistics();
+                updateDensityChart();
+            });
+
+            // Load mandir data (when available)
+            // $.getJSON('geoJSON/data/temple/temple.geojson', function(data) {
+            //     mandirData = data.features;
+            //     displayMandirData();
+            //     updateDeityChart();
+            // });
+        }
+
+        function displayHexData() {
+            if (hexLayer) {
+                map.removeLayer(hexLayer);
+            }
+
+            hexLayer = L.geoJson(hexData, {
+                style: function(feature) {
+                    const count = feature.properties.deity_count || 0;
+                    return {
+                        color: 'black',
+                        weight: 0.5,
+                        fillOpacity: 0.8,
+                        fillColor: getColorByCount(count)
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.on('click', function() {
+                        const count = feature.properties.deity_count || 0;
+                        const popupContent = `
+                            <div style="text-align: center;">
+                                <h4>Sacred Space Cluster</h4>
+                                <p><strong>Number of Mandirs:</strong> ${count}</p>
+                                <p><strong>Area:</strong> ~65m radius</p>
+                                <p>This area contains ${count} small temples, representing a significant concentration of Hindu sacred spaces.</p>
+                            </div>
+                        `;
+                        layer.bindPopup(popupContent).openPopup();
+                    });
+                }
+            }).addTo(map);
+
+            addLegend();
+        }
+
+        function getColorByCount(count) {
+            if (count === 0) return '#f7f7f7';
+            if (count <= 1) return '#ffffb2';
+            if (count <= 2) return '#fecc5c';
+            if (count <= 3) return '#fd8d3c';
+            if (count <= 5) return '#f03b20';
+            return '#bd0026';
+        }
+
+        function addLegend() {
+            const legend = L.control({ position: 'bottomright' });
+            
+            legend.onAdd = function() {
+                const div = L.DomUtil.create('div', 'legend');
+                div.innerHTML = `
+                    <h4>Mandirs per Hexagon</h4>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffffb2"></div>
+                        <span>1 mandir</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #fecc5c"></div>
+                        <span>2 mandirs</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #fd8d3c"></div>
+                        <span>3 mandirs</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f03b20"></div>
+                        <span>4-5 mandirs</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #bd0026"></div>
+                        <span>6+ mandirs</span>
+                    </div>
+                `;
+                return div;
+            };
+            
+            legend.addTo(map);
+        }
+
+        function updateStatistics() {
+            const counts = hexData.map(f => f.properties.deity_count || 0);
+            const totalMandirs = counts.reduce((a, b) => a + b, 0);
+            const maxDensity = Math.max(...counts);
+            const avgDensity = (totalMandirs / counts.length).toFixed(1);
+            
+            // Estimate coverage area (rough calculation)
+            const coverageArea = (hexData.length * 0.013).toFixed(1); // Approximate area per hexagon
+
+            $('#total-mandirs').text(totalMandirs);
+            $('#max-density').text(maxDensity);
+            $('#avg-density').text(avgDensity);
+            $('#coverage-area').text(coverageArea);
+        }
+
+        function initializeCharts() {
+            // Density Distribution Chart
+            const densityCtx = document.getElementById('densityChart').getContext('2d');
+            new Chart(densityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['0', '1', '2', '3', '4', '5', '6+'],
+                    datasets: [{
+                        label: 'Number of Hexagons',
+                        data: [0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Areas'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Mandirs per Hexagon'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Distance from Ganges Chart
+            const distanceCtx = document.getElementById('distanceChart').getContext('2d');
+            new Chart(distanceCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Mandir Density vs Distance',
+                        data: [],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Mandir Count'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Distance from Ganges (km)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Deity Distribution Chart (Placeholder)
+            const deityCtx = document.getElementById('deityChart').getContext('2d');
+            new Chart(deityCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Shiva', 'Ganesha', 'Vishnu', 'Hanuman', 'Durga', 'Other'],
+                    datasets: [{
+                        data: [35, 25, 20, 10, 5, 5],
+                        backgroundColor: [
+                            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateDensityChart() {
+            const counts = hexData.map(f => f.properties.deity_count || 0);
+            const distribution = [0, 0, 0, 0, 0, 0, 0];
+            
+            counts.forEach(count => {
+                if (count === 0) distribution[0]++;
+                else if (count === 1) distribution[1]++;
+                else if (count === 2) distribution[2]++;
+                else if (count === 3) distribution[3]++;
+                else if (count === 4) distribution[4]++;
+                else if (count === 5) distribution[5]++;
+                else distribution[6]++;
+            });
+
+            const chart = Chart.getChart('densityChart');
+            if (chart) {
+                chart.data.datasets[0].data = distribution;
+                chart.update();
+            }
+        }
+
+        function switchLayer(layerType) {
+            currentLayer = layerType;
+            
+            // Update button states
+            $('.control-btn').removeClass('active');
+            $(`.control-btn:contains('${layerType === 'density' ? 'Density' : 'Individual'} View')`).addClass('active');
+            
+            if (layerType === 'density') {
+                displayHexData();
+            } else {
+                // Display individual mandirs (when data is available)
+                if (mandirData.length > 0) {
+                    displayMandirData();
+                } else {
+                    alert('Individual mandir data not yet available. Please convert the shapefile to GeoJSON first.');
+                }
+            }
+        }
+
+        function resetView() {
+            map.setView([25.288792, 83.005975], 12.5);
+        }
+
+        function displayMandirData() {
+            // This function will be implemented when individual mandir data is available
+            console.log('Individual mandir display not yet implemented');
+        }
+    </script>
+</body>
+</html>

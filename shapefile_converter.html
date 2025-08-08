@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapefile to GeoJSON Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .step h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .step p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .warning {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        .file-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .file-info strong {
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shapefile to GeoJSON Converter</h1>
+        
+        <div class="step">
+            <h3>Step 1: Understanding Your Data</h3>
+            <p>You have a shapefile containing temple/mandir data in the <code>geoJSON/data/temple/</code> folder. The files include:</p>
+            <div class="file-info">
+                <strong>temple.shp</strong> - Main shapefile (63KB)<br>
+                <strong>temple.dbf</strong> - Attribute data (945KB)<br>
+                <strong>temple.shx</strong> - Shape index file (18KB)<br>
+                <strong>temple.prj</strong> - Projection file (143B)<br>
+                <strong>temple.cpg</strong> - Code page file (10B)
+            </div>
+            <p>This appears to contain individual mandir locations with associated attribute data.</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Conversion Options</h3>
+            <p>Since we can't use npm due to PowerShell execution policy, here are alternative methods:</p>
+            
+            <div class="highlight">
+                <h4>Option A: Online Converter (Recommended)</h4>
+                <p>Use one of these free online tools:</p>
+                <ul>
+                    <li><a href="https://mapshaper.org/" target="_blank">Mapshaper</a> - Drag and drop your .shp file</li>
+                    <li><a href="https://convertio.co/shp-geojson/" target="_blank">Convertio</a> - Simple online conversion</li>
+                    <li><a href="https://geojson.io/" target="_blank">GeoJSON.io</a> - Upload and convert</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <h4>Option B: QGIS (Free GIS Software)</h4>
+                <p>If you have QGIS installed:</p>
+                <div class="code-block">
+                    1. Open QGIS<br>
+                    2. Add Vector Layer → Select temple.shp<br>
+                    3. Right-click layer → Export → Save Features As<br>
+                    4. Choose GeoJSON format<br>
+                    5. Save as temple.geojson
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h4>Option C: Python (if available)</h4>
+                <p>If you can run Python:</p>
+                <div class="code-block">
+                    pip install geopandas<br>
+                    python -c "import geopandas as gpd; gdf = gpd.read_file('geoJSON/data/temple/temple.shp'); gdf.to_file('geoJSON/data/temple/temple.geojson', driver='GeoJSON')"
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Expected Data Structure</h3>
+            <p>Once converted, your GeoJSON file should contain:</p>
+            <ul>
+                <li><strong>Point features</strong> - Individual mandir locations</li>
+                <li><strong>Attributes</strong> - Information about each mandir (deity type, size, location type, etc.)</li>
+                <li><strong>Coordinates</strong> - GPS coordinates for each temple</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Integration with Dashboard</h3>
+            <p>After conversion, the data will be automatically integrated into the dashboard with:</p>
+            <ul>
+                <li><strong>Individual mandir markers</strong> on the map</li>
+                <li><strong>Deity distribution charts</strong> based on actual data</li>
+                <li><strong>Detailed popups</strong> with mandir information</li>
+                <li><strong>Spatial analysis</strong> of mandir patterns</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4>Important Notes:</h4>
+            <ul>
+                <li>Make sure to save the converted file as <code>temple.geojson</code> in the <code>geoJSON/data/temple/</code> folder</li>
+                <li>The dashboard is already set up to load this file automatically</li>
+                <li>If the file structure is different, we may need to adjust the data loading code</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h4>Next Steps:</h4>
+            <ol>
+                <li>Convert your shapefile using one of the methods above</li>
+                <li>Save as <code>temple.geojson</code> in the correct folder</li>
+                <li>Open <code>dashboard.html</code> to see the enhanced visualization</li>
+                <li>The "Individual Mandirs" button will become functional</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
