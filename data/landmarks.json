@@ -1,0 +1,104 @@
+[
+ {
+  "lat": 25.28904,
+  "lon": 83.00697,
+  "name": "Assi Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.29831,
+  "lon": 83.00719,
+  "name": "Harishchandra Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.29905,
+  "lon": 83.00728,
+  "name": "Kedar Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.30693,
+  "lon": 83.01065,
+  "name": "Dashashwamedh Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.31077,
+  "lon": 83.01402,
+  "name": "Manikarnika Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.31206,
+  "lon": 83.01543,
+  "name": "Scindia Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.31502,
+  "lon": 83.01798,
+  "name": "Panchganga Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.31897,
+  "lon": 83.02344,
+  "name": "Trilochan Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.32341,
+  "lon": 83.03104,
+  "name": "Raj Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.32902,
+  "lon": 83.04289,
+  "name": "Adi Keshava Ghat",
+  "kind": "ghat"
+ },
+ {
+  "lat": 25.31083,
+  "lon": 83.01057,
+  "name": "Kashi Vishwanath Temple",
+  "kind": "temple"
+ },
+ {
+  "lat": 25.28214,
+  "lon": 82.99998,
+  "name": "Sankat Mochan Hanuman Temple (Mandir)",
+  "kind": "temple"
+ },
+ {
+  "lat": 25.28861,
+  "lon": 82.99927,
+  "name": "Durga Temple",
+  "kind": "temple"
+ },
+ {
+  "lat": 25.30629,
+  "lon": 83.01,
+  "name": "Shri Adi Kal Bhairav Mandir",
+  "kind": "temple"
+ },
+ {
+  "lat": 25.26644,
+  "lon": 82.99542,
+  "name": "Banaras Hindu University",
+  "kind": "place"
+ },
+ {
+  "lat": 25.32755,
+  "lon": 82.98678,
+  "name": "Varanasi Junction Railway Station",
+  "kind": "place"
+ },
+ {
+  "lat": 25.33434,
+  "lon": 83.01428,
+  "name": "Varanasi City",
+  "kind": "place"
+ }
+]

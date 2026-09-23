@@ -1,0 +1,1459 @@
+{
+ "n_points": 2296,
+ "n_survey_hex_total": 3313,
+ "n_hex_cells": 990,
+ "hex_area_km2": 0.011547,
+ "hex_radius_m": 66.7,
+ "hull_km2": 67.28,
+ "land_km2": 59.56,
+ "density_per_km2": 38.5,
+ "nn_mean": 29.5,
+ "nn_median": 11.3,
+ "nn_ecdf": [
+  {
+   "r": 0,
+   "share": 0.0279
+  },
+  {
+   "r": 2,
+   "share": 0.1024
+  },
+  {
+   "r": 5,
+   "share": 0.2814
+  },
+  {
+   "r": 10,
+   "share": 0.4682
+  },
+  {
+   "r": 15,
+   "share": 0.598
+  },
+  {
+   "r": 20,
+   "share": 0.6598
+  },
+  {
+   "r": 30,
+   "share": 0.7618
+  },
+  {
+   "r": 40,
+   "share": 0.8219
+  },
+  {
+   "r": 50,
+   "share": 0.8593
+  },
+  {
+   "r": 75,
+   "share": 0.9103
+  },
+  {
+   "r": 100,
+   "share": 0.9447
+  },
+  {
+   "r": 150,
+   "share": 0.9774
+  },
+  {
+   "r": 200,
+   "share": 0.9869
+  },
+  {
+   "r": 300,
+   "share": 0.9909
+  },
+  {
+   "r": 500,
+   "share": 0.997
+  }
+ ],
+ "clark_evans_R": 0.344,
+ "clark_evans_z": -60.1,
+ "ripley": [
+  {
+   "r": 50,
+   "L_minus_r": 272.0
+  },
+  {
+   "r": 100,
+   "L_minus_r": 389.5
+  },
+  {
+   "r": 200,
+   "L_minus_r": 583.0
+  },
+  {
+   "r": 300,
+   "L_minus_r": 740.1
+  },
+  {
+   "r": 500,
+   "L_minus_r": 1036.0
+  },
+  {
+   "r": 750,
+   "L_minus_r": 1344.5
+  },
+  {
+   "r": 1000,
+   "L_minus_r": 1534.0
+  },
+  {
+   "r": 1500,
+   "L_minus_r": 1681.4
+  },
+  {
+   "r": 2000,
+   "L_minus_r": 1621.2
+  }
+ ],
+ "moran_I": 0.443,
+ "moran_z": 66.4,
+ "gi_hot_cells": 247,
+ "gi_hot_km2": 2.85,
+ "points_in_hot": 1544,
+ "share_in_hot": 0.672,
+ "hex_max": 87,
+ "hex_median": 2,
+ "hex_mean": 3.35,
+ "hex_hist": [
+  {
+   "n": 1,
+   "cells": 491
+  },
+  {
+   "n": 2,
+   "cells": 177
+  },
+  {
+   "n": 3,
+   "cells": 91
+  },
+  {
+   "n": 4,
+   "cells": 52
+  },
+  {
+   "n": 5,
+   "cells": 42
+  },
+  {
+   "n": 6,
+   "cells": 29
+  },
+  {
+   "n": 7,
+   "cells": 18
+  },
+  {
+   "n": 8,
+   "cells": 9
+  },
+  {
+   "n": 9,
+   "cells": 10
+  },
+  {
+   "n": 10,
+   "cells": 9
+  },
+  {
+   "n": 11,
+   "cells": 8
+  },
+  {
+   "n": 12,
+   "cells": 7
+  },
+  {
+   "n": 13,
+   "cells": 8
+  },
+  {
+   "n": 14,
+   "cells": 5
+  },
+  {
+   "n": 15,
+   "cells": 1
+  },
+  {
+   "n": 16,
+   "cells": 4
+  },
+  {
+   "n": 17,
+   "cells": 4
+  },
+  {
+   "n": 18,
+   "cells": 4
+  },
+  {
+   "n": 19,
+   "cells": 2
+  },
+  {
+   "n": 20,
+   "cells": 2
+  },
+  {
+   "n": 21,
+   "cells": 2
+  },
+  {
+   "n": 22,
+   "cells": 1
+  },
+  {
+   "n": 24,
+   "cells": 1
+  },
+  {
+   "n": 25,
+   "cells": 2
+  },
+  {
+   "n": 26,
+   "cells": 1
+  },
+  {
+   "n": 30,
+   "cells": 1
+  },
+  {
+   "n": 31,
+   "cells": 1
+  },
+  {
+   "n": 35,
+   "cells": 2
+  },
+  {
+   "n": 36,
+   "cells": 1
+  },
+  {
+   "n": 37,
+   "cells": 1
+  },
+  {
+   "n": 39,
+   "cells": 1
+  },
+  {
+   "n": 43,
+   "cells": 1
+  },
+  {
+   "n": 45,
+   "cells": 1
+  },
+  {
+   "n": 87,
+   "cells": 1
+  }
+ ],
+ "dispersion_index": 9.17,
+ "corr_survey_vs_points": 0.912,
+ "river": {
+  "river_median": 172.0,
+  "river_mean": 212.8,
+  "river_p25": 64.8,
+  "river_p75": 329.8,
+  "within": {
+   "50": 469,
+   "100": 808,
+   "250": 1431,
+   "500": 2140,
+   "1000": 2295,
+   "2000": 2296,
+   "3000": 2296
+  },
+  "bands": [
+   {
+    "from": 0,
+    "to": 100,
+    "n": 808,
+    "area_km2": 6.544,
+    "density": 123.5
+   },
+   {
+    "from": 100,
+    "to": 250,
+    "n": 623,
+    "area_km2": 13.329,
+    "density": 46.7
+   },
+   {
+    "from": 250,
+    "to": 500,
+    "n": 709,
+    "area_km2": 20.426,
+    "density": 34.7
+   },
+   {
+    "from": 500,
+    "to": 750,
+    "n": 140,
+    "area_km2": 11.081,
+    "density": 12.6
+   },
+   {
+    "from": 750,
+    "to": 1000,
+    "n": 15,
+    "area_km2": 5.374,
+    "density": 2.8
+   },
+   {
+    "from": 1000,
+    "to": 1500,
+    "n": 1,
+    "area_km2": 2.394,
+    "density": 0.4
+   },
+   {
+    "from": 1500,
+    "to": 2000,
+    "n": 0,
+    "area_km2": 0.414,
+    "density": 0.0
+   },
+   {
+    "from": 2000,
+    "to": 3000,
+    "n": 0,
+    "area_km2": 0.0,
+    "density": null
+   },
+   {
+    "from": 3000,
+    "to": 5000,
+    "n": 0,
+    "area_km2": 0.0,
+    "density": null
+   }
+  ],
+  "fam": {
+   "Shaiva": {
+    "n": 1542,
+    "median": 152.5,
+    "p25": 56.9,
+    "p75": 328.1,
+    "share_500": 0.9254
+   },
+   "Hanuman": {
+    "n": 539,
+    "median": 248.8,
+    "p25": 93.2,
+    "p75": 405.0,
+    "share_500": 0.8868
+   },
+   "Ganesh": {
+    "n": 283,
+    "median": 192.2,
+    "p25": 69.5,
+    "p75": 342.7,
+    "share_500": 0.9011
+   },
+   "Goddess": {
+    "n": 248,
+    "median": 219.7,
+    "p25": 95.6,
+    "p75": 361.8,
+    "share_500": 0.9274
+   },
+   "Folk": {
+    "n": 76,
+    "median": 238.4,
+    "p25": 84.4,
+    "p75": 352.0,
+    "share_500": 0.8947
+   },
+   "Vaishnava": {
+    "n": 128,
+    "median": 231.5,
+    "p25": 97.7,
+    "p75": 359.8,
+    "share_500": 0.9297
+   },
+   "Other": {
+    "n": 186,
+    "median": 255.6,
+    "p25": 126.1,
+    "p75": 438.3,
+    "share_500": 0.828
+   }
+  },
+  "struct": {
+   "Free-standing": {
+    "n": 930,
+    "median": 207.1,
+    "share_500": 0.9097
+   },
+   "Built into a wall": {
+    "n": 801,
+    "median": 109.1,
+    "share_500": 0.9788
+   },
+   "Temple complex": {
+    "n": 183,
+    "median": 153.0,
+    "share_500": 0.9071
+   },
+   "Tree-temple": {
+    "n": 135,
+    "median": 271.4,
+    "share_500": 0.8889
+   },
+   "Tree": {
+    "n": 136,
+    "median": 230.8,
+    "share_500": 0.875
+   },
+   "Built-around": {
+    "n": 71,
+    "median": 335.4,
+    "share_500": 0.9718
+   }
+  },
+  "mw_hanuman_vs_shaiva": [
+   4.3,
+   0.589
+  ],
+  "mw_tree": [
+   7.6,
+   0.623
+  ],
+  "mw_wall": [
+   -13.0,
+   0.336
+  ],
+  "spearman_river_nn": 0.368,
+  "osm_pow": 143,
+  "osm_hindu": 94,
+  "osm_hindu_in_hull": 74,
+  "survey_near_osm_50": 108,
+  "osm_near_survey_50": 25,
+  "land_km2": 59.56,
+  "hull_km2": 67.28
+ },
+ "families": [
+  {
+   "key": "S",
+   "name": "Shaiva",
+   "n": 1542,
+   "share": 0.672
+  },
+  {
+   "key": "H",
+   "name": "Hanuman",
+   "n": 539,
+   "share": 0.235
+  },
+  {
+   "key": "G",
+   "name": "Ganesh",
+   "n": 283,
+   "share": 0.123
+  },
+  {
+   "key": "D",
+   "name": "Goddess",
+   "n": 248,
+   "share": 0.108
+  },
+  {
+   "key": "V",
+   "name": "Vaishnava",
+   "n": 128,
+   "share": 0.056
+  },
+  {
+   "key": "F",
+   "name": "Folk",
+   "n": 76,
+   "share": 0.033
+  },
+  {
+   "key": "O",
+   "name": "Other",
+   "n": 186,
+   "share": 0.081
+  }
+ ],
+ "deities": [
+  {
+   "name": "Shiva",
+   "n": 1430,
+   "share": 0.623
+  },
+  {
+   "name": "Shiva-Parvati",
+   "n": 744,
+   "share": 0.324
+  },
+  {
+   "name": "Hanuman",
+   "n": 539,
+   "share": 0.235
+  },
+  {
+   "name": "Ganesh",
+   "n": 283,
+   "share": 0.123
+  },
+  {
+   "name": "Shiva family",
+   "n": 274,
+   "share": 0.119
+  },
+  {
+   "name": "Other",
+   "n": 186,
+   "share": 0.081
+  },
+  {
+   "name": "Devi",
+   "n": 158,
+   "share": 0.069
+  },
+  {
+   "name": "Local Maa",
+   "n": 118,
+   "share": 0.051
+  },
+  {
+   "name": "Rama",
+   "n": 82,
+   "share": 0.036
+  },
+  {
+   "name": "Bir Baba",
+   "n": 75,
+   "share": 0.033
+  },
+  {
+   "name": "Sitala Maa",
+   "n": 62,
+   "share": 0.027
+  },
+  {
+   "name": "Krishna",
+   "n": 53,
+   "share": 0.023
+  },
+  {
+   "name": "Village deity",
+   "n": 1,
+   "share": 0.0
+  }
+ ],
+ "combos": [
+  {
+   "combo": "Shaiva",
+   "n": 1120
+  },
+  {
+   "combo": "Hanuman",
+   "n": 234
+  },
+  {
+   "combo": "Goddess",
+   "n": 164
+  },
+  {
+   "combo": "Hanuman+Shaiva",
+   "n": 136
+  },
+  {
+   "combo": "Ganesh",
+   "n": 108
+  },
+  {
+   "combo": "Other",
+   "n": 87
+  },
+  {
+   "combo": "Ganesh+Shaiva",
+   "n": 69
+  },
+  {
+   "combo": "Vaishnava",
+   "n": 54
+  },
+  {
+   "combo": "Ganesh+Hanuman+Shaiva",
+   "n": 35
+  },
+  {
+   "combo": "Other+Shaiva",
+   "n": 34
+  },
+  {
+   "combo": "Folk",
+   "n": 32
+  },
+  {
+   "combo": "Goddess+Shaiva",
+   "n": 20
+  }
+ ],
+ "single_family_share": 0.784,
+ "structures": [
+  {
+   "key": "fs",
+   "name": "Free-standing",
+   "n": 948,
+   "share": 0.413
+  },
+  {
+   "key": "w",
+   "name": "Built into a wall",
+   "n": 821,
+   "share": 0.358
+  },
+  {
+   "key": "c",
+   "name": "Temple complex",
+   "n": 228,
+   "share": 0.099
+  },
+  {
+   "key": "tt",
+   "name": "Tree-temple",
+   "n": 227,
+   "share": 0.099
+  },
+  {
+   "key": "t",
+   "name": "Tree",
+   "n": 203,
+   "share": 0.088
+  },
+  {
+   "key": "ba",
+   "name": "Built-around",
+   "n": 85,
+   "share": 0.037
+  }
+ ],
+ "structure_primary": {
+  "Tree": 136,
+  "Free-standing": 930,
+  "Tree-temple": 135,
+  "Built into a wall": 801,
+  "Temple complex": 183,
+  "Built-around": 71,
+  "Unrecorded": 40
+ },
+ "tree_any": 383,
+ "chi2": 126.1,
+ "chi2_dof": 30,
+ "chi2_p": 9.40991533603286e-14,
+ "cramers_v": 0.119,
+ "crosstab": {
+  "fams": [
+   "Shaiva",
+   "Hanuman",
+   "Ganesh",
+   "Goddess",
+   "Folk",
+   "Vaishnava",
+   "Other"
+  ],
+  "structs": [
+   "Free-standing",
+   "Built into a wall",
+   "Temple complex",
+   "Tree-temple",
+   "Tree",
+   "Built-around"
+  ],
+  "counts": [
+   [
+    413.0,
+    451.0,
+    112.0,
+    45.0,
+    50.0,
+    34.0
+   ],
+   [
+    87.0,
+    92.0,
+    11.0,
+    20.0,
+    12.0,
+    6.0
+   ],
+   [
+    17.0,
+    72.0,
+    7.0,
+    4.0,
+    3.0,
+    3.0
+   ],
+   [
+    67.0,
+    52.0,
+    19.0,
+    6.0,
+    13.0,
+    3.0
+   ],
+   [
+    14.0,
+    10.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0
+   ],
+   [
+    24.0,
+    15.0,
+    9.0,
+    0.0,
+    2.0,
+    1.0
+   ],
+   [
+    32.0,
+    22.0,
+    4.0,
+    9.0,
+    19.0,
+    0.0
+   ]
+  ],
+  "resid": [
+   [
+    0.2,
+    0.21,
+    0.93,
+    -1.2,
+    -1.66,
+    0.73
+   ],
+   [
+    0.28,
+    -0.01,
+    -2.21,
+    2.67,
+    -0.29,
+    -0.08
+   ],
+   [
+    -3.55,
+    4.46,
+    -0.9,
+    -0.51,
+    -1.24,
+    0.07
+   ],
+   [
+    1.01,
+    -1.57,
+    1.08,
+    -0.64,
+    1.27,
+    -0.65
+   ],
+   [
+    0.75,
+    -0.71,
+    -0.52,
+    0.4,
+    0.17,
+    0.17
+   ],
+   [
+    1.18,
+    -1.24,
+    1.96,
+    -1.58,
+    -0.54,
+    -0.33
+   ],
+   [
+    0.03,
+    -2.16,
+    -1.41,
+    2.35,
+    6.35,
+    -1.53
+   ]
+  ]
+ },
+ "lift": [
+  {
+   "a": "Shiva",
+   "b": "Shiva-Parvati",
+   "n": 665,
+   "expected": 463.4,
+   "lift": 1.44
+  },
+  {
+   "a": "Shiva",
+   "b": "Hanuman",
+   "n": 225,
+   "expected": 335.7,
+   "lift": 0.67
+  },
+  {
+   "a": "Shiva",
+   "b": "Ganesh",
+   "n": 137,
+   "expected": 176.3,
+   "lift": 0.78
+  },
+  {
+   "a": "Shiva",
+   "b": "Shiva family",
+   "n": 228,
+   "expected": 170.7,
+   "lift": 1.34
+  },
+  {
+   "a": "Shiva",
+   "b": "Other",
+   "n": 69,
+   "expected": 115.8,
+   "lift": 0.6
+  },
+  {
+   "a": "Shiva",
+   "b": "Devi",
+   "n": 40,
+   "expected": 98.4,
+   "lift": 0.41
+  },
+  {
+   "a": "Shiva",
+   "b": "Local Maa",
+   "n": 18,
+   "expected": 73.5,
+   "lift": 0.24
+  },
+  {
+   "a": "Shiva",
+   "b": "Rama",
+   "n": 29,
+   "expected": 51.1,
+   "lift": 0.57
+  },
+  {
+   "a": "Shiva",
+   "b": "Bir Baba",
+   "n": 31,
+   "expected": 46.7,
+   "lift": 0.66
+  },
+  {
+   "a": "Shiva",
+   "b": "Sitala Maa",
+   "n": 9,
+   "expected": 38.6,
+   "lift": 0.23
+  },
+  {
+   "a": "Shiva",
+   "b": "Krishna",
+   "n": 15,
+   "expected": 33.0,
+   "lift": 0.45
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Hanuman",
+   "n": 55,
+   "expected": 174.7,
+   "lift": 0.31
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Ganesh",
+   "n": 35,
+   "expected": 91.7,
+   "lift": 0.38
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Shiva family",
+   "n": 211,
+   "expected": 88.8,
+   "lift": 2.38
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Other",
+   "n": 10,
+   "expected": 60.3,
+   "lift": 0.17
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Devi",
+   "n": 13,
+   "expected": 51.2,
+   "lift": 0.25
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Local Maa",
+   "n": 11,
+   "expected": 38.2,
+   "lift": 0.29
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Rama",
+   "n": 8,
+   "expected": 26.6,
+   "lift": 0.3
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Bir Baba",
+   "n": 6,
+   "expected": 24.3,
+   "lift": 0.25
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Sitala Maa",
+   "n": 4,
+   "expected": 20.1,
+   "lift": 0.2
+  },
+  {
+   "a": "Shiva-Parvati",
+   "b": "Krishna",
+   "n": 6,
+   "expected": 17.2,
+   "lift": 0.35
+  },
+  {
+   "a": "Hanuman",
+   "b": "Ganesh",
+   "n": 83,
+   "expected": 66.4,
+   "lift": 1.25
+  },
+  {
+   "a": "Hanuman",
+   "b": "Shiva family",
+   "n": 26,
+   "expected": 64.3,
+   "lift": 0.4
+  },
+  {
+   "a": "Hanuman",
+   "b": "Other",
+   "n": 40,
+   "expected": 43.7,
+   "lift": 0.92
+  },
+  {
+   "a": "Hanuman",
+   "b": "Devi",
+   "n": 27,
+   "expected": 37.1,
+   "lift": 0.73
+  },
+  {
+   "a": "Hanuman",
+   "b": "Local Maa",
+   "n": 12,
+   "expected": 27.7,
+   "lift": 0.43
+  },
+  {
+   "a": "Hanuman",
+   "b": "Rama",
+   "n": 41,
+   "expected": 19.2,
+   "lift": 2.13
+  },
+  {
+   "a": "Hanuman",
+   "b": "Bir Baba",
+   "n": 20,
+   "expected": 17.6,
+   "lift": 1.14
+  },
+  {
+   "a": "Hanuman",
+   "b": "Sitala Maa",
+   "n": 6,
+   "expected": 14.6,
+   "lift": 0.41
+  },
+  {
+   "a": "Hanuman",
+   "b": "Krishna",
+   "n": 13,
+   "expected": 12.4,
+   "lift": 1.04
+  },
+  {
+   "a": "Ganesh",
+   "b": "Shiva family",
+   "n": 18,
+   "expected": 33.8,
+   "lift": 0.53
+  },
+  {
+   "a": "Ganesh",
+   "b": "Other",
+   "n": 15,
+   "expected": 22.9,
+   "lift": 0.65
+  },
+  {
+   "a": "Ganesh",
+   "b": "Devi",
+   "n": 15,
+   "expected": 19.5,
+   "lift": 0.77
+  },
+  {
+   "a": "Ganesh",
+   "b": "Local Maa",
+   "n": 7,
+   "expected": 14.5,
+   "lift": 0.48
+  },
+  {
+   "a": "Ganesh",
+   "b": "Rama",
+   "n": 20,
+   "expected": 10.1,
+   "lift": 1.98
+  },
+  {
+   "a": "Ganesh",
+   "b": "Bir Baba",
+   "n": 11,
+   "expected": 9.2,
+   "lift": 1.19
+  },
+  {
+   "a": "Ganesh",
+   "b": "Sitala Maa",
+   "n": 2,
+   "expected": 7.6,
+   "lift": 0.26
+  },
+  {
+   "a": "Ganesh",
+   "b": "Krishna",
+   "n": 5,
+   "expected": 6.5,
+   "lift": 0.77
+  },
+  {
+   "a": "Shiva family",
+   "b": "Other",
+   "n": 7,
+   "expected": 22.2,
+   "lift": 0.32
+  },
+  {
+   "a": "Shiva family",
+   "b": "Devi",
+   "n": 5,
+   "expected": 18.9,
+   "lift": 0.27
+  },
+  {
+   "a": "Shiva family",
+   "b": "Local Maa",
+   "n": 1,
+   "expected": 14.1,
+   "lift": 0.07
+  },
+  {
+   "a": "Shiva family",
+   "b": "Rama",
+   "n": 7,
+   "expected": 9.8,
+   "lift": 0.72
+  },
+  {
+   "a": "Shiva family",
+   "b": "Bir Baba",
+   "n": 3,
+   "expected": 9.0,
+   "lift": 0.34
+  },
+  {
+   "a": "Shiva family",
+   "b": "Sitala Maa",
+   "n": 0,
+   "expected": 7.4,
+   "lift": 0.0
+  },
+  {
+   "a": "Shiva family",
+   "b": "Krishna",
+   "n": 3,
+   "expected": 6.3,
+   "lift": 0.47
+  },
+  {
+   "a": "Other",
+   "b": "Devi",
+   "n": 14,
+   "expected": 12.8,
+   "lift": 1.09
+  },
+  {
+   "a": "Other",
+   "b": "Local Maa",
+   "n": 6,
+   "expected": 9.6,
+   "lift": 0.63
+  },
+  {
+   "a": "Other",
+   "b": "Rama",
+   "n": 1,
+   "expected": 6.6,
+   "lift": 0.15
+  },
+  {
+   "a": "Other",
+   "b": "Bir Baba",
+   "n": 11,
+   "expected": 6.1,
+   "lift": 1.81
+  },
+  {
+   "a": "Other",
+   "b": "Sitala Maa",
+   "n": 2,
+   "expected": 5.0,
+   "lift": 0.4
+  },
+  {
+   "a": "Other",
+   "b": "Krishna",
+   "n": 4,
+   "expected": 4.3,
+   "lift": 0.93
+  },
+  {
+   "a": "Devi",
+   "b": "Local Maa",
+   "n": 85,
+   "expected": 8.1,
+   "lift": 10.47
+  },
+  {
+   "a": "Devi",
+   "b": "Rama",
+   "n": 4,
+   "expected": 5.6,
+   "lift": 0.71
+  },
+  {
+   "a": "Devi",
+   "b": "Bir Baba",
+   "n": 8,
+   "expected": 5.2,
+   "lift": 1.55
+  },
+  {
+   "a": "Devi",
+   "b": "Sitala Maa",
+   "n": 4,
+   "expected": 4.3,
+   "lift": 0.94
+  },
+  {
+   "a": "Devi",
+   "b": "Krishna",
+   "n": 5,
+   "expected": 3.6,
+   "lift": 1.37
+  },
+  {
+   "a": "Local Maa",
+   "b": "Rama",
+   "n": 4,
+   "expected": 4.2,
+   "lift": 0.95
+  },
+  {
+   "a": "Local Maa",
+   "b": "Bir Baba",
+   "n": 2,
+   "expected": 3.9,
+   "lift": 0.52
+  },
+  {
+   "a": "Local Maa",
+   "b": "Sitala Maa",
+   "n": 2,
+   "expected": 3.2,
+   "lift": 0.63
+  },
+  {
+   "a": "Local Maa",
+   "b": "Krishna",
+   "n": 2,
+   "expected": 2.7,
+   "lift": 0.73
+  },
+  {
+   "a": "Rama",
+   "b": "Bir Baba",
+   "n": 2,
+   "expected": 2.7,
+   "lift": 0.75
+  },
+  {
+   "a": "Rama",
+   "b": "Sitala Maa",
+   "n": 1,
+   "expected": 2.2,
+   "lift": 0.45
+  },
+  {
+   "a": "Rama",
+   "b": "Krishna",
+   "n": 7,
+   "expected": 1.9,
+   "lift": 3.7
+  },
+  {
+   "a": "Bir Baba",
+   "b": "Sitala Maa",
+   "n": 0,
+   "expected": 2.0,
+   "lift": 0.0
+  },
+  {
+   "a": "Bir Baba",
+   "b": "Krishna",
+   "n": 3,
+   "expected": 1.7,
+   "lift": 1.73
+  },
+  {
+   "a": "Sitala Maa",
+   "b": "Krishna",
+   "n": 0,
+   "expected": 1.4,
+   "lift": 0.0
+  }
+ ],
+ "images_total": 5484,
+ "images_median": 2.0,
+ "images_mean": 2.39,
+ "images_zero": 211,
+ "images_top10_share": 0.354,
+ "images_max": 50,
+ "images_hist": [
+  {
+   "k": 0,
+   "n": 211
+  },
+  {
+   "k": 1,
+   "n": 922
+  },
+  {
+   "k": 2,
+   "n": 485
+  },
+  {
+   "k": 3,
+   "n": 231
+  },
+  {
+   "k": 4,
+   "n": 134
+  },
+  {
+   "k": 5,
+   "n": 124
+  },
+  {
+   "k": 6,
+   "n": 65
+  },
+  {
+   "k": 7,
+   "n": 36
+  },
+  {
+   "k": 8,
+   "n": 26
+  },
+  {
+   "k": 9,
+   "n": 11
+  },
+  {
+   "k": 10,
+   "n": 51
+  }
+ ],
+ "images_by_family": {
+  "Shaiva": {
+   "n": 1542,
+   "median": 2.0,
+   "mean": 2.76,
+   "share5": 0.173
+  },
+  "Hanuman": {
+   "n": 539,
+   "median": 2.0,
+   "mean": 3.38,
+   "share5": 0.226
+  },
+  "Ganesh": {
+   "n": 283,
+   "median": 3.0,
+   "mean": 4.01,
+   "share5": 0.304
+  },
+  "Goddess": {
+   "n": 248,
+   "median": 1.0,
+   "mean": 2.68,
+   "share5": 0.157
+  },
+  "Vaishnava": {
+   "n": 128,
+   "median": 4.0,
+   "mean": 5.8,
+   "share5": 0.469
+  },
+  "Folk": {
+   "n": 76,
+   "median": 3.0,
+   "mean": 4.39,
+   "share5": 0.368
+  },
+  "Other": {
+   "n": 186,
+   "median": 2.0,
+   "mean": 2.78,
+   "share5": 0.199
+  }
+ },
+ "fam_hot": {
+  "Shaiva": {
+   "hot": 0.692,
+   "out": 0.63
+  },
+  "Hanuman": {
+   "hot": 0.17,
+   "out": 0.367
+  },
+  "Ganesh": {
+   "hot": 0.108,
+   "out": 0.154
+  },
+  "Goddess": {
+   "hot": 0.1,
+   "out": 0.125
+  },
+  "Vaishnava": {
+   "hot": 0.047,
+   "out": 0.074
+  },
+  "Folk": {
+   "hot": 0.021,
+   "out": 0.057
+  },
+  "Other": {
+   "hot": 0.033,
+   "out": 0.18
+  }
+ },
+ "str_hot": {
+  "Free-standing": {
+   "hot": 0.335,
+   "out": 0.548
+  },
+  "Built into a wall": {
+   "hot": 0.455,
+   "out": 0.132
+  },
+  "Temple complex": {
+   "hot": 0.1,
+   "out": 0.037
+  },
+  "Tree-temple": {
+   "hot": 0.021,
+   "out": 0.137
+  },
+  "Tree": {
+   "hot": 0.033,
+   "out": 0.113
+  },
+  "Built-around": {
+   "hot": 0.038,
+   "out": 0.017
+  }
+ },
+ "named_n": 136,
+ "named_shiva_n": 63,
+ "dup_coords_features": 66,
+ "dup_coord_sites": 28,
+ "centres": {
+  "Shaiva": {
+   "n": 1542,
+   "lon": 83.00931835703169,
+   "lat": 25.314176226875144,
+   "sd": 1688.46350288166
+  },
+  "Hanuman": {
+   "n": 539,
+   "lon": 83.0049562958496,
+   "lat": 25.314844094044506,
+   "sd": 2055.105495552096
+  },
+  "Ganesh": {
+   "n": 283,
+   "lon": 83.00706186259276,
+   "lat": 25.31239381617263,
+   "sd": 1852.6127512481241
+  },
+  "Goddess": {
+   "n": 248,
+   "lon": 83.0076084610079,
+   "lat": 25.31500871243424,
+   "sd": 1666.173693864892
+  },
+  "Folk": {
+   "n": 76,
+   "lon": 83.00119670869692,
+   "lat": 25.31115505791874,
+   "sd": 1753.5129317395488
+  },
+  "Vaishnava": {
+   "n": 128,
+   "lon": 83.00746515845861,
+   "lat": 25.313936162314622,
+   "sd": 1721.2237139264537
+  },
+  "Other": {
+   "n": 186,
+   "lon": 82.99980573222949,
+   "lat": 25.313549586885767,
+   "sd": 2168.4561810300997
+  }
+ }
+}

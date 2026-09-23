@@ -1,0 +1,1810 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-22T08:45:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 293212713,
+  "lat": 25.2821387,
+  "lon": 82.9999810,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:postcode": "221005",
+    "addr:street": "Sankat Mochan Road",
+    "amenity": "place_of_worship",
+    "name": "संकट मोचन हनुमान मंदिर",
+    "name:en": "Sankat Mochan Hanuman Temple (Mandir)",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 293221509,
+  "lat": 25.2958918,
+  "lon": 83.0032762,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Baba Keenaram Ashram",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 293478815,
+  "lat": 25.3361364,
+  "lon": 82.9794466,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "St Marys Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 293484319,
+  "lat": 25.3366096,
+  "lon": 82.9830086,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Lal Girja CNI Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 2089922682,
+  "lat": 25.3025743,
+  "lon": 82.9732372,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shree Shiv Mahavir Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 2089988050,
+  "lat": 25.2979523,
+  "lon": 82.9722126,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Pracheen Hanumaan Mandir (Hindu Temple)",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 3284076806,
+  "lat": 25.2751600,
+  "lon": 83.0056573,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Saraswati Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4524173725,
+  "lat": 25.2886070,
+  "lon": 82.9992738,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2024-08-16",
+    "name": "Durga Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4616124674,
+  "lat": 25.2700048,
+  "lon": 83.0237862,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4616124675,
+  "lat": 25.2695290,
+  "lon": 83.0238416,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 4723997794,
+  "lat": 25.3149250,
+  "lon": 83.0032882,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Muslim Turbah",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 4816894723,
+  "lat": 25.3276902,
+  "lon": 82.9905593,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Varanasi Myanmar Monastery",
+    "religion": "buddhist"
+  }
+},
+{
+  "type": "node",
+  "id": 5261502526,
+  "lat": 25.3293989,
+  "lon": 83.0442908,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "पादोदक तीर्थ",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 5306480010,
+  "lat": 25.2801793,
+  "lon": 82.9909571,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "addr:postcode": "221005",
+    "addr:street": "Gandhinagar, Naria",
+    "amenity": "place_of_worship",
+    "name": "Rohiteshwar Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 5841246496,
+  "lat": 25.3108256,
+  "lon": 83.0105711,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "hindu:deity": "Vishwanath",
+    "name:bn": "কাশী বিশ্বনাথ মন্দির",
+    "name:en": "Kashi Vishwanath Temple",
+    "name:hi": "काशी विश्वनाथ मंदिर",
+    "religion": "hindu",
+    "wikidata": "Q3675"
+  }
+},
+{
+  "type": "node",
+  "id": 6163784685,
+  "lat": 25.3039285,
+  "lon": 83.0075541,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Shree Kali Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6391630485,
+  "lat": 25.3051794,
+  "lon": 82.9964414,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shayri Mata Temple",
+    "name:hi": "शायरी माता मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 6964126488,
+  "lat": 25.2860296,
+  "lon": 82.9989963,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Tridev temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7101094885,
+  "lat": 25.2991916,
+  "lon": 83.0049025,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Adikeshavmahadev Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7107002877,
+  "lat": 25.3099743,
+  "lon": 83.0119620,
+  "tags": {
+    "amenity": "place_of_worship",
+    "description": "Maa Kashi Vishalakshi (wide eyed)- one of the 51 Shakti peethas of Shiva's wife Sati is part of the holy triad with Kamakshi (love eyed) of Kanchi & Assam; Meenakshi (fish eyed) of Madurai, located at Meer Ghat. She is one of the 9 Gauris of Kashi.",
+    "name": "Maa Kashi Vishalakshi Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7227585885,
+  "lat": 25.2980456,
+  "lon": 83.0063908,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Kashi Kaamkoteeshwar Mandir",
+    "name:hi": "श्री काशी कामकोटेश्वर मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7227585985,
+  "lat": 25.2921104,
+  "lon": 83.0065838,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Suparshvanath Bhagwan",
+    "name:hi": "श्री सुपार्श्वनाथ भगवान",
+    "religion": "jain"
+  }
+},
+{
+  "type": "node",
+  "id": 7997453201,
+  "lat": 25.2683166,
+  "lon": 82.9582511,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Kardmeshwar Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7998688186,
+  "lat": 25.2886232,
+  "lon": 82.9999048,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2024-08-11",
+    "name": "Shri Durg Vinayak Ganesh Temple",
+    "name:hi": "श्री दुर्ग विनायक गणेश मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 7998688187,
+  "lat": 25.2885797,
+  "lon": 83.0004672,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2024-08-11",
+    "name": "Shri Senapathi Banakatti Hanuman Tmple",
+    "name:hi": "श्री सेनापती बनकट्टी हनुमान मंदिर",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8058537056,
+  "lat": 25.3291461,
+  "lon": 83.0429214,
+  "tags": {
+    "addr:street": "Rajghat",
+    "amenity": "place_of_worship",
+    "name": "Adi Keshav Temple",
+    "name:en": "Aditaya Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8062837540,
+  "lat": 25.2885325,
+  "lon": 82.9998897,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2024-08-11",
+    "name": "Sheetla Mata Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8062837541,
+  "lat": 25.2885421,
+  "lon": 82.9997880,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2024-08-11",
+    "name": "Vaisho Mata Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8080212346,
+  "lat": 25.2729354,
+  "lon": 82.9739446,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8080227056,
+  "lat": 25.2727750,
+  "lon": 82.9726954,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8080227057,
+  "lat": 25.2728489,
+  "lon": 82.9749276,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8122463570,
+  "lat": 25.2680001,
+  "lon": 82.9834711,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8156866536,
+  "lat": 25.3430568,
+  "lon": 82.9963122,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Sai baba temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8156880972,
+  "lat": 25.3411449,
+  "lon": 82.9968867,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "catholic",
+    "name": "Maa Durga  Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8156887588,
+  "lat": 25.3437837,
+  "lon": 82.9962581,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Daitra veer baba temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8156913237,
+  "lat": 25.3402060,
+  "lon": 82.9964004,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mahakal Ka Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8157873112,
+  "lat": 25.3371169,
+  "lon": 82.9961796,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Jama Masjid",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 8157924195,
+  "lat": 25.3367293,
+  "lon": 82.9962811,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Chaura mata mandir",
+    "religion": "hindu",
+    "service_times": "all hours"
+  }
+},
+{
+  "type": "node",
+  "id": 8157950592,
+  "lat": 25.3380427,
+  "lon": 82.9950062,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "Prachin shri chaura mata mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8157950884,
+  "lat": 25.3353972,
+  "lon": 82.9963629,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Muchh wale Hanuman mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8178992234,
+  "lat": 25.2538619,
+  "lon": 82.9550574,
+  "tags": {
+    "addr:city": "varanasi",
+    "addr:housenumber": "L4",
+    "addr:postcode": "221106",
+    "addr:street": "shivdham nagar colony",
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "shiv mandir",
+    "religion": "hindu",
+    "service_times": "open 24 hours"
+  }
+},
+{
+  "type": "node",
+  "id": 8842402815,
+  "lat": 25.3013346,
+  "lon": 82.9685491,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Dargah Sharif Manduadih",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 8844949759,
+  "lat": 25.3109299,
+  "lon": 82.9884042,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Mission Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 8848572296,
+  "lat": 25.3185250,
+  "lon": 82.9907393,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8848598039,
+  "lat": 25.3095836,
+  "lon": 83.0041401,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shitala Mata Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8849956812,
+  "lat": 25.2859897,
+  "lon": 82.9686054,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8850052019,
+  "lat": 25.2835302,
+  "lon": 82.9561755,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8850763055,
+  "lat": 25.2988769,
+  "lon": 82.9698194,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8918343223,
+  "lat": 25.2865254,
+  "lon": 82.9480827,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:postcode": "221108",
+    "addr:street": "Nathupur",
+    "amenity": "place_of_worship",
+    "denomination": "orthodox",
+    "name": "Ramjiyawan Baba Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 8918353087,
+  "lat": 25.2936118,
+  "lon": 82.9366838,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:postcode": "221108",
+    "addr:street": "bhullanpur",
+    "amenity": "place_of_worship",
+    "name": "Bhaskar Shiv Madir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 9520848117,
+  "lat": 25.3106142,
+  "lon": 83.0102363,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name:en": "Annapurna Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11176632641,
+  "lat": 25.2587684,
+  "lon": 82.9622215,
+  "tags": {
+    "addr:postcode": "221106",
+    "addr:street": "Chunar Road",
+    "amenity": "place_of_worship",
+    "name": "चौरा माई का मंदिर",
+    "name:en": "Chaura Mai's Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 11438507361,
+  "lat": 25.3114543,
+  "lon": 83.0149345,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Ratneshwar Mahadev Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11690988931,
+  "lat": 25.3533244,
+  "lon": 82.9665653,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "vishwanath ashram",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11691024279,
+  "lat": 25.3535081,
+  "lon": 82.9644713,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "kali mata mndir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11691036598,
+  "lat": 25.3543556,
+  "lon": 82.9670424,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "deeh baba temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11691070289,
+  "lat": 25.3536907,
+  "lon": 82.9663268,
+  "tags": {
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "hanuman mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11697326258,
+  "lat": 25.2866809,
+  "lon": 82.9969472,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durgakund",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11698519729,
+  "lat": 25.2798908,
+  "lon": 82.9872339,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Durga Mata Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11699233861,
+  "lat": 25.2658428,
+  "lon": 82.9871087,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "VT BACKYARD",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11780876018,
+  "lat": 25.3084009,
+  "lon": 83.0104732,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 11780876022,
+  "lat": 25.3082437,
+  "lon": 83.0110826,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shiva Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12555800248,
+  "lat": 25.2619501,
+  "lon": 82.9915528,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 12592940903,
+  "lat": 25.2660473,
+  "lon": 82.9878021,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "addr:postcode": "221005",
+    "amenity": "place_of_worship",
+    "denomination": "hindu",
+    "name": "Vishwanath Temple",
+    "religion": "hindu",
+    "service_times": "opens all the time"
+  }
+},
+{
+  "type": "node",
+  "id": 12596253082,
+  "lat": 25.3091446,
+  "lon": 83.0064430,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12596253083,
+  "lat": 25.3089421,
+  "lon": 83.0081307,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12596524410,
+  "lat": 25.2742432,
+  "lon": 82.9710855,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Hanuman Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12596530591,
+  "lat": 25.2744540,
+  "lon": 82.9694328,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "kadedi mata temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 12600846698,
+  "lat": 25.3011885,
+  "lon": 82.9972993,
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "node",
+  "id": 12634897684,
+  "lat": 25.2659365,
+  "lon": 82.9878449,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "sikh"
+  }
+},
+{
+  "type": "node",
+  "id": 12634897719,
+  "lat": 25.2658881,
+  "lon": 82.9880691,
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "sikh"
+  }
+},
+{
+  "type": "node",
+  "id": 12745738901,
+  "lat": 25.3162672,
+  "lon": 83.0139261,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Krishna Temple"
+  }
+},
+{
+  "type": "node",
+  "id": 12797907055,
+  "lat": 25.3092340,
+  "lon": 83.0055769,
+  "tags": {
+    "amenity": "place_of_worship",
+    "check_date": "2025-04-29",
+    "name": "St Thomas Church",
+    "religion": "christian"
+  }
+},
+{
+  "type": "node",
+  "id": 13264751640,
+  "lat": 25.3063085,
+  "lon": 83.0099454,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Siddhapith Shri Badi Shitla Mata Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 13264751641,
+  "lat": 25.3062915,
+  "lon": 83.0099971,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Adi Kal Bhairav Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 13264751642,
+  "lat": 25.3061916,
+  "lon": 83.0099147,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Shri Ahilyeshwar Mahadev Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "node",
+  "id": 13342364501,
+  "lat": 25.2930979,
+  "lon": 83.0068997,
+  "tags": {
+    "amenity": "place_of_worship",
+    "name": "Meditation place"
+  }
+},
+{
+  "type": "way",
+  "id": 295336827,
+  "center": {
+    "lat": 25.3112399,
+    "lon": 83.0104226
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "mosque",
+    "check_date": "2024-08-16",
+    "name": "Gyanvapi Mosque",
+    "religion": "muslim",
+    "wikidata": "Q3154"
+  }
+},
+{
+  "type": "way",
+  "id": 320995844,
+  "center": {
+    "lat": 25.2659915,
+    "lon": 82.9879672
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "sanatana_dharma",
+    "name": "Vishwanath Temple",
+    "religion": "hindu",
+    "wikidata": "Q19894766"
+  }
+},
+{
+  "type": "way",
+  "id": 321649003,
+  "center": {
+    "lat": 25.2765170,
+    "lon": 83.0007722
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Hanuman Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 321649008,
+  "center": {
+    "lat": 25.2697178,
+    "lon": 82.9878542
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Kot Mata Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 321649014,
+  "center": {
+    "lat": 25.2801732,
+    "lon": 82.9909614
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Rohit Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 321649016,
+  "center": {
+    "lat": 25.2776134,
+    "lon": 82.9929105
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Gulaveer Baba Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 321653074,
+  "center": {
+    "lat": 25.2566924,
+    "lon": 82.9848253
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Karmanveer Baba TEMPLE",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 327754746,
+  "center": {
+    "lat": 25.2705401,
+    "lon": 83.0284494
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Sri Mansha Devi Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 327757560,
+  "center": {
+    "lat": 25.3152298,
+    "lon": 83.0177604
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:street": "Panchganga Ghat",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Alamagir Mosque",
+    "religion": "muslim",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 327757778,
+  "center": {
+    "lat": 25.2886165,
+    "lon": 82.9992738
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:street": "Sankat Mochan Road",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "check_date": "2024-08-16",
+    "name": "Durga Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 327759037,
+  "center": {
+    "lat": 25.2903906,
+    "lon": 83.0031281
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Sri Bankhand Mahadeva Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 343105325,
+  "center": {
+    "lat": 25.3221705,
+    "lon": 83.0071669
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Kabir Math"
+  }
+},
+{
+  "type": "way",
+  "id": 420064449,
+  "center": {
+    "lat": 25.3171906,
+    "lon": 82.9892974
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Bharatmata Mandir",
+    "name:bn": "ভারত মাতা মন্দির",
+    "name:hi": "भारत माता मन्दिर",
+    "name:kn": "ಭಾರತ ಮಾತಾ ಮಂದಿರ",
+    "name:ta": "பாரத மாதா கோயில்",
+    "wikidata": "Q19882307"
+  }
+},
+{
+  "type": "way",
+  "id": 443016268,
+  "center": {
+    "lat": 25.2871425,
+    "lon": 83.0003997
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "name": "Tulsi Manas Temple",
+    "religion": "hindu",
+    "wikidata": "Q19899048"
+  }
+},
+{
+  "type": "way",
+  "id": 465142410,
+  "center": {
+    "lat": 25.3134388,
+    "lon": 82.9689209
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 466386103,
+  "center": {
+    "lat": 25.3200571,
+    "lon": 83.0380569
+  },
+  "tags": {
+    "addr:city": "Ramnagar",
+    "amenity": "place_of_worship",
+    "name": "Sri Aghoreshwar Bhagwan Ramji Samadhi"
+  }
+},
+{
+  "type": "way",
+  "id": 466386104,
+  "center": {
+    "lat": 25.3201101,
+    "lon": 83.0374753
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Mausoleum"
+  }
+},
+{
+  "type": "way",
+  "id": 466386106,
+  "center": {
+    "lat": 25.3174507,
+    "lon": 83.0353549
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 466386112,
+  "center": {
+    "lat": 25.2821168,
+    "lon": 83.0400329
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Durga Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 668742484,
+  "center": {
+    "lat": 25.3312857,
+    "lon": 82.9839138
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 668742487,
+  "center": {
+    "lat": 25.3312605,
+    "lon": 82.9839232
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "church",
+    "name": "St. Mary's Cathedral",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 749835280,
+  "center": {
+    "lat": 25.3260392,
+    "lon": 83.0346503
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "muslim",
+    "name": "Lal Khans Mosque",
+    "name:hi": "लाल खान मॉस्क",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 865035840,
+  "center": {
+    "lat": 25.2934311,
+    "lon": 83.0005498
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "ISKCON Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 865035841,
+  "center": {
+    "lat": 25.2943048,
+    "lon": 82.9983819
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Gurudham Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 954664793,
+  "center": {
+    "lat": 25.2858873,
+    "lon": 82.9655990
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "addr:postcode": "221004",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "catholic",
+    "name": "St. John the Baptist Church BLW",
+    "name:hi": "सेंट जॉन द बैपटिस्ट चर्च बी.एल.डब्ल्यू",
+    "religion": "christian"
+  }
+},
+{
+  "type": "way",
+  "id": 954990238,
+  "center": {
+    "lat": 25.3073705,
+    "lon": 82.9964400
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Gurudwara Sri Guru Nanak Dev Gurubagh",
+    "religion": "sikh"
+  }
+},
+{
+  "type": "way",
+  "id": 964038653,
+  "center": {
+    "lat": 25.2952743,
+    "lon": 83.0001185
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Baba Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 964038654,
+  "center": {
+    "lat": 25.2940143,
+    "lon": 82.9994388
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Gurudham Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 996262994,
+  "center": {
+    "lat": 25.2780869,
+    "lon": 82.9773684
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Deeh Baba temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 996262995,
+  "center": {
+    "lat": 25.2769515,
+    "lon": 82.9798045
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Tadva Bir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1170459240,
+  "center": {
+    "lat": 25.2785023,
+    "lon": 82.9549314
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1231838840,
+  "center": {
+    "lat": 25.3108202,
+    "lon": 83.0106670
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "temple",
+    "denomination": "shaivism",
+    "name": "Kashi Vishwanath Temple",
+    "name:bn": "কাশী বিশ্বনাথ মন্দির",
+    "name:hi": "काशी विश्वनाथ मंदिर",
+    "place_of_worship": "jyotirlinga",
+    "religion": "hindu",
+    "wikidata": "Q3675"
+  }
+},
+{
+  "type": "way",
+  "id": 1231838841,
+  "center": {
+    "lat": 25.3107764,
+    "lon": 83.0120432
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "denomination": "shaivism",
+    "layer": "1",
+    "name": "Kashi Vishwanath Dham, varanasi",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1257487995,
+  "center": {
+    "lat": 25.3540285,
+    "lon": 82.9651227
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "shri bade hanuman mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1257500889,
+  "center": {
+    "lat": 25.3099545,
+    "lon": 83.0130602
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Nepali Mandir",
+    "name:en": "Nepalese Temple",
+    "name:fr": "Temple népalais",
+    "religion": "hindu",
+    "wikidata": "Q24912881",
+    "wikipedia": "en:Nepali Mandir"
+  }
+},
+{
+  "type": "way",
+  "id": 1268422232,
+  "center": {
+    "lat": 25.3086073,
+    "lon": 83.0098438
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1268422240,
+  "center": {
+    "lat": 25.3087080,
+    "lon": 83.0114116
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Narmadeshwar Mahadev Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1268422241,
+  "center": {
+    "lat": 25.3086560,
+    "lon": 83.0115315
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Lord Hanuman Temple",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1269097133,
+  "center": {
+    "lat": 25.3238907,
+    "lon": 83.0307322
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1337767440,
+  "center": {
+    "lat": 25.3064831,
+    "lon": 83.0102270
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1337770189,
+  "center": {
+    "lat": 25.2892596,
+    "lon": 83.0059567
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Assi Ghat Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1338034611,
+  "center": {
+    "lat": 25.2927778,
+    "lon": 83.0068269
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1340547305,
+  "center": {
+    "lat": 25.2607404,
+    "lon": 83.0283881
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1340547306,
+  "center": {
+    "lat": 25.2649691,
+    "lon": 83.0267671
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1360704115,
+  "center": {
+    "lat": 25.3250372,
+    "lon": 83.0345612
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1",
+    "name": "Namo Ghat"
+  }
+},
+{
+  "type": "way",
+  "id": 1361157949,
+  "center": {
+    "lat": 25.2974497,
+    "lon": 82.9929086
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1361168206,
+  "center": {
+    "lat": 25.3006551,
+    "lon": 82.9984108
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1361412409,
+  "center": {
+    "lat": 25.3316262,
+    "lon": 82.9875359
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1361426717,
+  "center": {
+    "lat": 25.3298725,
+    "lon": 82.9889397
+  },
+  "tags": {
+    "amenity": "place_of_worship"
+  }
+},
+{
+  "type": "way",
+  "id": 1361426718,
+  "center": {
+    "lat": 25.3296775,
+    "lon": 82.9890695
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1361450156,
+  "center": {
+    "lat": 25.3141299,
+    "lon": 82.9679819
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1361450157,
+  "center": {
+    "lat": 25.3139448,
+    "lon": 82.9681074
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1362567524,
+  "center": {
+    "lat": 25.3286098,
+    "lon": 82.9665140
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1362822556,
+  "center": {
+    "lat": 25.3459737,
+    "lon": 82.9836745
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1362822559,
+  "center": {
+    "lat": 25.3490162,
+    "lon": 82.9893407
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1362828423,
+  "center": {
+    "lat": 25.3518140,
+    "lon": 82.9870782
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1363047056,
+  "center": {
+    "lat": 25.2501411,
+    "lon": 82.9648576
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1363047057,
+  "center": {
+    "lat": 25.2501427,
+    "lon": 82.9647051
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1363084142,
+  "center": {
+    "lat": 25.2683278,
+    "lon": 82.9582486
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1363084144,
+  "center": {
+    "lat": 25.2684079,
+    "lon": 82.9580469
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1363084145,
+  "center": {
+    "lat": 25.2686045,
+    "lon": 82.9581934
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1363084147,
+  "center": {
+    "lat": 25.2690512,
+    "lon": 82.9582106
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1366232076,
+  "center": {
+    "lat": 25.3251035,
+    "lon": 82.9321721
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1366235746,
+  "center": {
+    "lat": 25.3146584,
+    "lon": 82.9303259
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1372087575,
+  "center": {
+    "lat": 25.2260564,
+    "lon": 82.9455909
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1457053173,
+  "center": {
+    "lat": 25.2941691,
+    "lon": 82.9970075
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "addr:postcode": "221010",
+    "air_conditioning": "no",
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "internet_access": "no",
+    "religion": "hindu",
+    "wheelchair": "no"
+  }
+}
+
+  ]
+}

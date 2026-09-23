@@ -1,8 +1,7 @@
 {
     "title": "Mandirs of Varanasi",
-    "info": "This project seeks to examine tiny Hindu temples known as 'mandirs' that are found throughout the Indian subcontinent. The project aims to assess the density of points by 65-meter radial hexagons in Varanasi and lend the viewer an understanding of the density of these temples throughout the city.",
-    "coordinates": [25.288792, 83.005975],
+    "info": "An interactive map and spatial analysis of 2,296 street shrines ('tiny temples') surveyed in Varanasi in 2012 and 2015. Shrines are binned into 66-metre hexagons, tested for statistically significant hot spots (Getis-Ord Gi*), measured against the Ganga bank, and explored by deity family and structure.",
+    "coordinates": [25.306, 83.012],
     "author": "Nathaniel Deaton",
     "link": "https://realcaddish.github.io/Mandirs-of-Varanasi/"
-
 }

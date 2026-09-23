@@ -1,0 +1,2031 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-22T08:45:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 293222739,
+  "lat": 25.2972001,
+  "lon": 83.0073734,
+  "tags": {
+    "name": "Hanuman Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 293269947,
+  "lat": 25.3268078,
+  "lon": 83.0318039,
+  "tags": {
+    "name": "Kashi",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "KEI",
+    "wikidata": "Q21711867",
+    "wikipedia": "en:Kashi railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 988809560,
+  "lat": 25.3057223,
+  "lon": 83.0099782,
+  "tags": {
+    "name": "Ahilyabai Ghat",
+    "name:hi": "अहिल्याबाई घाट",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809573,
+  "lat": 25.3022500,
+  "lon": 83.0076942,
+  "tags": {
+    "name": "Raja Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 988809580,
+  "lat": 25.3048094,
+  "lon": 83.0090711,
+  "tags": {
+    "name": "Ranamahal Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 988809589,
+  "lat": 25.3015103,
+  "lon": 83.0074949,
+  "tags": {
+    "name": "Manasarowa Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 988809590,
+  "lat": 25.3076571,
+  "lon": 83.0109847,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Manmandir Ghat",
+    "name:hi": "मानमंदिर घाट",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809596,
+  "lat": 25.2990503,
+  "lon": 83.0072819,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Kedar Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809597,
+  "lat": 25.2915331,
+  "lon": 83.0066896,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Badhaini Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809606,
+  "lat": 25.3126169,
+  "lon": 83.0159097,
+  "tags": {
+    "name": "Ganga Mahal Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809614,
+  "lat": 25.2986004,
+  "lon": 83.0071507,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Lali Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809616,
+  "lat": 25.2894963,
+  "lon": 83.0062242,
+  "tags": {
+    "name": "Ganga Mahal Ghat"
+  }
+},
+{
+  "type": "node",
+  "id": 988809623,
+  "lat": 25.3031486,
+  "lon": 83.0081833,
+  "tags": {
+    "name": "Babua Pandey Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 988809629,
+  "lat": 25.3054507,
+  "lon": 83.0097583,
+  "tags": {
+    "name": "Munshi Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809632,
+  "lat": 25.2977445,
+  "lon": 83.0072745,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Karnataka Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 988809643,
+  "lat": 25.3017722,
+  "lon": 83.0075307,
+  "tags": {
+    "name": "Narad Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 988809648,
+  "lat": 25.3043415,
+  "lon": 83.0088352,
+  "tags": {
+    "name": "Chousatti Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 988809657,
+  "lat": 25.3099798,
+  "lon": 83.0120709,
+  "tags": {
+    "name": "Ganesh Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 988809661,
+  "lat": 25.3071569,
+  "lon": 83.0106859,
+  "tags": {
+    "name": "Dr. Rajendra Prasad Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809665,
+  "lat": 25.2902400,
+  "lon": 83.0063426,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Tulsi Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 988809674,
+  "lat": 25.3123497,
+  "lon": 83.0156683,
+  "tags": {
+    "name": "Sankatha Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127086,
+  "lat": 25.2925757,
+  "lon": 83.0069269,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Anandamayee Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127088,
+  "lat": 25.3004934,
+  "lon": 83.0074175,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Chauki Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127089,
+  "lat": 25.3052209,
+  "lon": 83.0095400,
+  "tags": {
+    "name": "Darbhanga Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127090,
+  "lat": 25.3183520,
+  "lon": 83.0221361,
+  "tags": {
+    "name": "Gaay Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127091,
+  "lat": 25.2983149,
+  "lon": 83.0071904,
+  "tags": {
+    "name": "Harishchandra Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127094,
+  "lat": 25.3144580,
+  "lon": 83.0168694,
+  "tags": {
+    "name": "Jatar Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127095,
+  "lat": 25.3172323,
+  "lon": 83.0205948,
+  "tags": {
+    "name": "Lal Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127096,
+  "lat": 25.3096631,
+  "lon": 83.0128733,
+  "tags": {
+    "name": "Lalita Ghat",
+    "name:hi": "ललिता घाट",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127097,
+  "lat": 25.2960763,
+  "lon": 83.0069086,
+  "tags": {
+    "name": "Mahanirvani Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127100,
+  "lat": 25.3107682,
+  "lon": 83.0140210,
+  "tags": {
+    "addr:city": "Varanasi",
+    "alt_name": "Burning Ghat",
+    "name": "Manikarnika Ghat",
+    "name:en": "Manikarnika Ghat(KOSTRI)",
+    "name:hi": "Manikarnika Ghat (KOCTRI)",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127102,
+  "lat": 25.3136844,
+  "lon": 83.0165616,
+  "tags": {
+    "name": "Mehfa Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127104,
+  "lat": 25.3198932,
+  "lon": 83.0246607,
+  "tags": {
+    "name": "Nandeshwar Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127105,
+  "lat": 25.2955690,
+  "lon": 83.0070612,
+  "tags": {
+    "name": "Niranjani Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127106,
+  "lat": 25.3220123,
+  "lon": 83.0284985,
+  "tags": {
+    "name": "Naya Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127113,
+  "lat": 25.3150190,
+  "lon": 83.0179849,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Panchganga Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127116,
+  "lat": 25.2938732,
+  "lon": 83.0071836,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Panchkot Ghat",
+    "tourism": "attraction",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127118,
+  "lat": 25.3065683,
+  "lon": 83.0102699,
+  "tags": {
+    "name": "Prayag Ghat",
+    "name:hi": "प्रयाग घाट",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127119,
+  "lat": 25.3234066,
+  "lon": 83.0310405,
+  "tags": {
+    "name": "Raj Ghat",
+    "name:zh": "结束点",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127121,
+  "lat": 25.3145937,
+  "lon": 83.0170255,
+  "tags": {
+    "name": "Gwaljor Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127122,
+  "lat": 25.3141205,
+  "lon": 83.0167057,
+  "tags": {
+    "name": "Ram Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127123,
+  "lat": 25.3224031,
+  "lon": 83.0290449,
+  "tags": {
+    "name": "Prahlad Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127124,
+  "lat": 25.2899023,
+  "lon": 83.0062958,
+  "tags": {
+    "name": "Reewa Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127125,
+  "lat": 25.3207522,
+  "lon": 83.0259173,
+  "tags": {
+    "name": "Sakka Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127126,
+  "lat": 25.3120646,
+  "lon": 83.0154329,
+  "tags": {
+    "name": "Scindia Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127127,
+  "lat": 25.3189725,
+  "lon": 83.0234368,
+  "tags": {
+    "name": "Trilochan Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1538127128,
+  "lat": 25.2988294,
+  "lon": 83.0072243,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Vijayana Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1539343144,
+  "lat": 25.3036960,
+  "lon": 83.0083278,
+  "tags": {
+    "name": "Digipatiya Ghat",
+    "name:ko": "레바게스트하우스",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 1539343147,
+  "lat": 25.3105516,
+  "lon": 83.0136803,
+  "tags": {
+    "name": "Jalasayi Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1539343151,
+  "lat": 25.3009846,
+  "lon": 83.0074205,
+  "tags": {
+    "name": "Kschemeschwar Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1539343160,
+  "lat": 25.2948070,
+  "lon": 83.0073101,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Prabhu Ghat",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1545893678,
+  "lat": 25.2757315,
+  "lon": 83.0131538,
+  "tags": {
+    "name": "Aghoreshwar Bhagwam Ram Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241743,
+  "lat": 25.3290192,
+  "lon": 83.0428908,
+  "tags": {
+    "name": "Adi Keshava Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241751,
+  "lat": 25.3165899,
+  "lon": 83.0202520,
+  "tags": {
+    "name": "Shitala Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241752,
+  "lat": 25.3187303,
+  "lon": 83.0228183,
+  "tags": {
+    "name": "Badrinarayan Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241754,
+  "lat": 25.3194596,
+  "lon": 83.0240242,
+  "tags": {
+    "name": "Gola Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241757,
+  "lat": 25.3176767,
+  "lon": 83.0214261,
+  "tags": {
+    "name": "Hanumangadhi Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241774,
+  "lat": 25.2835977,
+  "lon": 83.0090200,
+  "tags": {
+    "name": "Ravidas Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 1550241777,
+  "lat": 25.3211398,
+  "lon": 83.0267868,
+  "tags": {
+    "name": "Telianala Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1555732649,
+  "lat": 25.3128231,
+  "lon": 83.0159880,
+  "tags": {
+    "name": "Bhonsale Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2882968783,
+  "lat": 25.2919529,
+  "lon": 83.0067780,
+  "tags": {
+    "name": "janki ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2882969072,
+  "lat": 25.2964656,
+  "lon": 83.0071513,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Shivala Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2882969384,
+  "lat": 25.2930166,
+  "lon": 83.0070247,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Jain Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4406651897,
+  "lat": 25.3063243,
+  "lon": 83.0103739,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Dasaswamedh Ghat",
+    "public_transport": "station",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 6703589085,
+  "lat": 25.2910829,
+  "lon": 83.0065702,
+  "tags": {
+    "name:en": "Bachraj Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 6703601985,
+  "lat": 25.3113737,
+  "lon": 83.0147869,
+  "tags": {
+    "name:en": "Dattatreya Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 6816735987,
+  "lat": 25.3038081,
+  "lon": 83.0083654,
+  "tags": {
+    "addr:street": "Pandeyghat",
+    "email": "customerservice@howdyhostels.com",
+    "internet_access": "wlan",
+    "name": "Pandeyghat",
+    "name:hi": "On The Chat By Howdy Hostels",
+    "opening_hours": "24/7",
+    "phone": "8934879999",
+    "tourism": "hostel"
+  }
+},
+{
+  "type": "node",
+  "id": 6816735988,
+  "lat": 25.3038029,
+  "lon": 83.0084286,
+  "tags": {
+    "addr:street": "Pandeyghat",
+    "internet_access": "wlan",
+    "name": "On The Ghat By Howdy Hostels",
+    "opening_hours": "24/7",
+    "tourism": "hostel"
+  }
+},
+{
+  "type": "node",
+  "id": 6819036485,
+  "lat": 25.3037846,
+  "lon": 83.0084102,
+  "tags": {
+    "addr:housenumber": "D-24/28-AL",
+    "addr:postcode": "221001",
+    "addr:street": "Pandey Ghat Ward Dasashwamedh",
+    "email": "2310973830-4wjp.9pkv.hddk.jyeg@property.booking.com",
+    "internet_access": "wlan",
+    "name": "On the Ghats by Howdy",
+    "name:en": "On The Ghat By Howdy Hostels",
+    "opening_hours": "24/7",
+    "phone": "+91 97950 59605",
+    "tourism": "hostel",
+    "website": "https://www.booking.com/hotel/in/on-the-ghat.en-gb.html?"
+  }
+},
+{
+  "type": "node",
+  "id": 6924075989,
+  "lat": 25.3038969,
+  "lon": 83.0083350,
+  "tags": {
+    "name:en": "On the Ghat By Howdy (right address)",
+    "tourism": "hostel"
+  }
+},
+{
+  "type": "node",
+  "id": 7044491885,
+  "lat": 25.2985561,
+  "lon": 83.0073619,
+  "tags": {
+    "name:en": "Burning Ghat (secondary)",
+    "tourism": "viewpoint"
+  }
+},
+{
+  "type": "node",
+  "id": 7291055276,
+  "lat": 25.3062478,
+  "lon": 83.0101527,
+  "tags": {
+    "name": "Dasaswamedh Ghat",
+    "name:hi": "दशश्वमेध घाट",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7595338013,
+  "lat": 25.3152018,
+  "lon": 82.9305862,
+  "tags": {
+    "name": "Lohta",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "LOT",
+    "wikidata": "Q63370233"
+  }
+},
+{
+  "type": "node",
+  "id": 7595524201,
+  "lat": 25.2992430,
+  "lon": 82.9710513,
+  "tags": {
+    "name": "Banaras (Manduadih)",
+    "operator": "NER",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BSBS",
+    "wikidata": "Q6748220",
+    "wikimedia_commons": "File:Banaras railwaystation 9.jpg",
+    "wikipedia": "en:Banaras railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 7620826935,
+  "lat": 25.3343367,
+  "lon": 83.0142751,
+  "tags": {
+    "name": "Varanasi City",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BCY",
+    "wikidata": "Q24930492",
+    "wikipedia": "en:Varanasi City railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 7643831867,
+  "lat": 25.3556403,
+  "lon": 82.9475726,
+  "tags": {
+    "name": "Shivpur Railway Station",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "SOP",
+    "wikidata": "Q63370905"
+  }
+},
+{
+  "type": "node",
+  "id": 7845437587,
+  "lat": 25.3284359,
+  "lon": 83.0364141,
+  "tags": {
+    "addr:district": "Varanasi",
+    "addr:full": "Rajghat",
+    "addr:postcode": "221001",
+    "addr:state": "Uttar Pradesh",
+    "description": "Urban Health Centre",
+    "healthcare": "centre",
+    "name": "Urban Health Centre, Rajghat",
+    "source": "Local Knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 8539546503,
+  "lat": 25.2827183,
+  "lon": 83.0097168,
+  "tags": {
+    "attraction": "river_rafting",
+    "colony": "Gangotri Vihar Colony Nagwa Lanka Varanasi",
+    "name": "ghat"
+  }
+},
+{
+  "type": "node",
+  "id": 11397815869,
+  "lat": 25.3027897,
+  "lon": 83.0081103,
+  "tags": {
+    "name:en": "Raja Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11461545077,
+  "lat": 25.2952211,
+  "lon": 83.0071242,
+  "tags": {
+    "name": "Chet Singh Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11461546407,
+  "lat": 25.2896862,
+  "lon": 83.0062583,
+  "tags": {
+    "name": "Ganga Mahal Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11675878850,
+  "lat": 25.2634583,
+  "lon": 82.9869680,
+  "tags": {
+    "name": "DG Corner  Stationery",
+    "network": "Noida Metro",
+    "network:wikidata": "Q16909221",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11690106269,
+  "lat": 25.3100257,
+  "lon": 83.0134216,
+  "tags": {
+    "name:de": "Lalita Ghat",
+    "name:en": "Lalita Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11690112169,
+  "lat": 25.3069301,
+  "lon": 83.0106540,
+  "tags": {
+    "name": "Dashashvamedh Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11690114769,
+  "lat": 25.2890417,
+  "lon": 83.0069736,
+  "tags": {
+    "name:de": "Assi Ghat",
+    "name:en": "Assi Ghat",
+    "name:zh": "乘船出发点",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11694241597,
+  "lat": 25.2621544,
+  "lon": 82.9925896,
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "amenity": "university",
+    "name": "Indian Institute of Technology (BHU)",
+    "website": "https://www.iitbhu.ac.in/",
+    "wikidata": "Q3701750",
+    "wikipedia": "en:IIT (BHU) Varanasi"
+  }
+},
+{
+  "type": "node",
+  "id": 11698623568,
+  "lat": 25.2586098,
+  "lon": 82.9902383,
+  "tags": {
+    "amenity": "university",
+    "name": "GYMKHANA GROUND"
+  }
+},
+{
+  "type": "node",
+  "id": 11698668373,
+  "lat": 25.2583127,
+  "lon": 82.9907650,
+  "tags": {
+    "amenity": "university",
+    "name": "NAKLI GROUND"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312442,
+  "lat": 25.3157585,
+  "lon": 83.0189562,
+  "tags": {
+    "name": "Bindu Madhav Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312443,
+  "lat": 25.3250742,
+  "lon": 83.0352029,
+  "tags": {
+    "name": "Namo Ghat, var",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312446,
+  "lat": 25.2969728,
+  "lon": 83.0073238,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Gularia Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312450,
+  "lat": 25.3161972,
+  "lon": 83.0196903,
+  "tags": {
+    "name": "Bundiparkota Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312452,
+  "lat": 25.3227424,
+  "lon": 83.0298755,
+  "tags": {
+    "name": "Shri Panch Agni Akhada Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312456,
+  "lat": 25.3132123,
+  "lon": 83.0162245,
+  "tags": {
+    "name": "Ganesh Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312457,
+  "lat": 25.3148141,
+  "lon": 83.0175351,
+  "tags": {
+    "name": "Balaji Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312458,
+  "lat": 25.2927636,
+  "lon": 83.0069534,
+  "tags": {
+    "name": "Vaccharaja Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312459,
+  "lat": 25.3129953,
+  "lon": 83.0161195,
+  "tags": {
+    "name": "Agrodha Ghat",
+    "note": "Fixme:name",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312460,
+  "lat": 25.3159867,
+  "lon": 83.0193342,
+  "tags": {
+    "name": "Brahma Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312461,
+  "lat": 25.3086269,
+  "lon": 83.0118823,
+  "tags": {
+    "name": "Meer Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312462,
+  "lat": 25.2936245,
+  "lon": 83.0071461,
+  "tags": {
+    "addr:city": "Varanasi",
+    "name": "Nishadraj Ghat",
+    "tourism": "attraction",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11787312463,
+  "lat": 25.3225830,
+  "lon": 83.0295138,
+  "tags": {
+    "name": "Nishadra Ghat",
+    "tourism": "attraction",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12596284028,
+  "lat": 25.2603723,
+  "lon": 82.9895822,
+  "tags": {
+    "amenity": "university",
+    "name": "gymkhana ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12596383267,
+  "lat": 25.2626049,
+  "lon": 82.9921081,
+  "tags": {
+    "amenity": "university",
+    "name": "electrical department"
+  }
+},
+{
+  "type": "node",
+  "id": 12596387573,
+  "lat": 25.2627236,
+  "lon": 82.9902548,
+  "tags": {
+    "amenity": "university",
+    "name": "electronics department"
+  }
+},
+{
+  "type": "node",
+  "id": 12596422798,
+  "lat": 25.2631113,
+  "lon": 82.9919394,
+  "tags": {
+    "amenity": "university",
+    "name": "civil department"
+  }
+},
+{
+  "type": "node",
+  "id": 12596432129,
+  "lat": 25.2621562,
+  "lon": 82.9915022,
+  "tags": {
+    "amenity": "university",
+    "name": "mechanical department"
+  }
+},
+{
+  "type": "node",
+  "id": 12597605288,
+  "lat": 25.2620685,
+  "lon": 82.9904885,
+  "tags": {
+    "amenity": "university",
+    "name": "surveying lab"
+  }
+},
+{
+  "type": "node",
+  "id": 12597626868,
+  "lat": 25.2624710,
+  "lon": 82.9909752,
+  "tags": {
+    "amenity": "university",
+    "name": "manufacturing practise lab"
+  }
+},
+{
+  "type": "node",
+  "id": 12597655566,
+  "lat": 25.2594150,
+  "lon": 82.9934114,
+  "tags": {
+    "amenity": "university",
+    "name": "SBI IIT BHU"
+  }
+},
+{
+  "type": "node",
+  "id": 12597663336,
+  "lat": 25.2592712,
+  "lon": 82.9931687,
+  "tags": {
+    "amenity": "university",
+    "name": "physics lab"
+  }
+},
+{
+  "type": "node",
+  "id": 12597665057,
+  "lat": 25.2585680,
+  "lon": 82.9922404,
+  "tags": {
+    "amenity": "university",
+    "name": "LT3"
+  }
+},
+{
+  "type": "node",
+  "id": 12597665058,
+  "lat": 25.2595356,
+  "lon": 82.9880090,
+  "tags": {
+    "amenity": "university",
+    "name": "football ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12597670806,
+  "lat": 25.2629301,
+  "lon": 82.9818414,
+  "tags": {
+    "amenity": "university",
+    "name": "HG"
+  }
+},
+{
+  "type": "node",
+  "id": 12597680153,
+  "lat": 25.2602451,
+  "lon": 82.9909441,
+  "tags": {
+    "amenity": "university",
+    "name": "LT1"
+  }
+},
+{
+  "type": "node",
+  "id": 12597680178,
+  "lat": 25.2617428,
+  "lon": 82.9922485,
+  "tags": {
+    "amenity": "university",
+    "name": "electrical labs"
+  }
+},
+{
+  "type": "node",
+  "id": 12597687309,
+  "lat": 25.2600812,
+  "lon": 82.9876923,
+  "tags": {
+    "amenity": "university",
+    "name": "hockey ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12597687403,
+  "lat": 25.2597435,
+  "lon": 82.9927864,
+  "tags": {
+    "amenity": "university",
+    "name": "ceramic department"
+  }
+},
+{
+  "type": "node",
+  "id": 12597694060,
+  "lat": 25.2587794,
+  "lon": 82.9900734,
+  "tags": {
+    "amenity": "university",
+    "name": "ADV ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12597699379,
+  "lat": 25.2632182,
+  "lon": 82.9864855,
+  "tags": {
+    "amenity": "university",
+    "name": "DG corner"
+  }
+},
+{
+  "type": "node",
+  "id": 12633704092,
+  "lat": 25.2603704,
+  "lon": 82.9877245,
+  "tags": {
+    "amenity": "university",
+    "name": "hockey ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633746200,
+  "lat": 25.2612060,
+  "lon": 82.9871703,
+  "tags": {
+    "amenity": "university",
+    "name": "tennis courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12633748161,
+  "lat": 25.2592502,
+  "lon": 82.9882239,
+  "tags": {
+    "amenity": "university",
+    "name": "football ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633757242,
+  "lat": 25.2586585,
+  "lon": 82.9900687,
+  "tags": {
+    "amenity": "university",
+    "name": "adv ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633759780,
+  "lat": 25.2618348,
+  "lon": 82.9874732,
+  "tags": {
+    "amenity": "university",
+    "name": "rajputana ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633761035,
+  "lat": 25.2631287,
+  "lon": 82.9863404,
+  "tags": {
+    "amenity": "university",
+    "name": "DG corner"
+  }
+},
+{
+  "type": "node",
+  "id": 12633765439,
+  "lat": 25.2607635,
+  "lon": 82.9868994,
+  "tags": {
+    "amenity": "university",
+    "name": "limbdi corner"
+  }
+},
+{
+  "type": "node",
+  "id": 12633774513,
+  "lat": 25.2603618,
+  "lon": 82.9889261,
+  "tags": {
+    "amenity": "university",
+    "name": "cricket ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633780950,
+  "lat": 25.2605976,
+  "lon": 82.9883706,
+  "tags": {
+    "amenity": "university",
+    "name": "gymkhana ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12633784976,
+  "lat": 25.2600838,
+  "lon": 82.9899692,
+  "tags": {
+    "amenity": "university",
+    "name": "handball court"
+  }
+},
+{
+  "type": "node",
+  "id": 12633786060,
+  "lat": 25.2617254,
+  "lon": 82.9878501,
+  "tags": {
+    "amenity": "university",
+    "name": "basketball courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12633788665,
+  "lat": 25.2616039,
+  "lon": 82.9873364,
+  "tags": {
+    "amenity": "university",
+    "name": "kabaddi court"
+  }
+},
+{
+  "type": "node",
+  "id": 12633791411,
+  "lat": 25.2613694,
+  "lon": 82.9878757,
+  "tags": {
+    "amenity": "university",
+    "name": "volleyball courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12633799640,
+  "lat": 25.2627118,
+  "lon": 82.9901987,
+  "tags": {
+    "amenity": "university",
+    "name": "electronics dept"
+  }
+},
+{
+  "type": "node",
+  "id": 12633801686,
+  "lat": 25.2616682,
+  "lon": 82.9923141,
+  "tags": {
+    "amenity": "university",
+    "name": "electrical dept"
+  }
+},
+{
+  "type": "node",
+  "id": 12633801995,
+  "lat": 25.2629012,
+  "lon": 82.9886945,
+  "tags": {
+    "amenity": "university",
+    "name": "ablt-4"
+  }
+},
+{
+  "type": "node",
+  "id": 12633805102,
+  "lat": 25.2631027,
+  "lon": 82.9919284,
+  "tags": {
+    "amenity": "university",
+    "name": "civil dept"
+  }
+},
+{
+  "type": "node",
+  "id": 12633808969,
+  "lat": 25.2603426,
+  "lon": 82.9910278,
+  "tags": {
+    "amenity": "university",
+    "name": "LT1"
+  }
+},
+{
+  "type": "node",
+  "id": 12633879870,
+  "lat": 25.2613450,
+  "lon": 82.9878497,
+  "tags": {
+    "amenity": "university",
+    "name": "volleyball courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12633945126,
+  "lat": 25.2611213,
+  "lon": 82.9871820,
+  "tags": {
+    "amenity": "university",
+    "name": "tennis courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12633945138,
+  "lat": 25.2628150,
+  "lon": 82.9921004,
+  "tags": {
+    "amenity": "university",
+    "name": "civil department"
+  }
+},
+{
+  "type": "node",
+  "id": 12634034057,
+  "lat": 25.2600426,
+  "lon": 82.9899703,
+  "tags": {
+    "amenity": "university",
+    "name": "handball court"
+  }
+},
+{
+  "type": "node",
+  "id": 12634034058,
+  "lat": 25.2621263,
+  "lon": 82.9915330,
+  "tags": {
+    "amenity": "university",
+    "name": "mechanical engg department"
+  }
+},
+{
+  "type": "node",
+  "id": 12634037990,
+  "lat": 25.2616075,
+  "lon": 82.9873709,
+  "tags": {
+    "amenity": "university",
+    "name": "kabaddi court"
+  }
+},
+{
+  "type": "node",
+  "id": 12634045288,
+  "lat": 25.2588617,
+  "lon": 82.9904555,
+  "tags": {
+    "amenity": "university",
+    "name": "adv ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12634047916,
+  "lat": 25.2617163,
+  "lon": 82.9878181,
+  "tags": {
+    "amenity": "university",
+    "name": "basketball courts"
+  }
+},
+{
+  "type": "node",
+  "id": 12634051190,
+  "lat": 25.2616769,
+  "lon": 82.9871033,
+  "tags": {
+    "amenity": "university",
+    "name": "rajputana ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12634053377,
+  "lat": 25.2602169,
+  "lon": 82.9893573,
+  "tags": {
+    "amenity": "university",
+    "name": "cricket ground"
+  }
+},
+{
+  "type": "node",
+  "id": 12634059255,
+  "lat": 25.2622671,
+  "lon": 82.9917970,
+  "tags": {
+    "amenity": "university",
+    "name": "cso lab"
+  }
+},
+{
+  "type": "node",
+  "id": 13339830401,
+  "lat": 25.3251322,
+  "lon": 83.0357052,
+  "tags": {
+    "name": "New Prayers Hand Namo Ghat",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 26681638,
+  "center": {
+    "lat": 25.2664393,
+    "lon": 82.9954158
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "addr:district": "Varanasi",
+    "addr:postcode": "221005",
+    "alt_name": "Kashi Hindu Vishwavidyalaya",
+    "amenity": "university",
+    "name": "Banaras Hindu University",
+    "name:en": "Banaras Hindu University",
+    "name:hi": "काशी हिन्दू विश्‍वविद्यालय",
+    "short_name": "BHU",
+    "start_date": "1916",
+    "website": "https://www.bhu.ac.in",
+    "wikidata": "Q806116",
+    "wikipedia": "en:Banaras Hindu University"
+  }
+},
+{
+  "type": "way",
+  "id": 26732303,
+  "center": {
+    "lat": 25.2885884,
+    "lon": 83.0050040
+  },
+  "tags": {
+    "bicycle": "yes",
+    "foot": "yes",
+    "highway": "residential",
+    "motor_vehicle": "yes",
+    "name": "Assi Ghat Road",
+    "oneway": "no",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 26733298,
+  "center": {
+    "lat": 25.2985331,
+    "lon": 83.0057709
+  },
+  "tags": {
+    "highway": "residential",
+    "name": "Harish Chandra Ghat Road",
+    "sidewalk": "no",
+    "smoothness": "good",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 26738587,
+  "center": {
+    "lat": 25.3299695,
+    "lon": 82.9978840
+  },
+  "tags": {
+    "amenity": "university",
+    "layer": "-3",
+    "name": "संपूर्णानंद संस्कृत विश्वविद्यालय",
+    "name:en": "Sampurnanand Sanskrit University",
+    "name:etymology:wikidata": "Q7313747",
+    "wikidata": "Q7410267"
+  }
+},
+{
+  "type": "way",
+  "id": 26752180,
+  "center": {
+    "lat": 25.3347312,
+    "lon": 82.9963878
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "trunk",
+    "layer": "1",
+    "name": "Chowka Ghat bridge",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 26752991,
+  "center": {
+    "lat": 25.3220756,
+    "lon": 82.9893974
+  },
+  "tags": {
+    "amenity": "university"
+  }
+},
+{
+  "type": "way",
+  "id": 26753079,
+  "center": {
+    "lat": 25.3275545,
+    "lon": 82.9867817
+  },
+  "tags": {
+    "alt_name": "Varanasi Cantonment",
+    "landuse": "railway",
+    "name": "Varanasi Junction",
+    "name:en": "Varanasi Junction Railway Station",
+    "name:hi": "वाराणसी जंक्शन रेलवे स्टेशन",
+    "network": "IR",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BSB",
+    "wikidata": "Q3544938",
+    "wikipedia": "en:Varanasi Junction railway station"
+  }
+},
+{
+  "type": "way",
+  "id": 160253188,
+  "center": {
+    "lat": 25.2657674,
+    "lon": 83.0178123
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Private Residence, front of ghat"
+  }
+},
+{
+  "type": "way",
+  "id": 321776940,
+  "center": {
+    "lat": 25.2721639,
+    "lon": 82.9854906
+  },
+  "tags": {
+    "addr:city": "Varanasi",
+    "amenity": "university",
+    "name": "University Club"
+  }
+},
+{
+  "type": "way",
+  "id": 323269018,
+  "center": {
+    "lat": 25.2783921,
+    "lon": 83.0094234
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Ghat park"
+  }
+},
+{
+  "type": "way",
+  "id": 668651391,
+  "center": {
+    "lat": 25.2712193,
+    "lon": 83.0201541
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "secondary",
+    "layer": "1",
+    "name": "Sameneghat-Ramnagar, bridge"
+  }
+},
+{
+  "type": "way",
+  "id": 866224294,
+  "center": {
+    "lat": 25.3243121,
+    "lon": 83.0329943
+  },
+  "tags": {
+    "name": "rag ghat",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224296,
+  "center": {
+    "lat": 25.3166673,
+    "lon": 83.0203035
+  },
+  "tags": {
+    "name": "Shitala Ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224297,
+  "center": {
+    "lat": 25.3139773,
+    "lon": 83.0167762
+  },
+  "tags": {
+    "name": "ram ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224298,
+  "center": {
+    "lat": 25.3122751,
+    "lon": 83.0157932
+  },
+  "tags": {
+    "name": "ganga mahal ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224300,
+  "center": {
+    "lat": 25.2892168,
+    "lon": 83.0067657
+  },
+  "tags": {
+    "name": "assi ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224301,
+  "center": {
+    "lat": 25.2899829,
+    "lon": 83.0065500
+  },
+  "tags": {
+    "name": "reewa ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224302,
+  "center": {
+    "lat": 25.2919114,
+    "lon": 83.0067990
+  },
+  "tags": {
+    "name": "janki ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224304,
+  "center": {
+    "lat": 25.3013667,
+    "lon": 83.0077462
+  },
+  "tags": {
+    "name": "manasarovar ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866224305,
+  "center": {
+    "lat": 25.3033488,
+    "lon": 83.0083275
+  },
+  "tags": {
+    "name": "babua panday ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866545864,
+  "center": {
+    "lat": 25.2721321,
+    "lon": 83.0151776
+  },
+  "tags": {
+    "name": "samneghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866545865,
+  "center": {
+    "lat": 25.2783721,
+    "lon": 83.0119791
+  },
+  "tags": {
+    "name": "samneghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 866858963,
+  "center": {
+    "lat": 25.3234532,
+    "lon": 83.0316490
+  },
+  "tags": {
+    "name": "raj ghat drain",
+    "waterway": "drain"
+  }
+},
+{
+  "type": "way",
+  "id": 951906507,
+  "center": {
+    "lat": 25.2706471,
+    "lon": 83.0148450
+  },
+  "tags": {
+    "highway": "secondary",
+    "name": "Sameneghat-Ramnagar Bridge"
+  }
+},
+{
+  "type": "way",
+  "id": 1337770189,
+  "center": {
+    "lat": 25.2892596,
+    "lon": 83.0059567
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "name": "Assi Ghat Mandir",
+    "religion": "hindu"
+  }
+},
+{
+  "type": "way",
+  "id": 1360704115,
+  "center": {
+    "lat": 25.3250372,
+    "lon": 83.0345612
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "yes",
+    "layer": "1",
+    "name": "Namo Ghat"
+  }
+},
+{
+  "type": "way",
+  "id": 1524071934,
+  "center": {
+    "lat": 25.2686604,
+    "lon": 83.0162581
+  },
+  "tags": {
+    "amenity": "school",
+    "education": "school",
+    "name": "Sunbeam Academy Samneghat"
+  }
+},
+{
+  "type": "relation",
+  "id": 17915376,
+  "center": {
+    "lat": 25.2947753,
+    "lon": 82.9783480
+  },
+  "tags": {
+    "landuse": "residential",
+    "name": "Banaras Ghats",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}

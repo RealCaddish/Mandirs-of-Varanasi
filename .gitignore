@@ -1,18 +1,14 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
 
-# Other files and folders
-.settings/
+# Installers and binaries that do not belong in the repo
+*.exe
+*.msi
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Python
+__pycache__/
+*.pyc
+.venv/
+scripts/cache/

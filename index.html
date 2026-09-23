@@ -1,919 +1,786 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset=utf-8 />
-  <title>Mandirs of Uttar Pradesh</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandirs of Varanasi</title>
+  <meta name="description" content="An interactive map and spatial analysis of 2,296 street shrines (tiny temples) surveyed in Varanasi, India, in 2012 and 2015.">
+  <meta property="og:title" content="Mandirs of Varanasi">
+  <meta property="og:description" content="Where the tiny temples of the City of Light stand, whom they house, and what their positions reveal about sacred space.">
+  <meta property="og:image" content="images/mandir1.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M16 3 L27 12 V29 H5 V12 Z%27 fill=%27%23c94f1f%27/%3E%3Crect x=%2713%27 y=%2718%27 width=%276%27 height=%2711%27 fill=%27%23fcfcfb%27/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: #333;
-      line-height: 1.6;
+    :root {
+      color-scheme: light;
+      --page: #f9f8f4;
+      --surface: #fcfcfb;
+      --surface-2: #f2f0ea;
+      --ink: #161513;
+      --ink-2: #52514e;
+      --muted: #898781;
+      --hair: #e1e0d9;
+      --axis: #c3c2b7;
+      --border: rgba(11, 11, 11, 0.10);
+      --accent: #c94f1f;        /* saffron-orange: single-series marks, map highlight */
+      --accent-soft: rgba(201, 79, 31, 0.12);
+      --series-2: #2a78d6;      /* blue: second series (periphery, comparison) */
+      --context: #b9b6ae;       /* de-emphasised marks */
+      --water: #8fc1e3;
+      --link: #9a3b14;
+      --ok: #006300;
+      --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+      --radius: 12px;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
-
-         header {
-       background: #FF9933;
-       color: white;
-       padding: 40px 20px;
-       text-align: center;
-       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-     }
-
-    h1 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 3.5em;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5em;
-      font-weight: 300;
-      margin: 0;
-      opacity: 0.9;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Dashboard Styles */
-    .stats-container {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px auto;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    
-         .stat-box {
-       background: #138808;
-       color: white;
-       padding: 25px;
-       border-radius: 15px;
-       text-align: center;
-       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-       flex: 1;
-       min-width: 150px;
-       transition: transform 0.3s ease;
-     }
-    
-    .stat-box:hover {
-      transform: translateY(-5px);
-    }
-    
-    .stat-number {
-      display: block;
-      font-size: 2.5em;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    
-    .stat-label {
-      font-size: 1em;
-      opacity: 0.9;
-      font-weight: 400;
-    }
-    
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px auto;
-      flex-wrap: wrap;
-    }
-    
-    .control-btn {
-      background: white;
-      border: 2px solid #e9ecef;
-      padding: 12px 24px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      font-family: 'Roboto', sans-serif;
-      color: #495057;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-         .control-btn:hover {
-       background: #f8f9fa;
-       border-color: #FF9933;
-       transform: translateY(-2px);
-       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-     }
-    
-         .control-btn.active {
-       background: #138808;
-       color: white;
-       border-color: #138808;
-     }
-
-    /* Article Toggle Button */
-         .article-toggle {
-       background: #138808;
-       color: white;
-       border: none;
-       padding: 15px 30px;
-       border-radius: 30px;
-       cursor: pointer;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 500;
-       font-size: 1.1em;
-       margin: 20px auto;
-       display: block;
-       transition: all 0.3s ease;
-       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-     }
-
-    .article-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Article Section */
-    .article-section {
-      background: white;
-      border-radius: 20px;
-      padding: 0;
-      margin: 30px auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.5s ease;
-    }
-
-         .article-section.expanded {
-       max-height: 4000px;
-     }
-
-    .article-content {
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .article-text {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.1em;
-      line-height: 1.8;
-      color: #495057;
-    }
-
-    .article-text p {
-      margin-bottom: 20px;
-      text-align: justify;
-    }
-
-         .article-text a {
-       color: #FF9933;
-       text-decoration: none;
-       font-weight: 500;
-       border-bottom: 2px solid transparent;
-       transition: border-color 0.3s ease;
-     }
-
-     .article-text a:hover {
-       border-bottom-color: #FF9933;
-     }
-
-    .article-images {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .article-image {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .article-image:hover {
-      transform: scale(1.02);
-    }
-
-         .article-image img {
-       width: 100%;
-       height: auto;
-       max-height: 400px;
-       object-fit: contain;
-       display: block;
-     }
-
-    .image-caption {
-      background: #f8f9fa;
-      padding: 15px;
-      font-family: 'Roboto', sans-serif;
-      font-size: 0.9em;
-      color: #6c757d;
-      font-style: italic;
-      text-align: center;
-    }
-
-         .image-caption a {
-       color: #FF9933;
-       text-decoration: none;
-       font-weight: 500;
-     }
-
-         .quote-box {
-       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-       border-left: 4px solid #FF9933;
-       padding: 25px;
-       margin: 30px 0;
-       border-radius: 10px;
-       font-style: italic;
-       font-size: 1.1em;
-       color: #495057;
-     }
-
-    #map {
-      width: 100%;
-      height: 800px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      margin: 30px 0;
-    }
-    
-    .charts-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      margin: 40px auto;
-    }
-    
-    .chart-container {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .chart-container:hover {
-      transform: translateY(-5px);
-    }
-    
-    .chart-title {
-      font-size: 1.3em;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: #333;
-      text-align: center;
-      font-family: 'Roboto', sans-serif;
-    }
-    
-    /* Legend styles */
-    .legend {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      font-family: 'Roboto', sans-serif;
-    }
-    
-    .legend h4 {
-      margin: 0 0 15px 0;
-      font-size: 1em;
-      font-weight: 600;
-      color: #333;
-    }
-    
-    .legend i {
-      width: 20px;
-      height: 20px;
-      float: left;
-      margin-right: 10px;
-      opacity: 0.8;
-      border-radius: 3px;
-    }
-
-    .legend br {
-      clear: both;
-      margin-bottom: 8px;
-    }
-
-    footer {
-      background: #343a40;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .article-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
-      }
-
-      .stats-container {
-        flex-direction: column;
-      }
-
-      .controls {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .charts-section {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 2.5em;
-      }
-
-      .container {
-        padding: 10px;
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --page: #0f0f0e; --surface: #1a1a19; --surface-2: #232321; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+        --hair: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --accent: #eb6834; --accent-soft: rgba(235,104,52,.16);
+        --series-2: #3987e5; --context: #55534e; --link: #f0a27e; --ok: #0ca30c; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
       }
     }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --page: #0f0f0e; --surface: #1a1a19; --surface-2: #232321; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --hair: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --accent: #eb6834; --accent-soft: rgba(235,104,52,.16);
+      --series-2: #3987e5; --context: #55534e; --link: #f0a27e; --ok: #0ca30c; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: .4em; }
+    h3 { font-size: 1.25rem; margin-bottom: .3em; }
+    p { margin: 0 0 1em; max-width: 68ch; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--surface); padding: 8px 12px; border-radius: 8px; }
+    .skip:focus { left: 8px; z-index: 2000; }
+
+    /* ---------- hero ---------- */
+    .hero { padding: 56px 0 32px; border-bottom: 1px solid var(--hair); background: linear-gradient(180deg, var(--accent-soft), transparent 70%); }
+    .eyebrow { font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 14px; }
+    .lede { font-size: 1.2rem; color: var(--ink-2); max-width: 62ch; margin-top: 18px; }
+    .byline { color: var(--muted); font-size: .95rem; }
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 34px; }
+    .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+    .kpi .label { font-size: .9rem; color: var(--ink-2); }
+    .kpi .value { font-size: 2.4rem; font-weight: 600; line-height: 1.1; margin: 4px 0 2px; }
+    .kpi .note { font-size: .85rem; color: var(--muted); }
+
+    /* ---------- nav ---------- */
+    .nav { position: sticky; top: 0; z-index: 900; background: color-mix(in srgb, var(--page) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hair); }
+    .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .nav a { display: block; padding: 12px 12px; font-size: .92rem; color: var(--ink-2); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+    .nav a:hover, .nav a:focus { color: var(--ink); border-bottom-color: var(--accent); }
+
+    section { padding: 48px 0 8px; }
+    .section-intro { color: var(--ink-2); font-size: 1.05rem; }
+
+    /* ---------- map ---------- */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin: 18px 0 12px; }
+    .group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .group .glabel { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+    .chip { font: inherit; font-size: .9rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--axis); background: var(--surface); color: var(--ink); cursor: pointer; line-height: 1.2; }
+    .chip:hover { border-color: var(--ink-2); }
+    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .chip:focus-visible { outline: 2px solid var(--series-2); outline-offset: 2px; }
+    .map-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; }
+    .map-grid > * { min-width: 0; }
+    #map { height: min(72vh, 760px); min-height: 480px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); background: #e9e6df; }
+    .side { display: flex; flex-direction: column; gap: 10px; max-height: min(72vh, 760px); overflow: auto; }
+    .story { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; cursor: pointer; text-align: left; font: inherit; color: var(--ink); }
+    .story:hover { border-color: var(--accent); }
+    .story b { display: block; font-family: var(--serif); font-size: 1.05rem; margin-bottom: 2px; }
+    .story span { font-size: .88rem; color: var(--ink-2); display: block; }
+    .story .k { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .view-desc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-top: 14px; font-size: .98rem; color: var(--ink-2); }
+    .view-desc b { color: var(--ink); }
+    .status { font-size: .88rem; color: var(--muted); margin-left: auto; }
+    .leaflet-container { font-family: var(--sans); font-size: 13px; }
+    .legend { background: rgba(252,252,251,.94); color: #161513; padding: 10px 12px; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.18); font-size: 12.5px; line-height: 1.35; max-width: 220px; }
+    .legend h4 { margin: 0 0 6px; font-size: 12.5px; font-weight: 600; }
+    .legend .row { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
+    .legend .sw { width: 18px; height: 14px; border-radius: 3px; flex: none; }
+    .legend .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
+    .legend small { color: #52514e; display: block; margin-top: 6px; }
+    .lm-label { background: rgba(255,255,255,.85); border: 0; border-radius: 4px; padding: 1px 5px; font-size: 11px; color: #333; box-shadow: none; white-space: nowrap; }
+    .lm-label::before { display: none; }
+    .leaflet-popup-content { margin: 12px 14px; font-size: 13px; line-height: 1.45; }
+    .leaflet-popup-content h4 { margin: 0 0 6px; font-size: 14px; font-family: var(--serif); }
+    .leaflet-popup-content dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 0; }
+    .leaflet-popup-content dt { color: #52514e; }
+    .leaflet-popup-content dd { margin: 0; }
+    .basemap-ctl { background: rgba(252,252,251,.94); border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,.18); overflow: hidden; display: flex; }
+    .basemap-ctl button { font: inherit; font-size: 12px; padding: 6px 10px; border: 0; background: transparent; cursor: pointer; color: #333; }
+    .basemap-ctl button[aria-pressed="true"] { background: #161513; color: #fff; }
+
+    /* ---------- findings ---------- */
+    .finding { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px 40px; padding: 34px 0; border-top: 1px solid var(--hair); }
+    .finding:first-of-type { border-top: 0; }
+    .finding .num { font-family: var(--serif); color: var(--accent); font-size: .95rem; font-weight: 600; letter-spacing: .04em; }
+    .finding .text p { font-size: 1.02rem; }
+    .stat-line { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 10px 0 14px; padding: 10px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+    .stat-line div { font-size: .85rem; color: var(--ink-2); }
+    .stat-line b { display: block; font-size: 1.3rem; color: var(--ink); font-weight: 600; }
+    details.how { margin-top: 8px; font-size: .95rem; color: var(--ink-2); }
+    details.how summary { cursor: pointer; color: var(--ink); font-weight: 600; }
+    details.how p { margin: .5em 0; max-width: 60ch; }
+    .charts { display: grid; gap: 18px; }
+    figure { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px 12px; box-shadow: var(--shadow); min-width: 0; }
+    figure .ftitle { font-weight: 600; font-size: .98rem; margin-bottom: 2px; }
+    figure .fsub { font-size: .85rem; color: var(--muted); margin-bottom: 10px; }
+    figure svg { display: block; width: 100%; height: auto; font-family: var(--sans); }
+    figure .plot { min-height: 60px; }
+    figcaption { font-size: .82rem; color: var(--muted); margin-top: 8px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    figcaption button { font: inherit; font-size: .8rem; background: none; border: 1px solid var(--axis); border-radius: 6px; padding: 3px 8px; cursor: pointer; color: var(--ink-2); }
+    figure table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-top: 8px; font-variant-numeric: tabular-nums; }
+    figure th, figure td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--hair); }
+    figure td.n, figure th.n { text-align: right; }
+    .legend-inline { display: flex; gap: 14px; font-size: .82rem; color: var(--ink-2); margin: 0 0 6px; flex-wrap: wrap; }
+    .legend-inline i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .mark { fill: var(--accent); }
+    .mark-2 { fill: var(--series-2); }
+    .hair { stroke: var(--hair); stroke-width: 1; }
+    .axisline { stroke: var(--axis); stroke-width: 1; }
+    .tick { fill: var(--muted); font-size: 11px; }
+    .lbl { fill: var(--ink-2); font-size: 12px; }
+    .val { fill: var(--ink); font-size: 12px; font-weight: 600; }
+    .hit { fill: transparent; cursor: default; }
+    .hit:focus { outline: none; }
+    .hit:focus + .mark, .hit:hover + .mark, .hit:focus + .mark-2, .hit:hover + .mark-2 { opacity: .8; }
+    .tip { position: fixed; z-index: 3000; pointer-events: none; background: var(--ink); color: var(--page); padding: 7px 10px; border-radius: 8px; font-size: 12.5px; line-height: 1.4; max-width: 260px; box-shadow: 0 4px 16px rgba(0,0,0,.25); opacity: 0; transition: opacity .08s; }
+    .tip b { font-size: 14px; display: block; }
+    .tip.on { opacity: 1; }
+
+    /* ---------- article ---------- */
+    .article { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: start; }
+    .article .text p { font-size: 1.05rem; }
+    blockquote { margin: 20px 0; padding: 14px 20px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 10px 10px 0; font-family: var(--serif); font-size: 1.1rem; color: var(--ink-2); }
+    blockquote cite { display: block; font-size: .85rem; font-style: normal; color: var(--muted); margin-top: 6px; }
+    .photos { display: flex; flex-direction: column; gap: 14px; }
+    .photos figure { padding: 0; overflow: hidden; }
+    .photos img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photos figcaption { padding: 8px 12px 10px; display: block; }
+    .caveats li, .glossary dd { margin-bottom: 10px; }
+    .glossary dt { font-weight: 600; margin-top: 14px; }
+    .glossary dd { margin-left: 0; color: var(--ink-2); max-width: 70ch; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
+    .dl { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 18px; }
+    .dl a { background: var(--surface); border: 1px solid var(--border); padding: 8px 14px; border-radius: 10px; text-decoration: none; color: var(--ink); font-size: .95rem; }
+    .dl a:hover { border-color: var(--accent); }
+    .dict { font-size: .92rem; border-collapse: collapse; width: 100%; }
+    .dict th, .dict td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+    .dict code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: .88em; }
+    footer { margin-top: 48px; padding: 28px 0 48px; border-top: 1px solid var(--hair); color: var(--muted); font-size: .9rem; }
+
+    @media (max-width: 900px) {
+      .map-grid, .finding, .article, .grid-2 { grid-template-columns: 1fr; }
+      .side { max-height: none; flex-direction: row; overflow-x: auto; }
+      .story { min-width: 230px; }
+      #map { height: min(62vh, 620px); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .tip { transition: none; } }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1></h1>
-    <h2></h2>
-  </header>
+<a class="skip" href="#map-section">Skip to the map</a>
 
-  <div class="container">
-    <!-- Dashboard Statistics -->
-    <div class="stats-container">
-      <div class="stat-box">
-        <span class="stat-number" id="total-mandirs">-</span>
-        <div class="stat-label">Total Mandirs</div>
-      </div>
-      <div class="stat-box">
-        <span class="stat-number" id="max-density">-</span>
-        <div class="stat-label">Highest Density</div>
-      </div>
-      <div class="stat-box">
-        <span class="stat-number" id="avg-density">-</span>
-        <div class="stat-label">Average Density</div>
-      </div>
-      <div class="stat-box">
-        <span class="stat-number" id="coverage-area">-</span>
-        <div class="stat-label">Coverage (km²)</div>
-      </div>
-    </div>
-
-    <!-- Article Toggle Button -->
-    <button class="article-toggle" onclick="toggleArticle()">
-      📖 Read About the Mandirs of Varanasi
-    </button>
-
-    <!-- Article Section -->
-    <div class="article-section" id="articleSection">
-      <div class="article-content">
-        <div class="article-text">
-          <p>In a small alleyway off the Nai Sarak - Luxa intersection, a radiant peach-colored box has attracted two adherents, offering <a href="https://en.wikipedia.org/wiki/Puja_(Hinduism)">puja</a> at the seat of Vishnu's mount. It's a brisk morning here in the City of Light and the sound of motorcycles and automobile horns are beginning to fill the air again. There will be two more adherents who will pass by, receiving their morning blessing before they're off to work as well. Down the street, three gentlemen are closely seated around another one of these drink machine-sized enclosures. At first sight, it seems that they're performing a ritual for Shiva, but on second glance, they're performing a wholly unexpected one, passing a lit <a href="https://en.wikipedia.org/wiki/Chillum_(pipe)">chillum</a> around in equal intervals. When asked, they don't hesitate to tell us that <i>"We smoke ganja here so that we can get Shiva high too."</i> It's an offering that is perhaps a bit unorthodox but also welcomed nonetheless.</p>
-          
-          <p>These enclosures are known as 'mandirs' in India - little temples that house various deities from the Hindu pantheon, often found next to trees, built into the sides of buildings, or close to water wells. Scholarship associated with the function and study of sacred space in Hinduism has fallen short of providing a comprehensive view of the Hindu religious landscape as it relates to these little temples. Traditionally, the field has put heavy emphasis on grand, monolithic temple spaces as the predominant form of veneration among Hindu adherents. Oftentimes, grand temples such as the Kashi Vishwanath Temple or the Mrityunjay Mahadev Mandir served as examples of Hinduism's primary venerative hotspots. However, the most recurrent and numerous temples are typically no larger than these 1x1x1 meter shelters found throughout the city.</p>
-
-          <p>The diversity of thought, ritual, cosmological systems, and theology shouldn't surprise anyone that temple building and sacred space are also characteristically varied in Hinduism as well. Regardless, a primary function of the temple or mandir, is to house the deity. Within Hinduism, a wide corpus of major and minor traditions exist such as principal deities like Ganesha or Shiva. There are a wide variety of other, lesser known deities too, where many are considered <i>house churches</i> or those gods or goddesses venerated within a family or household.</p>
-
-          <p>Over 3,347 individual mandirs were collected and recorded within the metropolitan area of Varanasi. Interviews and photographs were collected in conjunction with a recorded GPS point for the mandir's location. Additionally, we collected information pertaining to the mandir's association with buildings, wells, trees, or anything that would suggest it's location as sacred space. We also recorded how many deities were present at a mandir as well as recording any associative information we thought would be important to tell their story.</p>
-
-          <p>By mapping out characteristics of mandirs we identified, our hope is that a more readily comprehensive geography of the city's public temples will emerge. Additionally, more analytical questions can be asked regarding frequency of temple localities that our GIS can play a role in answering.</p>
-        </div>
-
-        <div class="article-images">
-          <div class="article-image">
-            <img src="images/kashiTemple.jpg" alt="Kashi Temple">
-            <div class="image-caption">
-              Above is an image of the <a href="https://en.wikipedia.org/wiki/Shri_Vishwanath_Mandir">Shri Vishwanath Mandir</a> on the campus of Benaras Hindu University in Varanasi. Photograph by Nathaniel Deaton
-            </div>
-          </div>
-
-          <div class="article-image">
-            <img src="images/mandir1.jpg" alt="Tiny Temple">
-            <div class="image-caption">
-              Above is an image of a small mandir abutting a building to the right with chairs as a frame of reference. Notice the images of deities above the main housing structure; this particular mandir venerates several deities including Ganesh, Shiva, and others. Photograph by Nathaniel Deaton
-            </div>
-          </div>
-
-          <div class="article-image">
-            <img src="images/shiva.jpg" alt="Shiva">
-            <div class="image-caption">
-              Above is an image of <a href='https://en.wikipedia.org/wiki/Garuda'>Garuda</a>, the vehicle (vahana) of Vishnu. Small mandirs can range from having large deital sculptures to containing no image whatsoever. Photograph by Nathaniel Deaton
-            </div>
-          </div>
-
-          <div class="article-image">
-            <img src="images/gangesDog.JPG" alt="Ganges Dog">
-            <div class="image-caption">
-              A happy dog after cooling off in the holy Ganges River. Photograph by Nathaniel Deaton
-            </div>
-          </div>
-
-          <div class="article-image">
-            <img src="images/sacredCow.jpg" alt="Sacred Cow">
-            <div class="image-caption">
-              Cattle out for a stroll through an alleyway in Varanasi. Photograph by Nathaniel Deaton
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="article-content" style="grid-template-columns: 1fr; margin-top: 0;">
-        <div class="article-text">
-          <p>A large majority of the mandirs that we identified were located close to the <a href="https://en.wikipedia.org/wiki/Ghat">ghats</a> along the western bank of the <a href="https://en.wikipedia.org/wiki/Ganges">Ganges River</a> in Varanasi. It's not surprising that this is where many of them reside because of the central role that the holy Ganges plays in the <a href="https://en.wikipedia.org/wiki/Vedas">Sanskrit Vedas.</a> The ghats along the bank are filled with activity. You'll often find people bathing, collecting water, offering oblations to the sacred fires from Vedic traditions such as Yajna, and an entire host of other events such as marriages, funerals at <a href="https://en.wikipedia.org/wiki/Manikarnika_Ghat">Manikarnika Ghat.</a> Haskett's publication on these temples was published in the <i>South Asia Multidisciplinary Academic Journal</i> in 2018 and you can read more about his work <a href="https://journals.openedition.org/samaj/4524">here.</a></p>
-
-          <p>The goal of this project is to build upon the database of temples that were collected in 2012 and 2015 by creating an interactive map that allows viewers to learn more details about the location, deities, and sacred space these mandirs impart on the local community. Below you'll find a map of the mandirs where spatial analysis was performed to find where the density of the mandirs are around the city. Unsurprisingly, the largest clusters were found by the banks of the Ganges and the number begins to wane the further inland you travel.</p>
-
-          <div class="quote-box">
-            <strong>Haskett states:</strong><br><br>
-            "By observing where temples occur and the other features of landscape with which they frequently coincide, we can learn how temples instantiate the presence of deities at important junctures of shared space... our data also suggests a number of insights about the roles that tiny temples play in making Hinduism for the residents of Varanasi."
-          </div>
-
-          <p>We're hoping to continue this research and build a more robust GIS that can also identify affiliated deities as well as provide photographs and other pertinent information. Additionally, many of these mandirs were often found in Muslim neighborhoods so more attention to their role in that religious context is of great interest. Without question, the 'tiny temples' of Varanasi play a major role in the shared sacred experience of the community and deserve more attention in the academy. By examining their role in society, we hope that we can provide a more stable ground to understanding Hinduism in light of their frequent and multifaceted nature.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Map Controls -->
-    <div class="controls">
-      <button class="control-btn active" onclick="switchLayer('density')">🗺️ Density View</button>
-      <button class="control-btn" onclick="switchLayer('individual')">🏛️ Individual Mandirs</button>
-      <button class="control-btn" onclick="resetView()">🔄 Reset View</button>
-    </div>
-
-    <div id='map'></div>
-
-    <!-- Charts Section -->
-    <div class="charts-section">
-      <div class="chart-container">
-        <div class="chart-title">Mandir Density Distribution</div>
-        <canvas id="densityChart" style="max-height: 300px;"></canvas>
-      </div>
-      
-      <div class="chart-container">
-        <div class="chart-title">Deity Distribution</div>
-        <canvas id="deityChart" style="max-height: 300px;"></canvas>
-      </div>
-      
-      <div class="chart-container">
-        <div class="chart-title">Temple Structure Types</div>
-        <canvas id="structureChart" style="max-height: 300px;"></canvas>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin: 30px 0;">
-      <p style="font-size: 1.1em; color: #6c757d;"><strong>Interactive map showing mandir density clusters and individual temple locations. Use the controls above to switch between density view and individual mandir view.</strong></p>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">A geographic survey of street shrines · Varanasi, Uttar Pradesh · 2012 and 2015</div>
+    <h1>The Tiny Temples of Varanasi</h1>
+    <p class="lede">Over two field seasons, Christian Haskett and Nathaniel Deaton walked the lanes of Varanasi and logged 3,347 roadside shrines, most of them no larger than a cupboard. This map returns 2,296 of them, the ones with complete records, to the streets and asks what their positions reveal about how sacred space is made in the City of Light.</p>
+    <p class="byline">Map and analysis by Nathaniel Deaton · Survey with Dr. Christian Haskett · Read the companion paper: <a href="https://journals.openedition.org/samaj/4524">Haskett, <em>SAMAJ</em> 2018</a></p>
+    <div class="kpis" id="kpis">
+      <div class="kpi"><div class="label">Shrines with full records</div><div class="value" data-k="n_points">2,296</div><div class="note">of 3,347 logged by the survey</div></div>
+      <div class="kpi"><div class="label">Median distance to the Ganga bank</div><div class="value"><span data-k="river_median">172</span> m</div><div class="note">93% stand within 500 m of the water</div></div>
+      <div class="kpi"><div class="label">Median gap to nearest shrine</div><div class="value"><span data-k="nn_median">11</span> m</div><div class="note">a random layout would give 86 m</div></div>
+      <div class="kpi"><div class="label">Shrines inside statistical hot spots</div><div class="value"><span data-k="share_in_hot_pct">67</span>%</div><div class="note">on just <span data-k="gi_hot_km2">2.9</span> km² of ground</div></div>
     </div>
   </div>
+</header>
 
-  <footer>
-    <p>Map authored by Nathaniel Deaton</p>
-    <p>Interactive Dashboard & Data Visualization</p>
-  </footer>
+<nav class="nav" aria-label="Sections"><div class="wrap"><ul>
+  <li><a href="#map-section">Map</a></li><li><a href="#findings">Findings</a></li><li><a href="#story">The survey</a></li><li><a href="#toolkit">Statistical toolkit</a></li><li><a href="#caveats">Caveats</a></li><li><a href="#data">Data</a></li>
+</ul></div></nav>
 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src='https://unpkg.com/simple-statistics@7.6.0/dist/simple-statistics.min.js'></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<main>
+<!-- =============================== MAP =============================== -->
+<section id="map-section">
+  <div class="wrap">
+    <h2>Explore the map</h2>
+    <p class="section-intro">Three ways to look at the same survey. <b>Density</b> counts shrines in 66-metre hexagons. <b>Hot spots</b> shows where those counts are higher than chance can explain. <b>Individual shrines</b> plots every record and lets you highlight a deity or a building type.</p>
+    <div class="toolbar" role="toolbar" aria-label="Map controls">
+      <div class="group" id="views"><span class="glabel">View</span>
+        <button class="chip" data-view="density" aria-pressed="true">Density</button>
+        <button class="chip" data-view="hot" aria-pressed="false">Hot spots</button>
+        <button class="chip" data-view="points" aria-pressed="false">Individual shrines</button>
+      </div>
+      <div class="group" id="famchips"><span class="glabel">Highlight deity</span>
+        <button class="chip" data-fam="" aria-pressed="true">All</button>
+        <button class="chip" data-fam="S" aria-pressed="false">Shaiva</button>
+        <button class="chip" data-fam="H" aria-pressed="false">Hanuman</button>
+        <button class="chip" data-fam="G" aria-pressed="false">Ganesh</button>
+        <button class="chip" data-fam="D" aria-pressed="false">Goddess</button>
+        <button class="chip" data-fam="V" aria-pressed="false">Vaishnava</button>
+        <button class="chip" data-fam="F" aria-pressed="false">Folk</button>
+        <button class="chip" data-fam="O" aria-pressed="false">Other</button>
+      </div>
+      <div class="group" id="strchips"><span class="glabel">Structure</span>
+        <button class="chip" data-str="" aria-pressed="true">Any</button>
+        <button class="chip" data-str="fs" aria-pressed="false">Free-standing</button>
+        <button class="chip" data-str="w" aria-pressed="false">Wall niche</button>
+        <button class="chip" data-str="c" aria-pressed="false">Temple complex</button>
+        <button class="chip" data-str="tt" aria-pressed="false">Tree-temple</button>
+        <button class="chip" data-str="t" aria-pressed="false">Tree</button>
+        <button class="chip" data-str="ba" aria-pressed="false">Built-around</button>
+      </div>
+      <div class="status" id="status" aria-live="polite">Loading data…</div>
+    </div>
+    <div class="map-grid">
+      <div id="map" role="region" aria-label="Interactive map of shrines in Varanasi"></div>
+      <div class="side" id="stories" aria-label="Places worth a closer look"></div>
+    </div>
+    <div class="view-desc" id="viewdesc"></div>
+  </div>
+</section>
 
-  <script>
-    //console.log('this works')
-    //console.log(mandirs)
-    jQuery("h1").html("The 'Mini Mandirs' of Varanasi");
-    jQuery("h2").html("How the 'Tiny Temples' of the City of Light Inform Us About Hindu Shared Experience")
+<!-- =============================== FINDINGS =============================== -->
+<section id="findings">
+  <div class="wrap">
+    <h2>What the positions tell us</h2>
+    <p class="section-intro">Each finding pairs a statistic with the chart that shows it and a short note on how the statistic works. All numbers are computed from the 2,296 shrines with attribute records unless stated otherwise.</p>
 
-    var options = {
-      center: [25.288792, 83.005975],
-      zoom: 12.5,
-      zoomSnap: 1,
-      zoomControl: false
-    }
+    <article class="finding" id="f1">
+      <div class="text">
+        <div class="num">Finding 1</div>
+        <h3>Shrines come in clusters, at every scale</h3>
+        <p>Half of all shrines have another shrine within 11 metres, and 86% have one within 50 metres. If the same 2,296 shrines were scattered at random across the surveyed area, the typical gap would be 86 metres. The Clark–Evans ratio of observed to expected spacing is 0.34, far below the value of 1 that random placement produces.</p>
+        <p>Ripley's L function shows the clustering is not only a matter of shrines huddling in pairs. The excess over randomness keeps growing out to about 1.5 kilometres, which is roughly the width of the old city between the river and the inland bazaars. Shrines cluster within lanes, lanes cluster within neighbourhoods, and neighbourhoods cluster along the river.</p>
+        <div class="stat-line"><div><b>0.34</b>Clark–Evans R</div><div><b>−60</b>z-score (random = 0)</div><div><b>11 m</b>median nearest neighbour</div><div><b>1.5 km</b>scale of peak clustering</div></div>
+        <details class="how"><summary>How to read these statistics</summary>
+          <p><b>Nearest-neighbour distance</b> measures, for each shrine, the straight-line gap to the closest other shrine. The <b>Clark–Evans ratio (R)</b> divides the average of those gaps by the average a random layout with the same density would produce: R near 1 means random, below 1 means clustered, above 1 means evenly spaced. The z-score says how many standard errors the observed value is from random; anything beyond ±3 is decisive.</p>
+          <p><b>Ripley's K</b> counts how many other shrines fall within a radius r of a typical shrine, at many radii. The transformed <b>L(r) − r</b> equals zero for a random pattern, so the height of the curve at each radius is the excess clustering at that scale. The curve peaks where clusters are largest. Edge effects were not corrected, which slightly inflates values at large radii.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-nn"><div class="ftitle">Share of shrines with a neighbour within a given distance</div><div class="fsub">Cumulative share, 2,296 shrines</div><div class="plot"></div><figcaption><span>Source: survey points, distances in metres on the ground.</span></figcaption></figure>
+        <figure id="c-ripley"><div class="ftitle">Ripley's L(r) − r: excess clustering by scale</div><div class="fsub">Metres above the random expectation of zero</div><div class="plot"></div><figcaption><span>Without edge correction; convex-hull study area of 67 km².</span></figcaption></figure>
+      </div>
+    </article>
 
-    var map = L.map('map', options); // map variable storing object and options
+    <article class="finding" id="f2">
+      <div class="text">
+        <div class="num">Finding 2</div>
+        <h3>One hot spot holds the old city</h3>
+        <p>Binning the full survey into 990 hexagons, each 66 metres across, gives a very lopsided count: half of the hexagons hold a single shrine, while the densest, on the steps of Panchganga Ghat, holds 87. Neighbouring hexagons resemble each other far more than chance allows (Moran's I of 0.44), which is what a genuinely clustered landscape looks like on a grid.</p>
+        <p>A Getis–Ord hot-spot test finds 247 hexagons whose surroundings are significantly denser than the city as a whole, after correcting for the many tests being run. Together they cover 2.9 km², about 4% of the surveyed ground, yet contain 67% of the shrines. Almost all of them form a single continuous band, 4.3 km long, running behind the ghats from Assi to Trilochan. There are no significant cold spots: the rest of the city is sparse, not unusually empty.</p>
+        <div class="stat-line"><div><b>0.44</b>Moran's I (z = 66)</div><div><b>247</b>hot-spot hexagons</div><div><b>67%</b>of shrines inside them</div><div><b>87</b>shrines in the densest hexagon</div></div>
+        <details class="how"><summary>How to read these statistics</summary>
+          <p><b>Hexagonal binning</b> divides the map into equal cells and counts points per cell; hexagons are used because every neighbour is the same distance away. Each cell here has a 66.7 m circumradius and covers 1.15 hectares. The <b>variance-to-mean ratio</b> of the counts is 9.2; for a random scatter it would be about 1.</p>
+          <p><b>Moran's I</b> asks whether cells with high counts tend to sit beside other high-count cells. It runs from −1 (checkerboard) through 0 (no pattern) to +1 (smooth patches). <b>Getis–Ord Gi*</b> compares the sum of counts in each cell and its six neighbours against the city-wide average and expresses the difference as a z-score. Because 7,247 cells are tested at once, a <b>false-discovery-rate</b> correction (Benjamini–Hochberg, 5%) is applied so that chance alone does not manufacture hot spots. Zero-count cells inside the study area were restored before testing, which the original grid omitted.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-hex"><div class="ftitle">How many shrines a hexagon holds</div><div class="fsub">990 occupied hexagons, full survey (3,313 records)</div><div class="plot"></div><figcaption><span>Long right tail: 28 hexagons hold 16 or more shrines.</span></figcaption></figure>
+      </div>
+    </article>
 
-    var mandirImage = "mandirs-of-Uttar-Pradesh/images/mandir1.jpg"
+    <article class="finding" id="f3">
+      <div class="text">
+        <div class="num">Finding 3</div>
+        <h3>The pull of the Ganga</h3>
+        <p>The survey text says the shrines thin out away from the river. The numbers agree, strongly. Half the shrines stand within 172 metres of the Ganga's bank and 93% within 500 metres. Per square kilometre of land, the strip within 100 metres of the water holds 124 shrines; the band from 250 to 500 metres holds 35; from 500 to 750 metres, 13. Shrine density falls by roughly a factor of ten over the first 750 metres inland.</p>
+        <p>The gradient is not the same for everyone. Shrines built into walls stay closest to the water (median 109 m), which is the fabric of the riverside lanes. Tree shrines and tree-temples sit farther back (median 231 to 271 m), and Hanuman shrines stand measurably farther from the river than Shiva shrines. Distance to the river also predicts sparseness: the farther a shrine is from the water, the farther it tends to be from its nearest neighbour (Spearman's ρ = 0.37).</p>
+        <div class="stat-line"><div><b>172 m</b>median distance to bank</div><div><b>124 → 13</b>shrines per km², 0–100 m vs 500–750 m</div><div><b>z = 4.3</b>Hanuman farther than Shiva (Mann–Whitney)</div><div><b>ρ = 0.37</b>river distance vs neighbour gap</div></div>
+        <details class="how"><summary>How to read these statistics</summary>
+          <p><b>Distance bands</b> are rings drawn around the river polygon (from OpenStreetMap). Counting shrines per band alone would mislead, because bands farther out cover more land, so each count is divided by the band's land area inside the survey region to give a <b>density</b>.</p>
+          <p>The <b>Mann–Whitney U test</b> compares two groups' distances without assuming a bell curve; its z-score works like the others, and the companion figure P(Hanuman farther) = 0.59 means that in a random Hanuman–Shiva pair, the Hanuman shrine is the more inland one 59% of the time. <b>Spearman's ρ</b> is a rank correlation: 0 means no relationship, 1 a perfect monotone one.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-bands"><div class="ftitle">Shrine density by distance from the Ganga bank</div><div class="fsub">Shrines per km² of land in each band</div><div class="plot"></div><figcaption><span>60 shrines that fall inside the mapped river polygon are counted at 0 m.</span></figcaption></figure>
+        <figure id="c-famdist"><div class="ftitle">Median distance to the river by deity family</div><div class="fsub">Metres; a shrine counts in every family it houses</div><div class="plot"></div><figcaption><span>Interquartile ranges are in the table view.</span></figcaption></figure>
+      </div>
+    </article>
 
-    var Thunderforest_Outdoors = L.tileLayer(
-      'https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
-        attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        apikey: '21ef519d083c43a0b670676d01dbe02f',
-        maxZoom: 22
-      }).addTo(map);
+    <article class="finding" id="f4">
+      <div class="text">
+        <div class="num">Finding 4</div>
+        <h3>Whose city? Shiva's, mostly</h3>
+        <p>Two shrines in three house Shiva in some form, whether as a lingam, as Shiva with Parvati, or as the full family, and nearly half of all shrines house Shiva and no one else. Hanuman is next at 23%, and he tends to stand alone: 234 of his 539 shrines hold no other deity. Ganesh appears in 12%, goddesses (Devi, a locally named Maa, or Sitala) in 11%, and the Vaishnava deities Rama and Krishna in under 6%. Folk figures such as the Bir Baba appear in 3%.</p>
+        <p>Who shares a shrine with whom is far from random. Shiva-Parvati and the wider Shiva family appear together 2.4 times as often as chance would produce, Hanuman and Rama 2.1 times. Hanuman and Shiva-Parvati, by contrast, share a shrine only a third as often as expected. The pantheon, as built on the street, sorts itself into a Shaiva household and a Hanuman–Rama household that rarely mix.</p>
+        <div class="stat-line"><div><b>67%</b>house a Shaiva deity</div><div><b>49%</b>Shaiva only</div><div><b>2.1×</b>lift, Hanuman with Rama</div><div><b>0.31×</b>lift, Hanuman with Shiva-Parvati</div></div>
+        <details class="how"><summary>How to read these statistics</summary>
+          <p>The survey's 17 deity labels were grouped into seven <b>families</b>: Shaiva (Shiva, Shiva-Parvati, Shiva family), Hanuman, Ganesh, Goddess (Devi, named local Maa, Sitala Maa), Vaishnava (Rama, Rama-Sita, Krishna), Folk (Bir Baba, village deity) and Other. A shrine can belong to several.</p>
+          <p><b>Lift</b> is the number of shrines where two deities appear together, divided by the number expected if the two were placed independently. Lift 1 is chance; 2 is twice as often as chance; 0.5 is half. It is the same measure used in market-basket analysis.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-fam"><div class="ftitle">Share of shrines housing each deity family</div><div class="fsub">A shrine counts in every family it houses</div><div class="plot"></div><figcaption><span>Percent of 2,296 shrines.</span></figcaption></figure>
+        <figure id="c-lift"><div class="ftitle">Who shares a shrine with whom</div><div class="fsub">Lift: observed pairings ÷ expected by chance. Above 1 (orange) pairs attract; below 1 (blue) they avoid</div><div class="plot"></div><figcaption><span>Deity groups with at least 50 shrines. Devi and named Maa are typically recorded together.</span></figcaption></figure>
+      </div>
+    </article>
 
-    map.addControl(L.control.zoom({
-      position: 'topright'
-    }));
+    <article class="finding" id="f5">
+      <div class="text">
+        <div class="num">Finding 5</div>
+        <h3>How a shrine is built depends on who lives in it</h3>
+        <p>Four in ten shrines are free-standing boxes, and a further 36% are niches built into a wall. One in ten belongs to a larger temple complex, and one in six is tied to a tree, either as a shrine beneath it or as a small temple built around its trunk. A chi-square test finds the pairing of deity and structure is far from random, although the effect is modest in size (Cramér's V of 0.12): most kinds of deity are found in most kinds of shrine, with clear leanings.</p>
+        <p>The leanings are telling. Ganesh, the guardian of thresholds, is found in wall niches far more often than expected and in free-standing shrines far less. Hanuman favours tree-temples. The deities the surveyors could not identify are overwhelmingly tree shrines, which is where informal and local cults tend to live. Rama and Krishna are the most likely to be found inside a proper temple complex.</p>
+        <div class="stat-line"><div><b>41% / 36%</b>free-standing / wall niche</div><div><b>17%</b>tied to a tree</div><div><b>χ² = 126</b>on 30 df, p &lt; 10⁻¹³</div><div><b>0.12</b>Cramér's V</div></div>
+        <details class="how"><summary>How to read these statistics</summary>
+          <p>The <b>chi-square test of independence</b> compares a cross-tabulation of deity family by structure with the table you would expect if the two were unrelated. A tiny p-value says the relationship is real; <b>Cramér's V</b> (0 to 1) says how strong it is. The test uses the 1,767 shrines that house a single family and have a recorded structure.</p>
+          <p>The heatmap shows <b>standardised residuals</b>: (observed − expected) ÷ √expected for each cell. Values beyond about ±2 mark combinations that are meaningfully over- or under-represented.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-str"><div class="ftitle">How the shrines are built</div><div class="fsub">Share of shrines recorded with each structure type (a shrine can have more than one)</div><div class="plot"></div><figcaption><span>40 shrines have no structure recorded.</span></figcaption></figure>
+        <figure id="c-resid"><div class="ftitle">Which deities favour which structures</div><div class="fsub">Standardised residuals, single-family shrines. Orange: more than expected; blue: fewer</div><div class="plot"></div><figcaption><span>Cell labels beyond ±2 are notable.</span></figcaption></figure>
+      </div>
+    </article>
 
-    // mandirData = 'geoJSON/ganges_mandirs.geojson' // Path to mandir geoJSON data
+    <article class="finding" id="f6">
+      <div class="text">
+        <div class="num">Finding 6</div>
+        <h3>Two landscapes: the riverside core and the edge</h3>
+        <p>Splitting the shrines by whether they fall inside a hot spot reveals two different religious landscapes. Inside the dense riverside core, 45% of shrines are wall niches and only 5% are tied to trees; the typical shrine holds a single image. Outside it, wall niches drop to 13%, tree shrines rise to 25%, and free-standing boxes dominate.</p>
+        <p>The deities shift with the architecture. Hanuman is present in 37% of the shrines outside the core but only 17% inside it, and the folk and unidentified deities are three to five times as common outside. The old city is a Shaiva landscape carved into its walls; the newer, sparser neighbourhoods are a landscape of Hanuman, trees and free-standing boxes on street corners.</p>
+        <div class="stat-line"><div><b>45% vs 13%</b>wall niches, inside vs outside</div><div><b>5% vs 25%</b>tree-tied shrines</div><div><b>17% vs 37%</b>Hanuman shrines</div></div>
+        <details class="how"><summary>How to read this chart</summary>
+          <p>Each row compares the share of shrines with a given trait inside the Gi* hot-spot cells against the share outside them. The dots are simple percentages of two groups (1,544 shrines inside, 752 outside). No test is applied; the sizes of the gaps speak for themselves and the table view holds the exact figures.</p>
+        </details>
+      </div>
+      <div class="charts">
+        <figure id="c-core"><div class="ftitle">Inside the hot spots versus outside them</div><div class="fsub">Share of shrines with each trait</div><div class="plot"></div><figcaption><span>1,544 shrines inside hot-spot hexagons, 752 outside.</span></figcaption></figure>
+      </div>
+    </article>
 
+    <article class="finding" id="f7">
+      <div class="text">
+        <div class="num">Finding 7</div>
+        <h3>Images and names</h3>
+        <p>The surveyors counted the images present at each shrine: 5,484 in all, a median of two per shrine. The distribution is heavily skewed. 211 shrines held no image at all, 40% held exactly one, and the richest tenth of shrines account for 35% of every image counted. Vaishnava shrines are the most crowded (median four images), goddess shrines the sparest (median one).</p>
+        <p>Only 136 shrines, 6%, carry a name the surveyors recorded, and 63 of those are Shiva names ending in <em>-eshwar</em> or <em>Mahadev</em>, the convention of the Kashi Khanda's catalogue of lingams. The named shrines are almost all free-standing or part of a complex; the anonymous wall niche is the ordinary unit of devotion on the street.</p>
+        <div class="stat-line"><div><b>5,484</b>images counted</div><div><b>35%</b>held by the richest 10% of shrines</div><div><b>136</b>named shrines</div><div><b>63</b>of them Shiva names</div></div>
+      </div>
+      <div class="charts">
+        <figure id="c-img"><div class="ftitle">Images present per shrine</div><div class="fsub">Number of shrines, images capped at 10+</div><div class="plot"></div><figcaption><span>Maximum recorded: 50 images at one shrine.</span></figcaption></figure>
+        <figure id="c-imgfam"><div class="ftitle">Share of shrines with five or more images, by family</div><div class="fsub">Percent within each family</div><div class="plot"></div><figcaption><span>Medians and means are in the table view.</span></figcaption></figure>
+      </div>
+    </article>
+  </div>
+</section>
 
-    const deityData = 'geoJSON/data/hex_final.geojson'
-    const count = "deity_count"
-    var values = [];
+<!-- =============================== ARTICLE =============================== -->
+<section id="story">
+  <div class="wrap">
+    <h2>About the survey</h2>
+    <div class="article">
+      <div class="text">
+        <p>In a small alleyway off the Nai Sarak–Luxa intersection, a radiant peach-coloured box has attracted two adherents, offering <a href="https://en.wikipedia.org/wiki/Puja_(Hinduism)">puja</a> at the seat of Vishnu's mount. It is a brisk morning in the City of Light and the sound of motorcycles and horns is beginning to fill the air again. Two more adherents will pass by for their morning blessing before they are off to work. Down the street, three men sit closely around another of these vending-machine-sized enclosures. At first sight they seem to be performing a ritual for Shiva; on second glance they are passing a lit <a href="https://en.wikipedia.org/wiki/Chillum_(pipe)">chillum</a> around in equal intervals. Asked about it, they do not hesitate: "We smoke ganja here so that we can get Shiva high too." An unorthodox offering, but a welcomed one.</p>
+        <p>These enclosures are mandirs: little temples that house deities from the Hindu pantheon, found beside trees, built into the sides of buildings, or close to water wells. Scholarship on sacred space in Hinduism has put heavy emphasis on grand, monolithic temples such as the Kashi Vishwanath Temple as the primary sites of veneration. Yet the most numerous temples in the city are shelters of roughly a cubic metre, and they play an integral, perhaps central, role in the religious lives of many Hindus today.</p>
+        <p>In the summers of 2012 and 2015, Nathaniel Deaton joined Dr. Christian Haskett on a field survey of these tiny temples. For each shrine the team recorded a GPS position, the deities housed, the number of images present, the shrine's physical form and its association with walls, trees or temple complexes, and, where one existed, its name. Interviews and photographs were collected alongside. Haskett's analysis of the survey was published in the <em>South Asia Multidisciplinary Academic Journal</em> in 2018.</p>
+        <blockquote>"By observing where temples occur and the other features of landscape with which they frequently coincide, we can learn how temples instantiate the presence of deities at important junctures of shared space… our data also suggests a number of insights about the roles that tiny temples play in making Hinduism for the residents of Varanasi."<cite>Christian Haskett, 2018</cite></blockquote>
+        <p>This site builds on that database with an interactive map and a set of spatial statistics. The aim is a more comprehensive geography of the city's public temples, and a foundation for questions the GIS can help answer: how tightly shrines cluster, how far the river's pull reaches, which deities keep company, and how the form of a shrine follows its occupant. Many of these mandirs also stand in Muslim neighbourhoods, and their role in that setting deserves further attention.</p>
+      </div>
+      <div class="photos">
+        <figure><img src="images/mandir1.jpg" alt="A small orange shrine abutting a building, with plastic chairs beside it for scale" loading="lazy"><figcaption>A small mandir abutting a building, with chairs for scale. The images above the housing show it venerates several deities including Ganesh and Shiva. Photograph: Nathaniel Deaton.</figcaption></figure>
+        <figure><img src="images/temple1.jpg" alt="A temple complex with a tree, a tiny shrine and a medium-sized temple" loading="lazy"><figcaption>A complex between Varanasi and Sarnath, recorded as a tree, a tiny temple and a medium temple. Photograph: Nathaniel Deaton.</figcaption></figure>
+        <figure><img src="images/shiva.jpg" alt="A painted sculpture of Garuda inside a shrine" loading="lazy"><figcaption><a href="https://en.wikipedia.org/wiki/Garuda">Garuda</a>, the vehicle of Vishnu. Small mandirs range from large sculptures to no image at all. Photograph: Nathaniel Deaton.</figcaption></figure>
+        <figure><img src="images/kashiTemple.jpg" alt="The white spire of the Shri Vishwanath Mandir on the Banaras Hindu University campus" loading="lazy"><figcaption>The <a href="https://en.wikipedia.org/wiki/Shri_Vishwanath_Mandir">Shri Vishwanath Mandir</a> at Banaras Hindu University: the monumental kind of temple that scholarship has favoured. Photograph: Nathaniel Deaton.</figcaption></figure>
+        <figure><img src="images/sacredCow.jpg" alt="Cattle walking through a narrow alleyway" loading="lazy"><figcaption>Cattle out for a stroll through an alleyway in Varanasi. Photograph: Nathaniel Deaton.</figcaption></figure>
+        <figure><img src="images/gangesDog.jpg" alt="A wet dog on the steps of a ghat beside the Ganges" loading="lazy"><figcaption>A happy dog after cooling off in the Ganga. Photograph: Nathaniel Deaton.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
 
-    let hexData = [];
-    let mandirData = []; // Individual temple data
+<!-- =============================== TOOLKIT =============================== -->
+<section id="toolkit">
+  <div class="wrap">
+    <h2>The statistical toolkit</h2>
+    <p class="section-intro">The methods used on this page, in plain language: what each one measures, how to read its number, and what it cannot tell you.</p>
+    <dl class="glossary grid-2">
+      <div><dt>Hexagonal binning</dt><dd>Lays a honeycomb over the map and counts points in each cell. It turns a cloud of dots into a surface you can compare from place to place. The cell size (66 m circumradius, 1.15 ha) sets the resolution: smaller cells show detail but get noisy; larger cells smooth it away. The grid here was built in QGIS in UTM zone 44N.</dd></div>
+      <div><dt>Nearest-neighbour distance and Clark–Evans R</dt><dd>The simplest clustering test. Average the distance from every point to its closest neighbour and compare with the average a random pattern of the same density would give. R below 1 is clustered, above 1 is regular. Sensitive to the choice of study area: a bigger boundary makes any pattern look more clustered, so the convex hull of the points is used here.</dd></div>
+      <div><dt>Ripley's K and L functions</dt><dd>Clustering at many scales at once. K(r) counts neighbours within radius r for a typical point; L(r) − r rescales it so random equals zero. Read the curve: where it rises, clusters are still forming at that scale; where it peaks, that is the size of the clusters. Values at large radii are inflated when points near the edge of the study area have neighbours "missing" outside it.</dd></div>
+      <div><dt>Moran's I</dt><dd>Global spatial autocorrelation: do high-count cells sit beside other high-count cells? Ranges from −1 to +1; zero is no pattern. It says that clustering exists, not where. Computed here on the hex grid with each cell's six edge neighbours, with empty cells inside the study area restored.</dd></div>
+      <div><dt>Getis–Ord Gi* hot-spot analysis</dt><dd>Local version of the same idea. For each cell, sums its own count and its neighbours' and asks whether the sum is unusually high (hot) or low (cold) for the city, as a z-score. Because thousands of cells are tested, a false-discovery-rate correction keeps the share of false hot spots near 5%. The confidence classes on the map are 95%, 99% and 99.9%.</dd></div>
+      <div><dt>Distance bands and density gradients</dt><dd>Draw rings at set distances from a feature (here, the river) and divide the count in each ring by the ring's land area. Density per km² removes the bias that outer rings are bigger. The river outline comes from OpenStreetMap; where the seasonal water line differs from the survey date, the nearest-bank distance is approximate.</dd></div>
+      <div><dt>Chi-square test and Cramér's V</dt><dd>For two categorical variables in a cross-tab, chi-square measures how far the observed counts stray from the counts expected if the variables were unrelated. The p-value says whether the pattern could be chance; Cramér's V (0 to 1) says how strong it is. Standardised residuals point to the specific cells driving the result.</dd></div>
+      <div><dt>Lift (co-occurrence)</dt><dd>How much more often two items appear together than independence would predict: observed pairs ÷ expected pairs. Lift above 1 is attraction, below 1 avoidance. It is scale-free but unstable for rare items, which is why only deity groups with at least 50 shrines are shown.</dd></div>
+      <div><dt>Mann–Whitney U test</dt><dd>Compares two groups on a numeric value (distance to the river) using ranks rather than averages, so extreme values do not dominate. Reported as a z-score and as the probability that a random member of group A exceeds a random member of group B; 0.5 means no difference.</dd></div>
+      <div><dt>Spearman's rank correlation</dt><dd>Measures whether two quantities rise together, using ranks. Robust to outliers and to curved relationships. Here it links a shrine's distance from the river to its distance from its nearest neighbour.</dd></div>
+    </dl>
+  </div>
+</section>
 
-    $(document).ready(function() {
-        updateStatistics(); // Show loading state immediately
-        loadData();
-        initializeCharts();
+<!-- =============================== CAVEATS =============================== -->
+<section id="caveats">
+  <div class="wrap">
+    <h2>What the map cannot tell you</h2>
+    <ul class="caveats">
+      <li><b>Three totals, one survey.</b> The survey logged 3,347 shrine records. The hexagon grid, built from the master table, sums to 3,313 (34 fell outside it). The published point file holds 2,296 records with full attributes. The roughly 1,000 records missing from the point file are not random: they are concentrated south-west of the old city, inland from the ghats, so the individual-shrine view under-represents the periphery. The density and hot-spot views use the full grid counts.</li>
+      <li><b>Survey routes, not a census.</b> The team walked lanes and recorded what they found; density partly reflects where they walked and how thoroughly. The riverside core was surveyed most intensively.</li>
+      <li><b>Shared GPS fixes.</b> 66 shrines share 28 exact coordinates, typically several shrines inside one complex logged from one position. They count as zero-distance neighbours and slightly deepen the clustering statistics.</li>
+      <li><b>The river moves.</b> 60 shrines fall inside the OpenStreetMap river polygon, some by hundreds of metres, because the water line in the map data and the water line on the survey days differ, and because of GPS error at the ghats. Their distance is recorded as zero.</li>
+      <li><b>Field labels were grouped.</b> "Devi" and a locally named "Maa" were usually recorded together; "RAMA", "Rama-Sita" and "Rama family" were merged; the surveyors' "Other" and a handful of once-recorded names are grouped as Other or Folk. The original strings are preserved in the downloadable data.</li>
+      <li><b>Against the open map.</b> OpenStreetMap lists 94 Hindu places of worship in the same area, 74 of them inside the survey region; this survey recorded 2,296. Only 25 of the OSM temples have a surveyed shrine within 50 m, a reminder that the two datasets describe different things: the monumental and the everyday.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =============================== DATA =============================== -->
+<section id="data">
+  <div class="wrap">
+    <h2>Data and downloads</h2>
+    <p class="section-intro">Everything on this page is computed from open files in this repository. Reuse is welcome with attribution to the survey.</p>
+    <div class="dl">
+      <a href="data/mandirs.geojson" download>mandirs.geojson</a>
+      <a href="data/mandirs.csv" download>mandirs.csv</a>
+      <a href="data/hex.geojson" download>hex.geojson (with Gi*)</a>
+      <a href="data/stats.json" download>stats.json</a>
+      <a href="data/raw/temple/temple.shp" download>original shapefile</a>
+      <a href="https://github.com/RealCaddish/Mandirs-of-Varanasi">Source and scripts on GitHub</a>
+    </div>
+    <h3>Field guide to mandirs.csv</h3>
+    <table class="dict">
+      <tr><th>Field</th><th>Meaning</th></tr>
+      <tr><td><code>latitude</code>, <code>longitude</code></td><td>WGS84 position from the survey GPS.</td></tr>
+      <tr><td><code>deities_recorded</code></td><td>The surveyors' original comma-separated labels.</td></tr>
+      <tr><td><code>deity_groups</code></td><td>Cleaned labels (Shiva, Shiva-Parvati, Shiva family, Hanuman, Ganesh, Devi, Local Maa, Sitala Maa, Bir Baba, Rama, Krishna, Village deity, Other).</td></tr>
+      <tr><td><code>families</code></td><td>Shaiva, Hanuman, Ganesh, Goddess, Vaishnava, Folk, Other.</td></tr>
+      <tr><td><code>structure</code></td><td>Free-standing, Built into a wall, Temple complex, Tree-temple, Tree, Built-around (more than one allowed).</td></tr>
+      <tr><td><code>images_present</code></td><td>Number of deity images counted at the shrine.</td></tr>
+      <tr><td><code>temple_name</code></td><td>Name as recorded, where one existed.</td></tr>
+      <tr><td><code>distance_to_ganga_m</code></td><td>Metres to the nearest bank of the OpenStreetMap river polygon; 0 if inside it.</td></tr>
+      <tr><td><code>hotspot_class</code></td><td>0 not significant; 1, 2, 3 for Gi* hot spots at 95%, 99%, 99.9% confidence (FDR-corrected).</td></tr>
+    </table>
+    <p style="margin-top:16px;font-size:.92rem;color:var(--muted)">Sources: survey data © Christian Haskett and Nathaniel Deaton. River outline, ghat and landmark names © OpenStreetMap contributors (ODbL). Basemap tiles by Esri and OpenStreetMap contributors; imagery by Esri. Analysis scripts (Python: numpy, shapely, pyproj) are in the repository's <code>scripts</code> folder.</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Mandirs of Varanasi · Map and analysis by Nathaniel Deaton · Survey with Dr. Christian Haskett · Built with Leaflet. <a href="#top">Back to top</a></div></footer>
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const fmt = n => Number(n).toLocaleString('en-US');
+  const pct = (x, d = 0) => (x * 100).toFixed(d) + '%';
+  const FAM = { S: 'Shaiva', H: 'Hanuman', G: 'Ganesh', D: 'Goddess', V: 'Vaishnava', F: 'Folk', O: 'Other' };
+  const STR = { fs: 'Free-standing', w: 'Built into a wall', c: 'Part of a temple complex', tt: 'Tree-temple', t: 'Tree', ba: 'Built-around' };
+  // Validated ramps (single hue, monotone lightness). Density: saffron. Hot spots: red.
+  const DENSITY_RAMP = ['#f88725', '#d76f04', '#b15900', '#8a4603', '#673200'];
+  const DENSITY_BREAKS = [1, 2, 4, 8, 16]; // class i covers [break_i, break_{i+1})
+  const DENSITY_LABELS = ['1', '2 – 3', '4 – 7', '8 – 15', '16 or more'];
+  const HOT_RAMP = { 0: '#cfccc3', 1: '#fe626c', 2: '#cc3143', 3: '#940022' };
+  const HOT_LABELS = { 3: 'Hot spot, 99.9% confidence', 2: 'Hot spot, 99% confidence', 1: 'Hot spot, 95% confidence', 0: 'Not significant' };
+  const HEX_AREA_HA = 1.1547;
+
+  const tip = $('#tip');
+  function showTip(html, x, y) { tip.replaceChildren(...html); tip.classList.add('on'); moveTip(x, y); }
+  function moveTip(x, y) { const w = tip.offsetWidth, h = tip.offsetHeight; let L = x + 14, T = y + 14; if (L + w > innerWidth - 8) L = x - w - 14; if (T + h > innerHeight - 8) T = y - h - 14; tip.style.left = L + 'px'; tip.style.top = T + 'px'; }
+  function hideTip() { tip.classList.remove('on'); }
+  const tipRows = (title, rows) => { const out = []; const b = document.createElement('b'); b.textContent = title; out.push(b); rows.forEach(r => { const d = document.createElement('div'); d.textContent = r; out.push(d); }); return out; };
+
+  // ------------------------------------------------------------ SVG helpers
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs = {}, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; };
+  const barPath = (x, y, w, h, r = 4) => { w = Math.max(0, w); if (w < r) return `M${x},${y}h${w}v${h}h${-w}z`; return `M${x},${y}h${w - r}a${r},${r} 0 0 1 ${r},${r}v${h - 2 * r}a${r},${r} 0 0 1 ${-r},${r}h${-(w - r)}z`; };
+  const colPath = (x, y, w, h, r = 4) => { h = Math.max(0, h); if (h < r) return `M${x},${y}h${w}v${h}h${-w}z`; return `M${x},${y + r}a${r},${r} 0 0 1 ${r},${-r}h${w - 2 * r}a${r},${r} 0 0 1 ${r},${r}v${h - r}h${-w}z`; };
+  const niceMax = v => { const p = Math.pow(10, Math.floor(Math.log10(v))); const m = v / p; const n = m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10; return n * p; };
+  function attachHover(hit, title, rows) {
+    hit.setAttribute('tabindex', '0'); hit.setAttribute('role', 'img'); hit.setAttribute('aria-label', title + '. ' + rows.join('. '));
+    hit.addEventListener('pointerenter', e => showTip(tipRows(title, rows), e.clientX, e.clientY));
+    hit.addEventListener('pointermove', e => moveTip(e.clientX, e.clientY));
+    hit.addEventListener('pointerleave', hideTip);
+    hit.addEventListener('focus', () => { const r = hit.getBoundingClientRect(); showTip(tipRows(title, rows), r.left + r.width / 2, r.top); });
+    hit.addEventListener('blur', hideTip);
+  }
+  function tableToggle(fig, cols, rows) {
+    const cap = fig.querySelector('figcaption'); cap.querySelectorAll('button').forEach(b => b.remove()); fig.querySelectorAll('table').forEach(t => t.remove());
+    const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = 'Show table';
+    let tbl = null;
+    btn.addEventListener('click', () => {
+      if (tbl) { tbl.remove(); tbl = null; btn.textContent = 'Show table'; return; }
+      tbl = document.createElement('table'); const tr = document.createElement('tr');
+      cols.forEach(c => { const th = document.createElement('th'); th.textContent = c.label; if (c.num) th.className = 'n'; tr.appendChild(th); }); tbl.appendChild(tr);
+      rows.forEach(r => { const t = document.createElement('tr'); cols.forEach(c => { const td = document.createElement('td'); td.textContent = c.get(r); if (c.num) td.className = 'n'; t.appendChild(td); }); tbl.appendChild(t); });
+      fig.appendChild(tbl); btn.textContent = 'Hide table';
     });
+    cap.appendChild(btn);
+  }
+  function plotOf(id) { const f = $(id); return { fig: f, plot: f.querySelector('.plot'), W: Math.max(300, f.querySelector('.plot').clientWidth || 520) }; }
 
-    function loadData() {
-        // Load hexagonal density data
-        $.getJSON(deityData, function (data) {
-            hexData = data.features;
-            displayHexData();
-            updateDensityChart();
-        });
-        
-        // Load individual temple data
-        $.getJSON('geoJSON/data/temple/temple.json', function(data) {
-            mandirData = data.features;
-            console.log('Loaded', mandirData.length, 'individual mandirs');
-            updateStatistics(); // Move this here so it runs after mandir data loads
-            updateDeityChart();
-            updateStructureChart();
-        });
-    }
+  function barH(id, rows, o) {
+    const { fig, plot, W } = plotOf(id); const bh = 18, gap = 10, labelW = o.labelW || 150, valW = 56, top = 6;
+    const H = top + rows.length * (bh + gap); const max = o.max || niceMax(Math.max(...rows.map(r => r.value)));
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'list' });
+    const x0 = labelW, x1 = W - valW; const sx = v => x0 + (v / max) * (x1 - x0);
+    svg.appendChild(el('line', { x1: x0, x2: x0, y1: 0, y2: H, class: 'axisline' }));
+    rows.forEach((r, i) => {
+      const y = top + i * (bh + gap);
+      svg.appendChild(el('text', { x: x0 - 8, y: y + bh / 2 + 4, 'text-anchor': 'end', class: 'lbl' }, r.label));
+      const hit = el('rect', { x: x0, y: y - gap / 2, width: x1 - x0 + valW, height: bh + gap, class: 'hit' });
+      const bar = el('path', { d: barPath(x0, y, sx(r.value) - x0, bh), class: r.cls || 'mark' });
+      svg.appendChild(hit); svg.appendChild(bar);
+      svg.appendChild(el('text', { x: sx(r.value) + 6, y: y + bh / 2 + 4, class: 'val' }, o.format(r.value)));
+      attachHover(hit, r.label, [o.format(r.value) + (o.unit ? ' ' + o.unit : '')].concat(r.extra || []));
+    });
+    plot.replaceChildren(svg);
+    tableToggle(fig, o.cols, rows);
+  }
+  function barV(id, rows, o) {
+    const { fig, plot, W } = plotOf(id); const H = o.height || 240, mL = 44, mR = 8, mT = 18, mB = o.xLabel ? 50 : 34;
+    const max = o.max || niceMax(Math.max(...rows.map(r => r.value))); const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H });
+    const pw = W - mL - mR, ph = H - mT - mB; const slot = pw / rows.length; const bw = Math.min(24, slot * 0.7);
+    const sy = v => mT + ph - (v / max) * ph;
+    for (let t = 0; t <= 4; t++) { const v = max * t / 4, y = sy(v); svg.appendChild(el('line', { x1: mL, x2: W - mR, y1: y, y2: y, class: t ? 'hair' : 'axisline' })); svg.appendChild(el('text', { x: mL - 6, y: y + 4, 'text-anchor': 'end', class: 'tick' }, fmt(Math.round(v)))); }
+    rows.forEach((r, i) => {
+      const x = mL + i * slot + (slot - bw) / 2, y = sy(r.value);
+      const hit = el('rect', { x: mL + i * slot, y: mT, width: slot, height: ph + mB, class: 'hit' }); svg.appendChild(hit);
+      svg.appendChild(el('path', { d: colPath(x, y, bw, mT + ph - y), class: 'mark' }));
+      if (r.value > 0 && (o.labelAll || r.labelled)) svg.appendChild(el('text', { x: x + bw / 2, y: y - 5, 'text-anchor': 'middle', class: 'val' }, o.format(r.value)));
+      svg.appendChild(el('text', { x: mL + i * slot + slot / 2, y: mT + ph + 16, 'text-anchor': 'middle', class: 'tick' }, r.label));
+      attachHover(hit, r.title || r.label, [o.format(r.value) + (o.unit ? ' ' + o.unit : '')].concat(r.extra || []));
+    });
+    if (o.xLabel) svg.appendChild(el('text', { x: mL + pw / 2, y: H - 6, 'text-anchor': 'middle', class: 'tick' }, o.xLabel));
+    if (o.yLabel) svg.appendChild(el('text', { x: mL, y: 10, class: 'tick' }, o.yLabel));
+    plot.replaceChildren(svg);
+    tableToggle(fig, o.cols, rows);
+  }
+  function lineChart(id, pts, o) {
+    const { fig, plot, W } = plotOf(id); const H = o.height || 230, mL = 48, mR = 16, mT = 18, mB = 40;
+    const xs = pts.map(p => p.x), ys = pts.map(p => p.y); const xmax = o.xmax || Math.max(...xs), xmin = o.xmin || 0;
+    const ymax = o.ymax || niceMax(Math.max(...ys)), ymin = o.ymin != null ? o.ymin : Math.min(0, ...ys);
+    const pw = W - mL - mR, ph = H - mT - mB; const sx = x => mL + ((x - xmin) / (xmax - xmin)) * pw, sy = y => mT + ph - ((y - ymin) / (ymax - ymin)) * ph;
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H });
+    for (let t = 0; t <= 4; t++) { const v = ymin + (ymax - ymin) * t / 4, y = sy(v); svg.appendChild(el('line', { x1: mL, x2: W - mR, y1: y, y2: y, class: v === 0 ? 'axisline' : 'hair' })); svg.appendChild(el('text', { x: mL - 6, y: y + 4, 'text-anchor': 'end', class: 'tick' }, o.yFormat(v))); }
+    (o.xTicks || xs).forEach(v => { svg.appendChild(el('text', { x: sx(v), y: mT + ph + 16, 'text-anchor': 'middle', class: 'tick' }, o.xFormat(v))); });
+    if (o.xLabel) svg.appendChild(el('text', { x: mL + pw / 2, y: H - 4, 'text-anchor': 'middle', class: 'tick' }, o.xLabel));
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + sx(p.x).toFixed(1) + ',' + sy(p.y).toFixed(1)).join('');
+    svg.appendChild(el('path', { d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+    const cross = el('line', { x1: 0, x2: 0, y1: mT, y2: mT + ph, class: 'axisline', style: 'display:none' }); svg.appendChild(cross);
+    pts.forEach(p => svg.appendChild(el('circle', { cx: sx(p.x), cy: sy(p.y), r: 4, fill: 'var(--accent)', stroke: 'var(--surface)', 'stroke-width': 2 })));
+    const last = pts[pts.length - 1]; svg.appendChild(el('text', { x: sx(last.x) - 6, y: sy(last.y) - 9, 'text-anchor': 'end', class: 'val' }, o.yFormat(last.y)));
+    const hit = el('rect', { x: mL, y: mT, width: pw, height: ph, class: 'hit' }); svg.appendChild(hit);
+    const nearest = cx => { let best = pts[0], bd = Infinity; pts.forEach(p => { const dd = Math.abs(sx(p.x) - cx); if (dd < bd) { bd = dd; best = p; } }); return best; };
+    const onMove = e => { const r = svg.getBoundingClientRect(); const cx = (e.clientX - r.left) * (W / r.width); const p = nearest(cx); cross.setAttribute('x1', sx(p.x)); cross.setAttribute('x2', sx(p.x)); cross.style.display = ''; showTip(tipRows(o.xFormat(p.x) + (o.xUnit ? ' ' + o.xUnit : ''), [o.yFormat(p.y) + (o.yUnit ? ' ' + o.yUnit : '')]), e.clientX, e.clientY); };
+    hit.addEventListener('pointermove', onMove); hit.addEventListener('pointerleave', () => { cross.style.display = 'none'; hideTip(); });
+    hit.setAttribute('tabindex', '0'); hit.setAttribute('role', 'img'); hit.setAttribute('aria-label', o.aria || '');
+    plot.replaceChildren(svg);
+    tableToggle(fig, o.cols, pts);
+  }
+  function heatmap(id, m, rowsL, colsL, o) {
+    const { fig, plot, W } = plotOf(id); const labelW = o.labelW || 110, cw = Math.max(34, (W - labelW - 8) / colsL.length), ch = 30;
+    const top = Math.max(60, Math.round(6.6 * Math.max(...colsL.map(c => c.length)) + 18));
+    const H = top + rowsL.length * ch + 8; const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H });
+    const arms = o.arms; // {neg:[light..dark], pos:[light..dark], mid}
+    const color = v => { const t = v / o.maxAbs; const a = Math.abs(t); if (a < o.deadzone) return arms.mid; const k = Math.min(arms.pos.length - 1, Math.floor((a - o.deadzone) / (1 - o.deadzone) * arms.pos.length)); return (t > 0 ? arms.pos : arms.neg)[k]; };
+    const inkFor = hex => { const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16); return (0.2126 * r + 0.7152 * g + 0.0722 * b) > 150 ? '#161513' : '#ffffff'; };
+    colsL.forEach((c, j) => { const cx = labelW + j * cw + cw / 2 + 4, cy = top - 8; svg.appendChild(el('text', { x: cx, y: cy, 'text-anchor': 'start', class: 'lbl', transform: `rotate(-90 ${cx} ${cy})` }, c)); });
+    rowsL.forEach((r, i) => {
+      svg.appendChild(el('text', { x: labelW - 8, y: top + i * ch + ch / 2 + 4, 'text-anchor': 'end', class: 'lbl' }, r));
+      colsL.forEach((c, j) => {
+        const v = m[i][j]; if (v == null) return; const x = labelW + j * cw, y = top + i * ch; const fill = color(v);
+        const hit = el('rect', { x, y, width: cw, height: ch, class: 'hit' });
+        svg.appendChild(el('rect', { x: x + 1, y: y + 1, width: cw - 2, height: ch - 2, rx: 4, fill }));
+        svg.appendChild(el('text', { x: x + cw / 2, y: y + ch / 2 + 4, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': Math.abs(v) >= o.notable ? 700 : 400, fill: inkFor(fill) }, o.format(v)));
+        svg.appendChild(hit); attachHover(hit, r + ' × ' + c, [o.tipLabel + ': ' + o.format(v)].concat(o.extra ? o.extra(i, j) : []));
+      });
+    });
+    plot.replaceChildren(svg);
+    tableToggle(fig, [{ label: '', get: r => r.label }].concat(colsL.map((c, j) => ({ label: c, num: true, get: r => o.format(r.vals[j]) }))), rowsL.map((r, i) => ({ label: r, vals: m[i] })));
+  }
+  function dumbbell(id, rows, o) {
+    const { fig, plot, W } = plotOf(id); const rh = 30, labelW = 170, top = 34, mR = 40; const H = top + rows.length * rh;
+    const max = o.max || niceMax(Math.max(...rows.flatMap(r => [r.a, r.b]))); const x0 = labelW, x1 = W - mR; const sx = v => x0 + (v / max) * (x1 - x0);
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H });
+    for (let t = 0; t <= 4; t++) { const v = max * t / 4, x = sx(v); svg.appendChild(el('line', { x1: x, x2: x, y1: top - 6, y2: H, class: t ? 'hair' : 'axisline' })); svg.appendChild(el('text', { x, y: top - 12, 'text-anchor': 'middle', class: 'tick' }, o.format(v))); }
+    rows.forEach((r, i) => {
+      const y = top + i * rh + rh / 2;
+      svg.appendChild(el('text', { x: labelW - 10, y: y + 4, 'text-anchor': 'end', class: 'lbl' }, r.label));
+      svg.appendChild(el('line', { x1: sx(r.a), x2: sx(r.b), y1: y, y2: y, stroke: 'var(--axis)', 'stroke-width': 2 }));
+      const hit = el('rect', { x: x0, y: y - rh / 2, width: x1 - x0 + mR, height: rh, class: 'hit' }); svg.appendChild(hit);
+      svg.appendChild(el('circle', { cx: sx(r.a), cy: y, r: 6, class: 'mark', stroke: 'var(--surface)', 'stroke-width': 2 }));
+      svg.appendChild(el('circle', { cx: sx(r.b), cy: y, r: 6, class: 'mark-2', stroke: 'var(--surface)', 'stroke-width': 2 }));
+      if (Math.abs(sx(r.a) - sx(r.b)) > 44) {
+        const hi = r.a >= r.b ? r.a : r.b, lo = r.a >= r.b ? r.b : r.a;
+        svg.appendChild(el('text', { x: sx(hi) + 10, y: y + 4, 'text-anchor': 'start', class: 'val' }, o.format(hi)));
+        if (sx(lo) - x0 > 44) svg.appendChild(el('text', { x: sx(lo) - 10, y: y + 4, 'text-anchor': 'end', class: 'val' }, o.format(lo)));
+      }
+      attachHover(hit, r.label, [o.aLabel + ': ' + o.format(r.a), o.bLabel + ': ' + o.format(r.b)]);
+    });
+    const leg = document.createElement('div'); leg.className = 'legend-inline';
+    [[o.aLabel, 'var(--accent)'], [o.bLabel, 'var(--series-2)']].forEach(([t, c]) => { const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = c; s.appendChild(i); s.appendChild(document.createTextNode(t)); leg.appendChild(s); });
+    plot.replaceChildren(leg, svg);
+    tableToggle(fig, [{ label: 'Trait', get: r => r.label }, { label: o.aLabel, num: true, get: r => o.format(r.a) }, { label: o.bLabel, num: true, get: r => o.format(r.b) }], rows);
+  }
 
-    function displayHexData() {
-        // Clear existing layers
-        if (window.hexLayer) {
-            map.removeLayer(window.hexLayer);
-        }
-        
-        window.hexLayer = L.geoJSON(hexData, {
-            style: function(feature) {
-                const count = feature.properties.deity_count || 0;
-                return {
-                    fillColor: getColorByCount(count),
-                    weight: 2,
-                    opacity: 1,
-                    color: '#333',
-                    fillOpacity: 0.7
-                };
-            },
-            onEachFeature: function(feature, layer) {
-                layer.bindPopup(`
-                    <strong>Hexagon Cluster</strong><br>
-                    Mandirs: ${feature.properties.deity_count || 0}<br>
-                    <small>Click "Individual Mandirs" to see specific temples</small>
-                `);
-            }
-        }).addTo(map);
-        
-        addLegend();
-    }
+  // ------------------------------------------------------------ map
+  const map = L.map('map', { zoomControl: false, preferCanvas: true, minZoom: 11, maxZoom: 19 });
+  L.control.zoom({ position: 'topright' }).addTo(map);
+  const light = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom: 16, maxZoom: 19, attribution: 'Basemap &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+  const streets = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+  const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' });
+  light.addTo(map);
+  map.setView([25.306, 83.012], 14);
+  const BasemapCtl = L.Control.extend({ onAdd() { const d = L.DomUtil.create('div', 'basemap-ctl'); const mk = (t, layer, on) => { const b = L.DomUtil.create('button', '', d); b.type = 'button'; b.textContent = t; b.setAttribute('aria-pressed', on); b.addEventListener('click', () => { [light, streets, sat].forEach(l => map.removeLayer(l)); layer.addTo(map); layer.bringToBack(); $$('button', d).forEach(x => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); }); }; mk('Light', light, 'true'); mk('Streets', streets, 'false'); mk('Satellite', sat, 'false'); L.DomEvent.disableClickPropagation(d); return d; } });
+  new BasemapCtl({ position: 'topleft' }).addTo(map);
+  const legend = L.control({ position: 'bottomright' });
+  let legendDiv; legend.onAdd = () => { legendDiv = L.DomUtil.create('div', 'legend'); return legendDiv; }; legend.addTo(map);
+  function setLegend(title, rows, note) {
+    legendDiv.replaceChildren(); const h = document.createElement('h4'); h.textContent = title; legendDiv.appendChild(h);
+    rows.forEach(([sw, label, kind]) => { const r = document.createElement('div'); r.className = 'row'; const s = document.createElement('span'); s.className = kind || 'sw'; s.style.background = sw; r.appendChild(s); r.appendChild(document.createTextNode(label)); legendDiv.appendChild(r); });
+    if (note) { const sm = document.createElement('small'); sm.textContent = note; legendDiv.appendChild(sm); }
+  }
+  const dl = (dt, dd) => { const a = document.createElement('dt'); a.textContent = dt; const b = document.createElement('dd'); b.textContent = dd; return [a, b]; };
+  const popupNode = (title, pairs) => { const w = document.createElement('div'); const h = document.createElement('h4'); h.textContent = title; w.appendChild(h); const d = document.createElement('dl'); pairs.forEach(([k, v]) => d.append(...dl(k, v))); w.appendChild(d); return w; };
 
-    function displayMandirData() {
-        // Clear existing layers
-        if (window.hexLayer) {
-            map.removeLayer(window.hexLayer);
-        }
-        if (window.mandirLayer) {
-            map.removeLayer(window.mandirLayer);
-        }
-        
-        // Create individual mandir markers
-        window.mandirLayer = L.geoJSON(mandirData, {
-            pointToLayer: function(feature, latlng) {
-                const deityCount = feature.properties.deities_pr || 0;
-                const size = Math.max(3, Math.min(8, 3 + deityCount * 0.5));
-                
-                return L.circleMarker(latlng, {
-                    radius: size,
-                    fillColor: getDeityColor(feature.properties.deity),
-                    color: '#333',
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 0.8
-                });
-            },
-            onEachFeature: function(feature, layer) {
-                const props = feature.properties;
-                const deities = props.deity || 'Unknown';
-                const structure = props.temple_str || 'Unknown';
-                const name = props.temple_nam || 'Unnamed';
-                const deityCount = props.deities_pr || 0;
-                
-                layer.bindPopup(`
-                    <div style="min-width: 200px;">
-                        <strong>${name || 'Mandir'}</strong><br>
-                        <strong>Deity:</strong> ${deities}<br>
-                        <strong>Structure:</strong> ${structure}<br>
-                        <strong>Deities Present:</strong> ${deityCount}<br>
-                        <small>Lat: ${props.latitude?.toFixed(6)}<br>
-                        Lon: ${props.longitude?.toFixed(6)}</small>
-                    </div>
-                `);
-            }
-        }).addTo(map);
-        
-        addLegend();
-    }
+  const state = { view: 'density', fam: '', str: '' };
+  function readHash() { const p = new URLSearchParams(location.hash.slice(1)); return { view: p.get('view'), fam: p.get('fam'), str: p.get('str') }; }
+  function writeHash() { const p = new URLSearchParams(); if (state.view !== 'density') p.set('view', state.view); if (state.fam) p.set('fam', state.fam); if (state.str) p.set('str', state.str); const h = p.toString(); try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch (e) {} }
+  const layers = {};
+  let DATA = {};
+  const densityClass = n => { let k = 0; for (let i = 0; i < DENSITY_BREAKS.length; i++) if (n >= DENSITY_BREAKS[i]) k = i; return k; };
 
-    function getDeityColor(deity) {
-        const deityColors = {
-            'Siva': '#ff6b6b',
-            'Ganesh': '#4ecdc4',
-            'Hanuman': '#45b7d1',
-            'Devi': '#96ceb4',
-            'Siva-Parvati': '#feca57',
-            'Rama family': '#ff9ff3',
-            'Rama-Sita': '#ff9ff3',
-            'Sitla Maa': '#54a0ff',
-            '__ Bir Baabaa': '#5f27cd',
-            'Other': '#c8d6e5'
-        };
-        
-        // Check for primary deity first
-        for (const [key, color] of Object.entries(deityColors)) {
-            if (deity && deity.includes(key)) {
-                return color;
-            }
-        }
-        return '#95a5a6'; // Default gray
-    }
+  function buildHex() {
+    layers.density = L.geoJSON(DATA.hex, {
+      filter: f => f.properties.n > 0,
+      style: f => ({ fillColor: DENSITY_RAMP[densityClass(f.properties.n)], fillOpacity: 0.82, weight: 0.6, color: '#fcfcfb', opacity: 0.9 }),
+      onEachFeature: (f, l) => { const p = f.properties; l.bindPopup(() => popupNode(`${fmt(p.n)} shrine${p.n === 1 ? '' : 's'} in this hexagon`, [['Density', `${Math.round(p.n / HEX_AREA_HA * 100)} per km²`], ['With full records', fmt(p.np)], ['Hot-spot test', HOT_LABELS[p.hot] + (p.hot ? ` (Gi* z = ${p.gz})` : '')]])); }
+    });
+    layers.hot = L.geoJSON(DATA.hex, {
+      style: f => { const h = f.properties.hot; return { fillColor: HOT_RAMP[h], fillOpacity: h ? 0.85 : 0.35, weight: h ? 0.6 : 0, color: '#fcfcfb', opacity: 0.9 }; },
+      onEachFeature: (f, l) => { const p = f.properties; l.bindPopup(() => popupNode(HOT_LABELS[p.hot], [['Gi* z-score', String(p.gz)], ['Shrines here', fmt(p.n)], ['Cell + 6 neighbours', 'tested against the city-wide mean']])); }
+    });
+  }
+  const canvas = L.canvas({ padding: 0.4 });
+  function pointStyle(p) { const on = matches(p); return { renderer: canvas, radius: on ? 4.5 : 3, fillColor: on ? '#c94f1f' : '#b9b6ae', color: '#fcfcfb', weight: on ? 1.2 : 0.8, fillOpacity: on ? 0.92 : 0.45, opacity: on ? 1 : 0.5 }; }
+  function matches(p) { return (!state.fam || p.f.includes(state.fam)) && (!state.str || p.s.includes(state.str)); }
+  function buildPoints() {
+    layers.points = L.geoJSON(DATA.mandirs, {
+      pointToLayer: (f, ll) => L.circleMarker(ll, pointStyle(f.properties)),
+      onEachFeature: (f, l) => { const p = f.properties; l.bindPopup(() => popupNode(p.nm || 'Unnamed shrine', [['Deities', p.c.join(', ')], ['Family', Array.from(p.f).map(k => FAM[k]).join(', ')], ['Structure', p.s.length ? p.s.map(k => STR[k] || k).join(', ') : 'not recorded'], ['Images present', fmt(p.n)], ['Distance to Ganga', p.r === 0 ? 'on the bank' : fmt(p.r) + ' m'], ['Hot spot', p.h ? HOT_LABELS[p.h].replace('Hot spot, ', 'yes, ') : 'no']])); }
+    });
+  }
+  function restylePoints() { if (!layers.points) return; let n = 0; layers.points.eachLayer(l => { const p = l.feature.properties; const s = pointStyle(p); l.setStyle(s); l.setRadius(s.radius); if (matches(p)) { n++; l.bringToFront(); } }); return n; }
+  function buildContext() {
+    layers.ganga = L.geoJSON(DATA.ganga, { style: { fillColor: '#8fc1e3', fillOpacity: 0.28, color: '#5b9dc9', weight: 1.2, opacity: 0.8 }, interactive: false });
+    layers.labels = L.layerGroup();
+    DATA.landmarks.forEach(l => {
+      const isGhat = l.kind === 'ghat';
+      const m = L.circleMarker([l.lat, l.lon], { renderer: canvas, radius: isGhat ? 3 : 4, fillColor: '#161513', color: '#fff', weight: 1.5, fillOpacity: 0.9, interactive: false });
+      m.bindTooltip(l.name.replace(' Railway Station', ' station').replace(' (Mandir)', ''), { permanent: true, direction: isGhat ? 'right' : 'top', className: 'lm-label', offset: isGhat ? [6, 0] : [0, -6] });
+      layers.labels.addLayer(m);
+    });
+  }
+  const VIEW_DESC = {
+    density: 'Density view. Each hexagon measures 66 m from centre to corner (1.15 ha) and is coloured by how many shrines the survey recorded inside it, using the full survey of 3,313 grid records. Half of the 990 occupied hexagons hold a single shrine; the darkest hold 16 or more. Click a hexagon for its count, its density per km² and its hot-spot result.',
+    hot: 'Hot-spot view. A Getis–Ord Gi* test asks, for every hexagon together with its six neighbours, whether the local total is higher than the city-wide average would produce by chance, and reports the answer as a z-score. Red cells are statistically significant hot spots after a false-discovery-rate correction; grey cells are not. There are no significant cold spots. Almost all hot cells form one band behind the ghats.',
+    points: 'Individual shrines. Every dot is one of the 2,296 shrines with full records. Choose a deity family or a structure type above to highlight matching shrines; the rest fade to grey so the geography of each kind stands out. Click a dot for its deities, structure, image count and distance to the river.'
+  };
+  function setView(v) {
+    state.view = v; $$('#views .chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    ['density', 'hot', 'points'].forEach(k => { if (layers[k] && map.hasLayer(layers[k])) map.removeLayer(layers[k]); });
+    if (v === 'points' && !layers.points) buildPoints();
+    layers[v].addTo(map); if (layers.labels) layers.labels.eachLayer(l => l.bringToFront && l.bringToFront());
+    if (v === 'density') setLegend('Shrines per hexagon', DENSITY_RAMP.map((c, i) => [c, DENSITY_LABELS[i]]), 'Full survey, 990 occupied cells');
+    else if (v === 'hot') setLegend('Gi* hot spots', [[HOT_RAMP[3], '99.9% confidence'], [HOT_RAMP[2], '99% confidence'], [HOT_RAMP[1], '95% confidence'], [HOT_RAMP[0], 'not significant']], 'FDR-corrected, 5%');
+    else setLegend('Individual shrines', [['#c94f1f', 'highlighted shrine', 'dot'], ['#b9b6ae', 'other shrine', 'dot']], 'Filter with the chips above');
+    $('#viewdesc').textContent = VIEW_DESC[v];
+    updateStatus();
+  }
+  function updateStatus() {
+    writeHash(); const s = $('#status');
+    if (state.view !== 'points') { s.textContent = state.view === 'density' ? `${fmt(DATA.stats.n_hex_cells)} hexagons · ${fmt(DATA.stats.n_survey_hex_total)} shrines` : `${fmt(DATA.stats.gi_hot_cells)} hot-spot hexagons · ${pct(DATA.stats.share_in_hot)} of shrines`; return; }
+    const n = restylePoints(); const parts = []; if (state.fam) parts.push(FAM[state.fam]); if (state.str) parts.push(STR[state.str].toLowerCase());
+    s.textContent = `${fmt(n)} of ${fmt(DATA.stats.n_points)} shrines highlighted` + (parts.length ? ` (${parts.join(', ')})` : '');
+  }
+  $$('#views .chip').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  $$('#famchips .chip').forEach(b => b.addEventListener('click', () => { state.fam = b.dataset.fam; $$('#famchips .chip').forEach(x => x.setAttribute('aria-pressed', String(x === b))); if (state.view !== 'points') setView('points'); else updateStatus(); }));
+  $$('#strchips .chip').forEach(b => b.addEventListener('click', () => { state.str = b.dataset.str; $$('#strchips .chip').forEach(x => x.setAttribute('aria-pressed', String(x === b))); if (state.view !== 'points') setView('points'); else updateStatus(); }));
 
-    function getColorByCount(count) {
-        if (count === 0) return '#f8f9fa';
-        if (count <= 5) return '#d4edda';
-        if (count <= 10) return '#fff3cd';
-        if (count <= 20) return '#f8d7da';
-        return '#721c24';
-    }
+  const STORIES = [
+    { k: 'The riverside core', t: 'One continuous hot spot', d: '229 hexagons and 1,841 survey records in a band 4.3 km long behind the ghats, from Assi to Trilochan. Nearly half the shrines here are wall niches; 69% house Shiva.', ll: [25.3145, 83.0141], z: 14, view: 'hot' },
+    { k: 'Panchganga Ghat', t: '87 shrines in one hexagon', d: 'The densest cell in the survey: 75 of its 82 attributed shrines are niches in the ghat walls, 70 of them Shaiva. The steps themselves are a temple.', ll: [25.31504, 83.01826], z: 17, view: 'density' },
+    { k: 'Kashi Vishwanath lanes', t: 'The monumental and the tiny', d: 'The great temple sits inside the dense core; the lanes around it are lined with shrines of a cubic metre. Switch to individual shrines and highlight Ganesh to see the threshold guardians in the walls.', ll: [25.3108, 83.0106], z: 17, view: 'points' },
+    { k: 'Assi Ghat', t: 'The southern anchor', d: 'A small separate hot spot at the southern end of the ghats: 28 survey records, none of them wall niches, most of them Shaiva.', ll: [25.2902, 83.0055], z: 16, view: 'hot' },
+    { k: 'North of Panchganga', t: 'Hanuman country', d: 'Around 250 m back from the river, a few cells where Hanuman is in more than half the shrines: free-standing boxes on corners, the shape of the newer neighbourhoods.', ll: [25.3205, 83.0125], z: 17, view: 'points', fam: 'H' },
+    { k: 'Inland cluster', t: 'A hot spot 1.5 km from the water', d: 'North-west of the old city, a small cluster of 23 records, three-quarters Shaiva and none built into walls: the periphery in miniature.', ll: [25.3270, 83.0113], z: 16, view: 'hot' }
+  ];
+  function buildStories() {
+    const box = $('#stories');
+    STORIES.forEach(s => {
+      const b = document.createElement('button'); b.className = 'story'; b.type = 'button';
+      const k = document.createElement('span'); k.className = 'k'; k.textContent = s.k; const t = document.createElement('b'); t.textContent = s.t; const d = document.createElement('span'); d.textContent = s.d;
+      b.append(k, t, d);
+      b.addEventListener('click', () => { if (s.fam !== undefined) { state.fam = s.fam || ''; $$('#famchips .chip').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.fam === state.fam))); } setView(s.view); map.flyTo(s.ll, s.z, { duration: 1.2 }); $('#map').scrollIntoView({ block: 'center', behavior: 'smooth' }); });
+      box.appendChild(b);
+    });
+  }
 
-    function addLegend() {
-        if (window.legend) {
-            map.removeControl(window.legend);
-        }
-        
-        window.legend = L.control({position: 'bottomright'});
-        window.legend.onAdd = function(map) {
-            const div = L.DomUtil.create('div', 'info legend');
-            const currentLayer = window.currentLayer || 'density';
-            
-            if (currentLayer === 'density') {
-                div.innerHTML = `
-                    <h4>Mandir Density</h4>
-                    <i style="background: #d4edda"></i> 1-5 mandirs<br>
-                    <i style="background: #fff3cd"></i> 6-10 mandirs<br>
-                    <i style="background: #f8d7da"></i> 11-20 mandirs<br>
-                    <i style="background: #721c24"></i> 20+ mandirs<br>
-                `;
-            } else {
-                div.innerHTML = `
-                    <h4>Deity Types</h4>
-                    <i style="background: #ff6b6b"></i> Siva<br>
-                    <i style="background: #4ecdc4"></i> Ganesh<br>
-                    <i style="background: #45b7d1"></i> Hanuman<br>
-                    <i style="background: #96ceb4"></i> Devi<br>
-                    <i style="background: #feca57"></i> Siva-Parvati<br>
-                    <i style="background: #ff9ff3"></i> Rama Family<br>
-                    <i style="background: #5f27cd"></i> Bir Baabaa<br>
-                `;
-            }
-            return div;
-        };
-        window.legend.addTo(map);
-    }
+  // ------------------------------------------------------------ charts from stats
+  function buildCharts(S) {
+    lineChart('#c-nn', S.nn_ecdf.map(p => ({ x: p.r, y: p.share })), { xmax: 500, ymax: 1, ymin: 0, xTicks: [0, 100, 200, 300, 400, 500], xFormat: v => fmt(v), yFormat: v => pct(v), xLabel: 'Distance to nearest other shrine (m)', xUnit: 'm', aria: 'Cumulative share of shrines by nearest-neighbour distance', cols: [{ label: 'Within (m)', num: true, get: p => fmt(p.x) }, { label: 'Share of shrines', num: true, get: p => pct(p.y, 1) }] });
+    lineChart('#c-ripley', S.ripley.map(p => ({ x: p.r, y: p.L_minus_r })), { xmax: 2000, ymin: 0, xTicks: [0, 500, 1000, 1500, 2000], xFormat: v => fmt(v), yFormat: v => fmt(Math.round(v)), xLabel: 'Radius r (m)', xUnit: 'm', yUnit: 'm above random', aria: "Ripley's L minus r by radius", cols: [{ label: 'r (m)', num: true, get: p => fmt(p.x) }, { label: 'L(r) − r (m)', num: true, get: p => fmt(Math.round(p.y)) }] });
+    const bins = [[1, 1], [2, 2], [3, 3], [4, 5], [6, 7], [8, 10], [11, 15], [16, 25], [26, 100]];
+    const hexRows = bins.map(([a, b]) => ({ label: a === b ? String(a) : (b >= 100 ? a + '+' : `${a}–${b}`), title: a === b ? `${a} shrine${a > 1 ? 's' : ''}` : `${a} to ${b >= 100 ? S.hex_max : b} shrines`, value: S.hex_hist.filter(h => h.n >= a && h.n <= b).reduce((t, h) => t + h.cells, 0), labelled: true }));
+    barV('#c-hex', hexRows, { format: fmt, unit: 'hexagons', xLabel: 'Shrines in the hexagon', labelAll: true, cols: [{ label: 'Shrines per hexagon', get: r => r.label }, { label: 'Hexagons', num: true, get: r => fmt(r.value) }] });
+    const bands = S.river.bands.filter(b => b.to <= 1500);
+    barV('#c-bands', bands.map(b => ({ label: b.from === 0 ? '0–100' : `${b.from}–${b.to}`, title: `${b.from} to ${b.to} m from the bank`, value: b.density, labelled: true, extra: [`${fmt(b.n)} shrines on ${b.area_km2.toFixed(1)} km²`] })), { format: v => fmt(Math.round(v)), unit: 'per km²', xLabel: 'Distance from the Ganga bank (m)', labelAll: true, cols: [{ label: 'Band (m)', get: r => r.label }, { label: 'Shrines', num: true, get: r => r.extra[0].split(' ')[0] }, { label: 'Land km²', num: true, get: r => r.extra[0].split(' on ')[1].replace(' km²', '') }, { label: 'Per km²', num: true, get: r => fmt(Math.round(r.value)) }] });
+    const famOrder = ['Shaiva', 'Ganesh', 'Goddess', 'Vaishnava', 'Folk', 'Hanuman', 'Other'];
+    barH('#c-famdist', famOrder.map(f => ({ label: f, value: S.river.fam[f].median, extra: [`IQR ${fmt(Math.round(S.river.fam[f].p25))}–${fmt(Math.round(S.river.fam[f].p75))} m`, `${fmt(S.river.fam[f].n)} shrines`] })).sort((a, b) => a.value - b.value), { format: v => fmt(Math.round(v)), unit: 'm', labelW: 100, cols: [{ label: 'Family', get: r => r.label }, { label: 'Median (m)', num: true, get: r => fmt(Math.round(r.value)) }, { label: 'IQR', get: r => r.extra[0].replace('IQR ', '') }, { label: 'Shrines', num: true, get: r => r.extra[1].split(' ')[0] }] });
+    barH('#c-fam', S.families.map(f => ({ label: f.name, value: f.share, extra: [`${fmt(f.n)} shrines`] })).sort((a, b) => b.value - a.value), { format: v => pct(v), max: 0.8, labelW: 100, cols: [{ label: 'Family', get: r => r.label }, { label: 'Shrines', num: true, get: r => r.extra[0].split(' ')[0] }, { label: 'Share', num: true, get: r => pct(r.value, 1) }] });
+    const groups = Array.from(new Set(S.lift.flatMap(l => [l.a, l.b])));
+    const gOrder = ['Shiva', 'Shiva-Parvati', 'Shiva family', 'Hanuman', 'Ganesh', 'Devi', 'Local Maa', 'Rama', 'Bir Baba', 'Sitala Maa', 'Krishna', 'Other'].filter(g => groups.includes(g));
+    const M = gOrder.map(a => gOrder.map(b => { if (a === b) return null; const l = S.lift.find(x => (x.a === a && x.b === b) || (x.a === b && x.b === a)); return l ? Math.log2(l.lift || 0.01) : null; }));
+    heatmap('#c-lift', M, gOrder, gOrder, { maxAbs: 2, deadzone: 0.12, notable: 1, format: v => (Math.pow(2, v)).toFixed(1) + '×', tipLabel: 'Lift', labelW: 100, arms: { neg: ['#badbfe', '#67b0f9', '#3a84ca', '#005a9d'], pos: ['#fdc9c4', '#fb817a', '#ca5551', '#9a2929'], mid: '#f0efec' }, extra: (i, j) => { const l = S.lift.find(x => (x.a === gOrder[i] && x.b === gOrder[j]) || (x.a === gOrder[j] && x.b === gOrder[i])); return l ? [`${fmt(l.n)} shrines share both (expected ${l.expected})`] : []; } });
+    barH('#c-str', S.structures.map(s => ({ label: s.name, value: s.share, extra: [`${fmt(s.n)} shrines`] })).sort((a, b) => b.value - a.value), { format: v => pct(v), max: 0.5, labelW: 150, cols: [{ label: 'Structure', get: r => r.label }, { label: 'Shrines', num: true, get: r => r.extra[0].split(' ')[0] }, { label: 'Share', num: true, get: r => pct(r.value, 1) }] });
+    heatmap('#c-resid', S.crosstab.resid, S.crosstab.fams, S.crosstab.structs, { maxAbs: 4.5, deadzone: 0.1, notable: 2, format: v => (v > 0 ? '+' : '') + v.toFixed(1), tipLabel: 'Standardised residual', labelW: 90, arms: { neg: ['#badbfe', '#67b0f9', '#3a84ca', '#005a9d'], pos: ['#fdc9c4', '#fb817a', '#ca5551', '#9a2929'], mid: '#f0efec' }, extra: (i, j) => [`${fmt(S.crosstab.counts[i][j])} shrines observed`] });
+    const coreRows = [];
+    [['w', 'Built into a wall'], ['fs', 'Free-standing'], ['c', 'Temple complex'], ['tt', 'Tree-temple'], ['t', 'Tree'], ['ba', 'Built-around']].forEach(([k, n]) => { const key = Object.keys(S.str_hot).find(x => x === n); if (key) coreRows.push({ label: n, a: S.str_hot[key].hot, b: S.str_hot[key].out }); });
+    ['Shaiva', 'Hanuman', 'Ganesh', 'Goddess', 'Vaishnava', 'Folk', 'Other'].forEach(f => coreRows.push({ label: f + ' present', a: S.fam_hot[f].hot, b: S.fam_hot[f].out }));
+    dumbbell('#c-core', coreRows, { format: v => pct(v), max: 0.8, aLabel: 'Inside hot spots', bLabel: 'Outside' });
+    barV('#c-img', S.images_hist.map(h => ({ label: h.k === 10 ? '10+' : String(h.k), title: `${h.k === 10 ? '10 or more' : h.k} image${h.k === 1 ? '' : 's'}`, value: h.n, labelled: h.n >= 100 })), { format: fmt, unit: 'shrines', xLabel: 'Images present at the shrine', cols: [{ label: 'Images', get: r => r.label }, { label: 'Shrines', num: true, get: r => fmt(r.value) }] });
+    barH('#c-imgfam', Object.entries(S.images_by_family).map(([f, v]) => ({ label: f, value: v.share5, extra: [`median ${v.median}, mean ${v.mean}`, `${fmt(v.n)} shrines`] })).sort((a, b) => b.value - a.value), { format: v => pct(v), max: 0.5, labelW: 100, cols: [{ label: 'Family', get: r => r.label }, { label: '5+ images', num: true, get: r => pct(r.value, 1) }, { label: 'Median', num: true, get: r => r.extra[0].split(',')[0].replace('median ', '') }, { label: 'Mean', num: true, get: r => r.extra[0].split('mean ')[1] }] });
+  }
+  function fillKpis(S) {
+    const set = (k, v) => $$(`[data-k="${k}"]`).forEach(e => e.textContent = v);
+    set('n_points', fmt(S.n_points)); set('river_median', fmt(Math.round(S.river.river_median))); set('nn_median', fmt(Math.round(S.nn_median))); set('share_in_hot_pct', Math.round(S.share_in_hot * 100)); set('gi_hot_km2', S.gi_hot_km2.toFixed(1));
+  }
 
-    function updateStatistics() {
-        // Only update if data is available
-        if (mandirData && mandirData.length > 0 && hexData && hexData.length > 0) {
-            const totalMandirs = mandirData.length;
-            const maxDensity = Math.max(...hexData.map(h => h.properties.deity_count || 0));
-            const avgDensity = hexData.reduce((sum, h) => sum + (h.properties.deity_count || 0), 0) / hexData.length;
-            
-            // Calculate coverage area (approximate)
-            const bounds = map.getBounds();
-            const coverageArea = ((bounds.getNorth() - bounds.getSouth()) * (bounds.getEast() - bounds.getWest()) * 111 * 111).toFixed(1);
-            
-            $('#total-mandirs').text(totalMandirs.toLocaleString());
-            $('#max-density').text(maxDensity);
-            $('#avg-density').text(avgDensity.toFixed(1));
-            $('#coverage-area').text(coverageArea);
-        } else {
-            // Show loading state
-            $('#total-mandirs').text('Loading...');
-            $('#max-density').text('Loading...');
-            $('#avg-density').text('Loading...');
-            $('#coverage-area').text('Loading...');
-        }
-    }
-
-    function initializeCharts() {
-        // Density distribution chart
-        const densityCtx = document.getElementById('densityChart').getContext('2d');
-        window.densityChart = new Chart(densityCtx, {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Number of Hexagons',
-                    data: [],
-                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Number of Hexagons'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Mandir Count Range'
-                        }
-                    }
-                }
-            }
-        });
-
-        // Deity distribution chart
-        const deityCtx = document.getElementById('deityChart').getContext('2d');
-        window.deityChart = new Chart(deityCtx, {
-            type: 'doughnut',
-            data: {
-                labels: [],
-                datasets: [{
-                    data: [],
-                    backgroundColor: [
-                        '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', 
-                        '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd', '#c8d6e5'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }
-        });
-
-        // Structure distribution chart
-        const structureCtx = document.getElementById('structureChart').getContext('2d');
-        window.structureChart = new Chart(structureCtx, {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Number of Mandirs',
-                    data: [],
-                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Number of Mandirs'
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-    function updateDensityChart() {
-        const densityRanges = {
-            '0': 0, '1-5': 0, '6-10': 0, '11-15': 0, '16-20': 0, '20+': 0
-        };
-        
-        hexData.forEach(hex => {
-            const count = hex.properties.deity_count || 0;
-            if (count === 0) densityRanges['0']++;
-            else if (count <= 5) densityRanges['1-5']++;
-            else if (count <= 10) densityRanges['6-10']++;
-            else if (count <= 15) densityRanges['11-15']++;
-            else if (count <= 20) densityRanges['16-20']++;
-            else densityRanges['20+']++;
-        });
-        
-        window.densityChart.data.labels = Object.keys(densityRanges);
-        window.densityChart.data.datasets[0].data = Object.values(densityRanges);
-        window.densityChart.update();
-    }
-
-    function updateDeityChart() {
-        const deityCounts = {};
-        
-        mandirData.forEach(mandir => {
-            const deities = mandir.properties.deity || 'Unknown';
-            const deityList = deities.split(',').map(d => d.trim());
-            
-            deityList.forEach(deity => {
-                deityCounts[deity] = (deityCounts[deity] || 0) + 1;
-            });
-        });
-        
-        // Sort by count and take top 8
-        const sortedDeities = Object.entries(deityCounts)
-            .sort(([,a], [,b]) => b - a)
-            .slice(0, 8);
-        
-        window.deityChart.data.labels = sortedDeities.map(([deity]) => deity);
-        window.deityChart.data.datasets[0].data = sortedDeities.map(([,count]) => count);
-        window.deityChart.update();
-    }
-
-    function updateStructureChart() {
-        const structureCounts = {};
-        
-        mandirData.forEach(mandir => {
-            const structure = mandir.properties.temple_str || 'Unknown';
-            const structureList = structure.split(',').map(s => s.trim());
-            
-            structureList.forEach(str => {
-                structureCounts[str] = (structureCounts[str] || 0) + 1;
-            });
-        });
-        
-        // Sort by count
-        const sortedStructures = Object.entries(structureCounts)
-            .sort(([,a], [,b]) => b - a);
-        
-        window.structureChart.data.labels = sortedStructures.map(([structure]) => structure);
-        window.structureChart.data.datasets[0].data = sortedStructures.map(([,count]) => count);
-        window.structureChart.update();
-    }
-
-    function switchLayer(layerType) {
-        window.currentLayer = layerType;
-        
-        // Update button states
-        $('.control-btn').removeClass('active');
-        $(`.control-btn[onclick="switchLayer('${layerType}')"]`).addClass('active');
-        
-        if (layerType === 'density') {
-            displayHexData();
-        } else if (layerType === 'individual') {
-            displayMandirData();
-        }
-        
-        addLegend();
-    }
-
-    function resetView() {
-        map.setView([25.3176, 82.9739], 13);
-    }
-
-    function toggleArticle() {
-        const articleSection = document.getElementById('articleSection');
-        const button = document.querySelector('.article-toggle');
-        
-        if (articleSection.classList.contains('expanded')) {
-            articleSection.classList.remove('expanded');
-            button.innerHTML = '📖 Read About the Mandirs of Varanasi';
-        } else {
-            articleSection.classList.add('expanded');
-            button.innerHTML = '📖 Hide Article';
-        }
-    }
-  </script>
-
+  // ------------------------------------------------------------ load
+  const get = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
+  Promise.all([get('data/hex.geojson'), get('data/mandirs.geojson'), get('data/ganga.geojson'), get('data/landmarks.json'), get('data/stats.json')]).then(([hex, mandirs, ganga, landmarks, stats]) => {
+    DATA = { hex, mandirs, ganga, landmarks, stats };
+    buildContext(); layers.ganga.addTo(map); buildHex(); buildStories();
+    layers.labels.addTo(map);
+    map.on('zoomend', () => { const z = map.getZoom(); if (z >= 14) { if (!map.hasLayer(layers.labels)) layers.labels.addTo(map); } else if (map.hasLayer(layers.labels)) map.removeLayer(layers.labels); });
+    const h = readHash();
+    if (h.fam && FAM[h.fam]) { state.fam = h.fam; $$('#famchips .chip').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.fam === state.fam))); }
+    if (h.str && STR[h.str]) { state.str = h.str; $$('#strchips .chip').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.str === state.str))); }
+    map.fitBounds(L.geoJSON(hex).getBounds(), { padding: [10, 10] });
+    setView(['density', 'hot', 'points'].includes(h.view) ? h.view : 'density');
+    fillKpis(stats); buildCharts(stats);
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => buildCharts(stats), 200); });
+  }).catch(err => { console.error(err); $('#status').textContent = 'Could not load the data files. Serve this folder over HTTP (for example, python -m http.server) rather than opening the file directly.'; });
+})();
+</script>
 </body>
-
 </html>
